@@ -32,9 +32,9 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevWinUI.Controls" Version="9.4.2" />
+    <PackageReference Include="DevWinUI.Controls" Version="9.5.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Converters" Version="8.2.250402" />
-    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.242">
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.248">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
