@@ -167,4 +167,11 @@ public sealed partial class MainPage
 
         Debug.WriteLine("New hotkey saved: " + string.Join(" + ", ToggleShortcut.Keys));
     }
+
+    private void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
+    {
+        ToggleShortcut.Keys = ["F6"];
+        ToggleShortcut.UpdatePreviewKeys();
+        ToggleShortcut.CloseContentDialog();
+    }
 }

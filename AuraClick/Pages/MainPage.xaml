@@ -117,7 +117,8 @@
             <dev:Shortcut
                 x:Name="ToggleShortcut"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}"
-                PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick" />
+                PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
+                SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick" />
         </StackPanel>
 
         <!--  Click Repeat  -->
