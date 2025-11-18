@@ -22,6 +22,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
 using System.Diagnostics;
 using WinUIEx.Messaging;
+using Windows.System;
 
 namespace AuraClick;
 
@@ -77,6 +78,8 @@ public sealed partial class MainPage
         // Set up window message monitor
         WindowMessageMonitor monitor = new(window);
         monitor.WindowMessageReceived += OnWindowMessageReceived;
+
+        HotkeyManager.RegisterHotkey(1, VirtualKeyModifiers.None, VirtualKey.F6);
     }
 
     /// <summary>
@@ -88,6 +91,8 @@ public sealed partial class MainPage
     {
         if (e.Message.MessageId == 0x0312) // WM_HOTKEY event
         {
+            Debug.WriteLine(e.Message);
+
             if (ToggleButtonStart.IsEnabled)
             {
                 ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
