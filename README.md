@@ -13,7 +13,7 @@
 </div>
 
 > [!IMPORTANT]
-> This app is currently in developer preview and not publicly available. Become a tester by emailing [`testers@auraclick.app`](mailto:testers@auraclick.app).
+> This app is currently in developer preview and not publicly available.
 
 A high-performance modern auto clicker for Windows. Automate mouse clicks with a hotkey and customize click intervals, click types, and more.
 
