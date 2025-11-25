@@ -46,7 +46,7 @@
             <controls:IsEnabledTextBlock
                 x:Name="ClickIntervalTextBlock"
                 x:Uid="TextBlockClickInterval"
-                IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}" />
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <Grid ColumnSpacing="{StaticResource NumberBoxColumnSpacing}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -57,7 +57,7 @@
                 <NumberBox
                     x:Name="NumberBoxHours"
                     x:Uid="NumberBoxHours"
-                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}"
+                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Minimum="0"
                     PlaceholderText="24"
                     Value="{x:Bind helpers:AutoClicker.hoursDelay, Mode=TwoWay}" />
@@ -65,7 +65,7 @@
                     x:Name="NumberBoxMinutes"
                     x:Uid="NumberBoxMinutes"
                     Grid.Column="1"
-                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}"
+                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Maximum="60"
                     Minimum="0"
                     PlaceholderText="60"
@@ -74,7 +74,7 @@
                     x:Name="NumberBoxSeconds"
                     x:Uid="NumberBoxSeconds"
                     Grid.Column="2"
-                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}"
+                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Maximum="60"
                     Minimum="0"
                     PlaceholderText="60"
@@ -83,7 +83,7 @@
                     x:Name="NumberBoxMilliseconds"
                     x:Uid="NumberBoxMilliseconds"
                     Grid.Column="3"
-                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}"
+                    IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Maximum="1000"
                     Minimum="0"
                     PlaceholderText="1000"
@@ -98,7 +98,7 @@
             x:Uid="ComboBoxMouseButton"
             Grid.Row="1"
             Grid.Column="0"
-            IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}"
+            IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
             SelectedIndex="{x:Bind helpers:AutoClicker.mouseButtonType, Mode=TwoWay}">
             <ComboBoxItem x:Uid="ComboBoxItemLeft" />
             <ComboBoxItem x:Uid="ComboBoxItemMiddle" />
@@ -113,7 +113,7 @@
             <controls:IsEnabledTextBlock
                 x:Name="HotkeyTextBlock"
                 x:Uid="TextBlockHotkey"
-                IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}" />
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <Button Content="F6" IsEnabled="False" />
         </StackPanel>
 
@@ -122,7 +122,7 @@
             <CheckBox
                 x:Name="ClickRepeatCheckBox"
                 x:Uid="ClickRepeatCheckBox"
-                IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}" />
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <NumberBox
                 x:Name="ClickRepeatAmount"
                 HorizontalAlignment="Left"
@@ -138,7 +138,7 @@
             <CheckBox
                 x:Name="ClickOffsetCheckBox"
                 x:Uid="ClickOffsetCheckBox"
-                IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}" />
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <NumberBox
                 x:Name="ClickOffsetAmount"
                 HorizontalAlignment="Left"
