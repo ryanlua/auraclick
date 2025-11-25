@@ -126,7 +126,7 @@
             <NumberBox
                 x:Name="ClickRepeatAmount"
                 HorizontalAlignment="Left"
-                IsEnabled="{x:Bind IsControlEnabled(ClickRepeatCheckBox.IsChecked, ToggleButtonStart.IsChecked), Mode=OneWay}"
+                IsEnabled="{x:Bind IsControlEnabled(ClickRepeatCheckBox.IsChecked, ToggleButtonStart.IsChecked)}"
                 LargeChange="10"
                 Minimum="1"
                 SpinButtonPlacementMode="Compact"
@@ -143,7 +143,7 @@
                 x:Name="ClickOffsetAmount"
                 HorizontalAlignment="Left"
                 AcceptsExpression="True"
-                IsEnabled="{x:Bind IsControlEnabled(ClickOffsetCheckBox.IsChecked, ToggleButtonStart.IsChecked), Mode=OneWay}"
+                IsEnabled="{x:Bind IsControlEnabled(ClickOffsetCheckBox.IsChecked, ToggleButtonStart.IsChecked)}"
                 LargeChange="25"
                 Minimum="1"
                 SmallChange="5"

@@ -15,7 +15,6 @@
     <Page.Resources>
         <x:Double x:Key="SettingsCardSpacing">4</x:Double>
         <Thickness x:Key="HyperlinkButtonNegativeMargin">-12,0,0,0</Thickness>
-        <Thickness x:Key="XSmallTopBottomMargin">0,8,0,8</Thickness>
         <Style
             x:Key="SettingsSectionHeaderTextBlockStyle"
             BasedOn="{StaticResource BodyTextBlockStyle}"

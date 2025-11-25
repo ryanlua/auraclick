@@ -16,9 +16,9 @@
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
 using AuraClick.Helpers;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Navigation;
 using WinUIEx;
+using TitleBar = Microsoft.UI.Xaml.Controls.TitleBar;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -48,7 +48,7 @@ public sealed partial class MainWindow
         _ = NavFrame.Navigate(typeof(MainPage));
 
         // Center the window on the screen
-        WindowExtensions.CenterOnScreen(this);
+        this.CenterOnScreen();
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public sealed partial class MainWindow
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="args">The event data.</param>
-    private void AppTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {
         if (NavFrame.CanGoBack)
         {
