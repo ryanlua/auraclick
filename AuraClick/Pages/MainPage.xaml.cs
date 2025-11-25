@@ -61,7 +61,7 @@ public sealed partial class MainPage
     /// <param name="isChecked">The state of the enabling CheckBox.</param>
     /// <param name="isRunning">The state of the start/running toggle.</param>
     /// <returns> <c>true</c> to enable the control when the checkbox is checked and the running toggle is off; otherwise, <c>false</c>.</returns>
-    private static bool IsControlEnabled(bool? isChecked, bool? isRunning)
+    private bool IsControlEnabled(bool? isChecked, bool? isRunning)
     {
         return (isChecked ?? false) && !(isRunning ?? false);
     }
