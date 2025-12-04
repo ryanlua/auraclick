@@ -8,7 +8,6 @@
 
   [![CI](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml)
   [![Crowdin](https://badges.crowdin.net/fluentautoclicker/localized.svg)](https://crowdin.com/project/auraclick)
-  [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fryanlua%2Fauraclick.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fryanlua%2Fauraclick?ref=badge_shield&issueType=license)
 
 </div>
 
@@ -59,5 +58,3 @@ Aura Click is released under the [GNU General Public License v3.0](COPYING.md).
 > Aura Click is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 >
 > You should have received a copy of the GNU General Public License along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fryanlua%2Fauraclick.svg?type=large&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fryanlua%2Fauraclick?ref=badge_large&issueType=license)
