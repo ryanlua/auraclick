@@ -95,11 +95,11 @@
                                 <HyperlinkButton
                                     x:Uid="HyperlinkButtonPrivacyPolicy"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    NavigateUri="https://github.com/RyanLua/AuraClick/blob/main/PRIVACY_POLICY.md" />
+                                    NavigateUri="https://github.com/ryanlua/auraclick/blob/main/PRIVACY_POLICY.md" />
                                 <HyperlinkButton
                                     x:Uid="HyperlinkButtonLicense"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    NavigateUri="https://github.com/RyanLua/AuraClick/blob/main/COPYING.md" />
+                                    NavigateUri="https://github.com/ryanlua/auraclick/blob/main/COPYING.md" />
                             </StackPanel>
                         </controls:SettingsCard>
 
@@ -116,7 +116,7 @@
                                 <HyperlinkButton
                                     x:Uid="HyperlinkButtonSource"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    NavigateUri="https://github.com/RyanLua/AuraClick" />
+                                    NavigateUri="https://github.com/ryanlua/auraclick" />
                             </StackPanel>
                         </controls:SettingsCard>
 
