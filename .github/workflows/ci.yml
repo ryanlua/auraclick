@@ -62,7 +62,7 @@ jobs:
       run: Remove-Item -path GitHubActionsWorkflow.pfx
 
     - name: Upload MSIX package
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
         path: ${{ env.Dir_Name }}\Packages\**
