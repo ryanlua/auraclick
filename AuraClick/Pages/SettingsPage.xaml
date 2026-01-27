@@ -81,7 +81,7 @@
                 <!--  App version  -->
                 <controls:SettingsExpander
                     x:Name="AppAboutSettingsExpander"
-                    Description="Copyright © 2025 Ryan Luu"
+                    Description="Copyright © 2026 Ryan Luu"
                     HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/StoreLogo.png}">
                     <TextBlock
                         x:Name="AppVersionTextBlock"

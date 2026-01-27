@@ -1,4 +1,4 @@
-// Copyright (C) 2025 Ryan Luu
+// Copyright (C) 2026 Ryan Luu
 //
 // This file is part of Aura Click.
 //

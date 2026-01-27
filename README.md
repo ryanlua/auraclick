@@ -51,7 +51,7 @@ Aura Click is released under the [GNU General Public License v3.0](COPYING.md).
 
 > A high-performance modern auto clicker for Windows.
 >
-> Copyright © 2025 Ryan Luu
+> Copyright © 2026 Ryan Luu
 >
 > Aura Click is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 >
