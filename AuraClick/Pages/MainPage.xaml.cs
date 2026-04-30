@@ -130,6 +130,14 @@ public sealed partial class MainPage
     }
 
     /// <summary>
+    /// Refreshes the notification badge using the current application state and settings.
+    /// </summary>
+    public static void RefreshNotificationBadge()
+    {
+        SetNotificationBadge(AutoClicker.IsRunning ? BadgeNotificationGlyph.Playing : BadgeNotificationGlyph.Paused);
+    }
+
+    /// <summary>
     /// Sets the notification badge.
     /// </summary>
     /// <param name="glyph">The badge notification glyph.</param>
