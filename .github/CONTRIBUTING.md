@@ -52,4 +52,4 @@ Resources to help you contribute to this project and learn more about Windows ap
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](https://github.com/RyanLua/AuraClick?tab=AGPL-3.0-1-ov-file#readme).
+By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](https://github.com/ryanlua/auraclick?tab=AGPL-3.0-1-ov-file#readme).

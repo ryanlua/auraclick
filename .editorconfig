@@ -30,7 +30,7 @@ dotnet_search_reference_assemblies = true
 # Organize usings
 dotnet_separate_import_directive_groups = false
 dotnet_sort_system_directives_first = false
-file_header_template = Copyright (C) 2025 Ryan Luu\n\nThis file is part of Aura Click.\n\nAura Click is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published\nby the Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nAura Click is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with Aura Click. If not, see <https://www.gnu.org/licenses/>.
+file_header_template = Copyright (C) 2026 Ryan Luu\n\nThis file is part of Aura Click.\n\nAura Click is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published\nby the Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nAura Click is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
 # this. and Me. preferences
 dotnet_style_qualification_for_event = false

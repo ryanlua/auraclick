@@ -1,4 +1,4 @@
-﻿// Copyright (C) 2025 Ryan Luu
+﻿// Copyright (C) 2026 Ryan Luu
 //
 // This file is part of Aura Click.
 //
@@ -38,6 +38,11 @@ public static class AutoClicker
 
     private static Thread? _autoClickerThread;
     private static bool _isAutoClickerRunning;
+
+    /// <summary>
+    /// Gets a value indicating whether the auto clicker is currently running.
+    /// </summary>
+    public static bool IsRunning => _isAutoClickerRunning;
 
     /// <summary>
     /// Starts the auto clicker thread.

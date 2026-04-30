@@ -1,4 +1,4 @@
-// Copyright (C) 2025 Ryan Luu
+// Copyright (C) 2026 Ryan Luu
 //
 // This file is part of Aura Click.
 //
@@ -62,7 +62,11 @@ public sealed partial class SettingsPage
     public bool NotificationBadgePlaying
     {
         get => (bool)(localSettings.Values[nameof(NotificationBadgePlaying)] ?? true);
-        set => localSettings.Values[nameof(NotificationBadgePlaying)] = value;
+        set
+        {
+            localSettings.Values[nameof(NotificationBadgePlaying)] = value;
+            MainPage.RefreshNotificationBadge();
+        }
     }
 
     /// <summary>
@@ -71,7 +75,11 @@ public sealed partial class SettingsPage
     public bool NotificationBadgePaused
     {
         get => (bool)(localSettings.Values[nameof(NotificationBadgePaused)] ?? true);
-        set => localSettings.Values[nameof(NotificationBadgePaused)] = value;
+        set
+        {
+            localSettings.Values[nameof(NotificationBadgePaused)] = value;
+            MainPage.RefreshNotificationBadge();
+        }
     }
 
     /// <summary>

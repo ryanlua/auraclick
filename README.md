@@ -6,14 +6,13 @@
 
 <div align="center">
 
-  [![CI](https://github.com/RyanLua/AuraClick/actions/workflows/ci.yml/badge.svg)](https://github.com/RyanLua/AuraClick/actions/workflows/ci.yml)
+  [![CI](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml)
   [![Crowdin](https://badges.crowdin.net/fluentautoclicker/localized.svg)](https://crowdin.com/project/auraclick)
-  [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRyanLua%2FAuraClick.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FRyanLua%2FAuraClick?ref=badge_shield&issueType=license)
 
 </div>
 
 > [!IMPORTANT]
-> This app is currently in developer preview and not publicly available. To install this app as a developer, [see the build instructions](.github/CONTRIBUTING.md).
+> This app is currently in developer preview and not publicly available.
 
 A high-performance modern auto clicker for Windows. Automate mouse clicks with a hotkey and customize click intervals, click types, and more.
 
@@ -40,11 +39,11 @@ Help us translate Aura Click into more languages! Join our [Crowdin project](htt
 
 We welcome contributions from everyone. Before contributing, read the [contribution guidelines](.github/CONTRIBUTING.md).
 
-When you're ready, [make your first contribution](https://github.com/RyanLua/AuraClick/contribute) to this repository by tackling an issue.
+When you're ready, [make your first contribution](https://github.com/ryanlua/auraclick/contribute) to this repository by tackling an issue.
 
 ## 💖 Sponsors
 
-Help support this app by [sponsoring us](https://github.com/sponsors/RyanLua) to support it's development and future updates.
+Help support this app by [sponsoring us](https://github.com/sponsors/ryanlua) to support it's development and future updates.
 
 ## 🪪 License
 
@@ -52,12 +51,10 @@ Aura Click is released under the [GNU General Public License v3.0](COPYING.md).
 
 > A high-performance modern auto clicker for Windows.
 >
-> Copyright © 2025 Ryan Luu
+> Copyright © 2026 Ryan Luu
 >
 > Aura Click is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 >
 > Aura Click is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 >
 > You should have received a copy of the GNU General Public License along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRyanLua%2FAuraClick.svg?type=large&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FRyanLua%2FAuraClick?ref=badge_large&issueType=license)
