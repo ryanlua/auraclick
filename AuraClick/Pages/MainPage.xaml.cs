@@ -37,17 +37,6 @@ public sealed partial class MainPage
     private static readonly SettingsPage settingsPage = new();
 
     /// <summary>
-    /// Determines whether a control should be enabled based on a checkbox state and a running-state toggle.
-    /// </summary>
-    /// <param name="isChecked">The state of the enabling CheckBox.</param>
-    /// <param name="isRunning">The state of the start/running toggle.</param>
-    /// <returns> <c>true</c> to enable the control when the checkbox is checked and the running toggle is off; otherwise, <c>false</c>.</returns>
-    private bool IsControlEnabled(bool? isChecked, bool? isRunning)
-    {
-        return (isChecked ?? false) && !(isRunning ?? false);
-    }
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="MainPage" /> class.
     /// </summary>
     public MainPage()
@@ -60,6 +49,17 @@ public sealed partial class MainPage
 
         // Set tooltip
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
+    }
+
+    /// <summary>
+    /// Determines whether a control should be enabled based on a checkbox state and a running-state toggle.
+    /// </summary>
+    /// <param name="isChecked">The state of the enabling CheckBox.</param>
+    /// <param name="isRunning">The state of the start/running toggle.</param>
+    /// <returns> <c>true</c> to enable the control when the checkbox is checked and the running toggle is off; otherwise, <c>false</c>.</returns>
+    private bool IsControlEnabled(bool? isChecked, bool? isRunning)
+    {
+        return (isChecked ?? false) && !(isRunning ?? false);
     }
 
     /// <summary>
