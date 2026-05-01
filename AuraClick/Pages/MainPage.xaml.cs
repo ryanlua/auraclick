@@ -89,6 +89,12 @@ public sealed partial class MainPage
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
+        // Allow hotkey only on main page
+        if (Frame.Content is not MainPage)
+        {
+            return;
+        }
+
         if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == ToggleHotkeyId)
         {
             ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
