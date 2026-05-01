@@ -8,7 +8,7 @@
 // (at your option) any later version.
 //
 // Aura Click is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// but WITHOUT ANY WARRANTY without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Affero General Public License for more details.
 //
@@ -23,6 +23,7 @@ using WinRT.Interop;
 
 namespace AuraClick.Helpers;
 
+// TODO: Cleanup this code to be more maintainable
 internal static class HotkeyManager
 {
     public static bool RegisterHotkey(int hotkeyId, IEnumerable<object>? keys)
