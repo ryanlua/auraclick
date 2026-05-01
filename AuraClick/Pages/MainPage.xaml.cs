@@ -21,8 +21,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
 using Windows.Win32;
-using Windows.Win32.Foundation;
-using WinRT.Interop;
 using WinUIEx.Messaging;
 
 namespace AuraClick;
