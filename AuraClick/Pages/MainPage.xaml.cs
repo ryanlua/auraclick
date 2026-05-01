@@ -89,7 +89,7 @@ public sealed partial class MainPage
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
-        if (e.Message.MessageId == PInvoke.WM_HOTKEY && (int)e.Message.WParam == ToggleHotkeyId && ToggleButtonStart.IsEnabled)
+        if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == ToggleHotkeyId)
         {
             ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
         }
@@ -128,11 +128,13 @@ public sealed partial class MainPage
     private async void ToggleButtonStart_OnChecked(object sender, RoutedEventArgs e)
     {
         ToggleButtonStart.IsEnabled = false;
-        await Task.Delay(1000);
+
         FontIconStart.Glyph = "\uEDB4";
         SetNotificationBadge(BadgeNotificationGlyph.Playing);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
         AutoClicker.Start();
+
+        await Task.Delay(1000);
         ToggleButtonStart.IsEnabled = true;
     }
 
@@ -141,6 +143,7 @@ public sealed partial class MainPage
     /// </summary>
     private void ToggleButtonStart_OnUnchecked(object sender, RoutedEventArgs e)
     {
+        ToggleButtonStart.IsEnabled = true;
         FontIconStart.Glyph = "\uEE4A";
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
