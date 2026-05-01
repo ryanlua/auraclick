@@ -182,7 +182,8 @@
                 x:Uid="ButtonSettings"
                 Grid.Column="1"
                 Height="32"
-                Click="SettingsButton_Click">
+                Click="SettingsButton_Click"
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}">
                 <AnimatedIcon FallbackIconSource="{ui:FontIconSource Glyph=&#xE713;}">
                     <AnimatedIcon.Source>
                         <animatedvisuals:AnimatedSettingsVisualSource />
