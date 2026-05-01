@@ -20,9 +20,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
-using System.Diagnostics;
+using Windows.Win32.Foundation;
+using WinRT.Interop;
 using WinUIEx.Messaging;
-using Windows.System;
 
 namespace AuraClick;
 
@@ -37,6 +37,11 @@ public sealed partial class MainPage
     private static readonly SettingsPage settingsPage = new();
 
     /// <summary>
+    /// Current hotkey ID for the toggle shortcut.
+    /// </summary>
+    private int _currentHotKeyId = 1;
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="MainPage" /> class.
     /// </summary>
     public MainPage()
@@ -44,19 +49,21 @@ public sealed partial class MainPage
         InitializeComponent();
         Loaded += MainPage_Loaded;
 
-        // Set shortcut keys
-        ToggleShortcut.Keys = ["F6"];
-
-        // Set tooltip
+        ToggleShortcut.Keys = new List<object> { "F6" };
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
+    }
+
+    /// <summary>
+    /// Registers a hotkey based on the current shortcut keys.
+    /// </summary>
+    private void RegisterHotkey()
+    {
+        HotkeyManager.RegisterHotkey(_currentHotKeyId, ToggleShortcut.Keys);
     }
 
     /// <summary>
     /// Determines whether a control should be enabled based on a checkbox state and a running-state toggle.
     /// </summary>
-    /// <param name="isChecked">The state of the enabling CheckBox.</param>
-    /// <param name="isRunning">The state of the start/running toggle.</param>
-    /// <returns> <c>true</c> to enable the control when the checkbox is checked and the running toggle is off; otherwise, <c>false</c>.</returns>
     private bool IsControlEnabled(bool? isChecked, bool? isRunning)
     {
         return (isChecked ?? false) && !(isRunning ?? false);
@@ -65,38 +72,30 @@ public sealed partial class MainPage
     /// <summary>
     /// Handles the Loaded event of the MainPage control.
     /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The event data.</param>
-    private async void MainPage_Loaded(object sender, RoutedEventArgs e)
+    private void MainPage_Loaded(object sender, RoutedEventArgs e)
     {
-        // Set badge notification
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
 
         // Get window handle
         MainWindow window = App.MainWindow;
+        HWND hWnd = new(WindowNative.GetWindowHandle(window));
 
         // Set up window message monitor
         WindowMessageMonitor monitor = new(window);
         monitor.WindowMessageReceived += OnWindowMessageReceived;
 
-        HotkeyManager.RegisterHotkey(1, VirtualKeyModifiers.None, VirtualKey.F6);
+        // Register hotkey
+        RegisterHotkey();
     }
 
     /// <summary>
     /// Handles the WindowMessageReceived event of the WindowMessageMonitor control.
     /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The event data.</param>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
-        if (e.Message.MessageId == 0x0312) // WM_HOTKEY event
+        if (e.Message.MessageId == 0x0312 && (int)e.Message.WParam == _currentHotKeyId && ToggleButtonStart.IsEnabled)
         {
-            Debug.WriteLine(e.Message);
-
-            if (ToggleButtonStart.IsEnabled)
-            {
-                ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
-            }
+            ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
         }
     }
 
@@ -111,7 +110,6 @@ public sealed partial class MainPage
     /// <summary>
     /// Sets the notification badge.
     /// </summary>
-    /// <param name="glyph">The badge notification glyph.</param>
     private static void SetNotificationBadge(BadgeNotificationGlyph glyph)
     {
         if (glyph == BadgeNotificationGlyph.Paused && settingsPage.NotificationBadgePaused)
@@ -131,18 +129,13 @@ public sealed partial class MainPage
     /// <summary>
     /// Handles the Checked event of the ToggleButtonStart control.
     /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The event data.</param>
     private async void ToggleButtonStart_OnChecked(object sender, RoutedEventArgs e)
     {
-        // Update controls
         ToggleButtonStart.IsEnabled = false;
         await Task.Delay(1000);
         FontIconStart.Glyph = "\uEDB4";
         SetNotificationBadge(BadgeNotificationGlyph.Playing);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
-
-        // Start auto clicker
         AutoClicker.Start();
         ToggleButtonStart.IsEnabled = true;
     }
@@ -150,41 +143,40 @@ public sealed partial class MainPage
     /// <summary>
     /// Handles the Unchecked event of the ToggleButtonStart control.
     /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The event data.</param>
     private void ToggleButtonStart_OnUnchecked(object sender, RoutedEventArgs e)
     {
-        // Update controls
         FontIconStart.Glyph = "\uEE4A";
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
-
-        // Stop auto clicker
         AutoClicker.Stop();
     }
 
     /// <summary>
     /// Handles the Click event of the SettingsButton control.
     /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The event data.</param>
     private void SettingsButton_Click(object sender, RoutedEventArgs e)
     {
         _ = Frame.Navigate(typeof(SettingsPage), null, new SuppressNavigationTransitionInfo());
     }
 
+    /// <summary>
+    /// Handles the PrimaryButtonClick event of the Shortcut control.
+    /// </summary>
     private void ToggleShortcut_PrimaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
-
-        Debug.WriteLine("New hotkey saved: " + string.Join(" + ", ToggleShortcut.Keys));
+        RegisterHotkey();
     }
 
+    /// <summary>
+    /// Handles the SecondaryButtonClick event of the Shortcut control.
+    /// </summary>
     private void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
-        ToggleShortcut.Keys = ["F6"];
+        ToggleShortcut.Keys = new List<object> { "F6" };
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
+        RegisterHotkey();
     }
 }
