@@ -20,6 +20,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
+using Windows.Win32;
 using Windows.Win32.Foundation;
 using WinRT.Interop;
 using WinUIEx.Messaging;
@@ -86,7 +87,7 @@ public sealed partial class MainPage
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
-        if (e.Message.MessageId == 0x0312 && (int)e.Message.WParam == ToggleHotkeyId && ToggleButtonStart.IsEnabled)
+        if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == ToggleHotkeyId && ToggleButtonStart.IsEnabled)
         {
             ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
         }
