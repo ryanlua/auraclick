@@ -37,9 +37,9 @@ public sealed partial class MainPage
     private static readonly SettingsPage settingsPage = new();
 
     /// <summary>
-    /// Current hotkey ID for the toggle shortcut.
+    /// Hotkey ID for the toggle shortcut.
     /// </summary>
-    private int _currentHotKeyId = 1;
+    private const int ToggleHotkeyId = 1;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainPage" /> class.
@@ -49,16 +49,8 @@ public sealed partial class MainPage
         InitializeComponent();
         Loaded += MainPage_Loaded;
 
-        ToggleShortcut.Keys = new List<object> { "F6" };
+        ToggleShortcut.Keys = ["F6"];
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
-    }
-
-    /// <summary>
-    /// Registers a hotkey based on the current shortcut keys.
-    /// </summary>
-    private void RegisterHotkey()
-    {
-        HotkeyManager.RegisterHotkey(_currentHotKeyId, ToggleShortcut.Keys);
     }
 
     /// <summary>
@@ -74,6 +66,7 @@ public sealed partial class MainPage
     /// </summary>
     private void MainPage_Loaded(object sender, RoutedEventArgs e)
     {
+        // Set badge notification
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
 
         // Get window handle
@@ -85,7 +78,7 @@ public sealed partial class MainPage
         monitor.WindowMessageReceived += OnWindowMessageReceived;
 
         // Register hotkey
-        RegisterHotkey();
+        HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
     }
 
     /// <summary>
@@ -93,7 +86,7 @@ public sealed partial class MainPage
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
-        if (e.Message.MessageId == 0x0312 && (int)e.Message.WParam == _currentHotKeyId && ToggleButtonStart.IsEnabled)
+        if (e.Message.MessageId == 0x0312 && (int)e.Message.WParam == ToggleHotkeyId && ToggleButtonStart.IsEnabled)
         {
             ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
         }
@@ -166,7 +159,7 @@ public sealed partial class MainPage
     {
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
-        RegisterHotkey();
+        HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
     }
 
     /// <summary>
@@ -174,9 +167,9 @@ public sealed partial class MainPage
     /// </summary>
     private void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
-        ToggleShortcut.Keys = new List<object> { "F6" };
+        ToggleShortcut.Keys = ["F6"];
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
-        RegisterHotkey();
+        HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
     }
 }
