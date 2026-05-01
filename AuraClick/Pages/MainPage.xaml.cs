@@ -38,6 +38,11 @@ public sealed partial class MainPage
     private static readonly SettingsPage settingsPage = new();
 
     /// <summary>
+    /// Window message monitor for hotkey handling.
+    /// </summary>
+    private WindowMessageMonitor? monitor;
+
+    /// <summary>
     /// Hotkey ID for the toggle shortcut.
     /// </summary>
     private const int ToggleHotkeyId = 1;
@@ -70,12 +75,9 @@ public sealed partial class MainPage
         // Set badge notification
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
 
-        // Get window handle
-        MainWindow window = App.MainWindow;
-        HWND hWnd = new(WindowNative.GetWindowHandle(window));
-
         // Set up window message monitor
-        WindowMessageMonitor monitor = new(window);
+        MainWindow window = App.MainWindow;
+        monitor = new(window);
         monitor.WindowMessageReceived += OnWindowMessageReceived;
 
         // Register hotkey
@@ -87,7 +89,7 @@ public sealed partial class MainPage
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
-        if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == ToggleHotkeyId && ToggleButtonStart.IsEnabled)
+        if (e.Message.MessageId == PInvoke.WM_HOTKEY && (int)e.Message.WParam == ToggleHotkeyId && ToggleButtonStart.IsEnabled)
         {
             ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
         }
