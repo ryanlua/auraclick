@@ -16,12 +16,15 @@
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
 using AuraClick.Helpers;
+using DevWinUI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
+using Windows.System;
 using Windows.Win32;
-using WinUIEx.Messaging;
+using WindowMessageEventArgs = WinUIEx.Messaging.WindowMessageEventArgs;
+using WindowMessageMonitor = WinUIEx.Messaging.WindowMessageMonitor;
 
 namespace AuraClick;
 
@@ -53,8 +56,13 @@ public sealed partial class MainPage
         InitializeComponent();
         Loaded += MainPage_Loaded;
 
-        ToggleShortcut.Keys = ["F6"];
+        ToggleShortcut.Keys = CreateDefaultShortcut();
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
+    }
+
+    private static List<object> CreateDefaultShortcut()
+    {
+        return [new KeyVisualInfo { Key = VirtualKey.F6, KeyName = "F6" }];
     }
 
     /// <summary>
@@ -177,7 +185,7 @@ public sealed partial class MainPage
     /// </summary>
     private void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
-        ToggleShortcut.Keys = ["F6"];
+        ToggleShortcut.Keys = CreateDefaultShortcut();
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
         HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
