@@ -17,11 +17,11 @@ If you already have Visual Studio installed and have developer mode enabled, you
 1. Locate the `.vsconfig` file from the project root, and then choose **Review details**.
 1. Verify that your selections are accurate, and then choose **Modify**.
 
-Additionally, Visual Studio will automatically detect any missing components in a open solution and will prompt you to install them if not already installed.
+Additionally, Visual Studio will automatically detect any missing components in an open solution and will prompt you to install them if not already installed.
 
-![Solution Explorer suggests additional components](https://learn.microsoft.com/en-us/visualstudio/install/media/vs-2019/solution-explorer-config-file.png?view=vs-2022)
+![Solution Explorer suggests additional components](https://learn.microsoft.com/en-us/visualstudio/install/media/visualstudio/solution-explorer-config-file.png?view=visualstudio)
 
-For more ways to install, learn how to [import or export installation configurations](https://learn.microsoft.com/en-us/visualstudio/install/import-export-installation-configurations?view=vs-2022).
+For more ways to install, learn how to [import or export installation configurations](https://learn.microsoft.com/en-us/visualstudio/install/import-export-installation-configurations).
 
 ## Building the project
 
@@ -32,7 +32,7 @@ You can build the project with Visual Studio. Before building the project, ensur
 
 To debug the project, press <kbd>F5</kbd> or choose **Debug** > **Start Debugging**.
 
-For more information, learn how to [build and clean projects and solutions in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/install/import-export-installation-configurations?view=vs-2022).
+For more information, learn how to [build and clean projects and solutions in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/install/import-export-installation-configurations).
 
 ## Helpful resources
 
