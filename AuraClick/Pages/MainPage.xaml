@@ -5,9 +5,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
-    xmlns:controls="using:AuraClick.Controls"
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dev="using:DevWinUI"
     xmlns:helpers="using:AuraClick.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
@@ -43,7 +43,7 @@
 
         <!--  Click Interval  -->
         <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource StackPanelSpacing}">
-            <controls:IsEnabledTextBlock
+            <dev:IsEnabledTextBlock
                 x:Name="ClickIntervalTextBlock"
                 x:Uid="TextBlockClickInterval"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
@@ -110,11 +110,15 @@
             Grid.Row="2"
             Grid.Column="0"
             Spacing="{StaticResource StackPanelSpacing}">
-            <controls:IsEnabledTextBlock
+            <dev:IsEnabledTextBlock
                 x:Name="HotkeyTextBlock"
                 x:Uid="TextBlockHotkey"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
-            <Button Content="F6" IsEnabled="False" />
+            <dev:Shortcut
+                x:Name="ToggleShortcut"
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
+                PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
+                SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick" />
         </StackPanel>
 
         <!--  Click Repeat  -->
@@ -178,7 +182,8 @@
                 x:Uid="ButtonSettings"
                 Grid.Column="1"
                 Height="32"
-                Click="SettingsButton_Click">
+                Click="SettingsButton_Click"
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}">
                 <AnimatedIcon FallbackIconSource="{ui:FontIconSource Glyph=&#xE713;}">
                     <AnimatedIcon.Source>
                         <animatedvisuals:AnimatedSettingsVisualSource />
