@@ -9,6 +9,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:dev="using:DevWinUI"
     xmlns:helpers="using:AuraClick.Helpers"
+    xmlns:l="using:WinUI3Localizer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -45,7 +46,7 @@
         <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource StackPanelSpacing}">
             <dev:IsEnabledTextBlock
                 x:Name="ClickIntervalTextBlock"
-                x:Uid="TextBlockClickInterval"
+                l:Uids.Uid="TextBlockClickInterval"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <Grid ColumnSpacing="{StaticResource NumberBoxColumnSpacing}">
                 <Grid.ColumnDefinitions>
@@ -56,15 +57,15 @@
                 </Grid.ColumnDefinitions>
                 <NumberBox
                     x:Name="NumberBoxHours"
-                    x:Uid="NumberBoxHours"
+                    l:Uids.Uid="NumberBoxHours"
                     IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Minimum="0"
                     PlaceholderText="24"
                     Value="{x:Bind helpers:AutoClicker.hoursDelay, Mode=TwoWay}" />
                 <NumberBox
                     x:Name="NumberBoxMinutes"
-                    x:Uid="NumberBoxMinutes"
                     Grid.Column="1"
+                    l:Uids.Uid="NumberBoxMinutes"
                     IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Maximum="60"
                     Minimum="0"
@@ -72,8 +73,8 @@
                     Value="{x:Bind helpers:AutoClicker.minutesDelay, Mode=TwoWay}" />
                 <NumberBox
                     x:Name="NumberBoxSeconds"
-                    x:Uid="NumberBoxSeconds"
                     Grid.Column="2"
+                    l:Uids.Uid="NumberBoxSeconds"
                     IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Maximum="60"
                     Minimum="0"
@@ -81,8 +82,8 @@
                     Value="{x:Bind helpers:AutoClicker.secondsDelay, Mode=TwoWay}" />
                 <NumberBox
                     x:Name="NumberBoxMilliseconds"
-                    x:Uid="NumberBoxMilliseconds"
                     Grid.Column="3"
+                    l:Uids.Uid="NumberBoxMilliseconds"
                     IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                     Maximum="1000"
                     Minimum="0"
@@ -95,14 +96,14 @@
         <!--  Mouse Button  -->
         <ComboBox
             x:Name="MouseButtonTypeComboBox"
-            x:Uid="ComboBoxMouseButton"
             Grid.Row="1"
             Grid.Column="0"
+            l:Uids.Uid="ComboBoxMouseButton"
             IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
             SelectedIndex="{x:Bind helpers:AutoClicker.mouseButtonType, Mode=TwoWay}">
-            <ComboBoxItem x:Uid="ComboBoxItemLeft" />
-            <ComboBoxItem x:Uid="ComboBoxItemMiddle" />
-            <ComboBoxItem x:Uid="ComboBoxItemRight" />
+            <ComboBoxItem l:Uids.Uid="ComboBoxItemLeft" />
+            <ComboBoxItem l:Uids.Uid="ComboBoxItemMiddle" />
+            <ComboBoxItem l:Uids.Uid="ComboBoxItemRight" />
         </ComboBox>
 
         <!--  Hotkey  -->
@@ -112,7 +113,7 @@
             Spacing="{StaticResource StackPanelSpacing}">
             <dev:IsEnabledTextBlock
                 x:Name="HotkeyTextBlock"
-                x:Uid="TextBlockHotkey"
+                l:Uids.Uid="TextBlockHotkey"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <dev:Shortcut
                 x:Name="ToggleShortcut"
@@ -125,7 +126,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <CheckBox
                 x:Name="ClickRepeatCheckBox"
-                x:Uid="ClickRepeatCheckBox"
+                l:Uids.Uid="ClickRepeatCheckBox"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <NumberBox
                 x:Name="ClickRepeatAmount"
@@ -141,7 +142,7 @@
         <StackPanel Grid.Row="2" Grid.Column="1">
             <CheckBox
                 x:Name="ClickOffsetCheckBox"
-                x:Uid="ClickOffsetCheckBox"
+                l:Uids.Uid="ClickOffsetCheckBox"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <NumberBox
                 x:Name="ClickOffsetAmount"
@@ -169,9 +170,9 @@
             </Grid.ColumnDefinitions>
             <ToggleButton
                 x:Name="ToggleButtonStart"
-                x:Uid="ToggleButtonStart"
                 Height="32"
                 HorizontalAlignment="Stretch"
+                l:Uids.Uid="ToggleButtonStart"
                 Checked="ToggleButtonStart_OnChecked"
                 Unchecked="ToggleButtonStart_OnUnchecked">
                 <FontIcon x:Name="FontIconStart" Glyph="&#xEE4A;" />
@@ -179,9 +180,9 @@
 
             <!--  Open Settings  -->
             <Button
-                x:Uid="ButtonSettings"
                 Grid.Column="1"
                 Height="32"
+                l:Uids.Uid="ButtonSettings"
                 Click="SettingsButton_Click"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}">
                 <AnimatedIcon FallbackIconSource="{ui:FontIconSource Glyph=&#xE713;}">

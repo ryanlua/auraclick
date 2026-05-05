@@ -6,6 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:l="using:WinUI3Localizer"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -35,48 +36,48 @@
                     <win:RepositionThemeTransition IsStaggeringEnabled="False" />
                 </win:StackPanel.ChildrenTransitions>
 
-                <TextBlock x:Uid="SettingsSubtitleTextBlock" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <TextBlock l:Uids.Uid="SettingsSubtitleTextBlock" Style="{StaticResource SubtitleTextBlockStyle}" />
 
-                <TextBlock x:Uid="AppearanceSettingsSectionHeaderTextBlock" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
+                <TextBlock l:Uids.Uid="AppearanceSettingsSectionHeaderTextBlock" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
                 <!--  App theme  -->
-                <controls:SettingsCard x:Uid="SettingsCardAppTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <controls:SettingsCard l:Uids.Uid="SettingsCardAppTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ComboBox SelectedIndex="{x:Bind ThemeSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeSystem" />
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeLight" />
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeDark" />
+                        <ComboBoxItem l:Uids.Uid="ComboBoxItemAppThemeSystem" />
+                        <ComboBoxItem l:Uids.Uid="ComboBoxItemAppThemeLight" />
+                        <ComboBoxItem l:Uids.Uid="ComboBoxItemAppThemeDark" />
                     </ComboBox>
                 </controls:SettingsCard>
 
                 <!--  Backdrop material  -->
-                <controls:SettingsCard x:Uid="SettingsCardBackdropMaterial" HeaderIcon="{ui:FontIcon Glyph=&#xEF1F;}">
+                <controls:SettingsCard l:Uids.Uid="SettingsCardBackdropMaterial" HeaderIcon="{ui:FontIcon Glyph=&#xEF1F;}">
                     <ComboBox SelectedIndex="{x:Bind BackdropSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialMica" />
-                        <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialMicaAlt" />
-                        <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialAcrylic" />
+                        <ComboBoxItem l:Uids.Uid="ComboBoxItemBackdropMaterialMica" />
+                        <ComboBoxItem l:Uids.Uid="ComboBoxItemBackdropMaterialMicaAlt" />
+                        <ComboBoxItem l:Uids.Uid="ComboBoxItemBackdropMaterialAcrylic" />
                     </ComboBox>
                 </controls:SettingsCard>
 
-                <TextBlock x:Uid="TextBlockBehavior" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
+                <TextBlock l:Uids.Uid="TextBlockBehavior" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
                 <!--  Always on top  -->
-                <controls:SettingsCard x:Uid="SettingsCardAlwaysOnTop" HeaderIcon="{ui:FontIcon Glyph=&#xE7C4;}">
+                <controls:SettingsCard l:Uids.Uid="SettingsCardAlwaysOnTop" HeaderIcon="{ui:FontIcon Glyph=&#xE7C4;}">
                     <ToggleSwitch IsOn="{x:Bind IsAlwaysOnTop}" />
                 </controls:SettingsCard>
 
                 <!--  Notification badge  -->
-                <controls:SettingsExpander x:Uid="SettingsExpanderNotificationBadge" HeaderIcon="{ui:FontIcon Glyph=&#xEDAD;}">
+                <controls:SettingsExpander l:Uids.Uid="SettingsExpanderNotificationBadge" HeaderIcon="{ui:FontIcon Glyph=&#xEDAD;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxNotificationBadgePlaying" IsChecked="{x:Bind NotificationBadgePlaying}" />
+                            <CheckBox l:Uids.Uid="CheckBoxNotificationBadgePlaying" IsChecked="{x:Bind NotificationBadgePlaying}" />
                         </controls:SettingsCard>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxNotificationBadgePaused" IsChecked="{x:Bind NotificationBadgePaused}" />
+                            <CheckBox l:Uids.Uid="CheckBoxNotificationBadgePaused" IsChecked="{x:Bind NotificationBadgePaused}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <TextBlock x:Uid="TextBlockAbout" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
+                <TextBlock l:Uids.Uid="TextBlockAbout" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
                 <!--  App version  -->
                 <controls:SettingsExpander
@@ -93,37 +94,37 @@
                         <controls:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
                             <StackPanel>
                                 <HyperlinkButton
-                                    x:Uid="HyperlinkButtonPrivacyPolicy"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
+                                    l:Uids.Uid="HyperlinkButtonPrivacyPolicy"
                                     NavigateUri="https://github.com/ryanlua/auraclick/blob/HEAD/PRIVACY_POLICY.md" />
                                 <HyperlinkButton
-                                    x:Uid="HyperlinkButtonLicense"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
+                                    l:Uids.Uid="HyperlinkButtonLicense"
                                     NavigateUri="https://github.com/ryanlua/auraclick/blob/HEAD/COPYING.md" />
                             </StackPanel>
                         </controls:SettingsCard>
 
                         <!--  Related links  -->
                         <controls:SettingsCard
-                            x:Uid="SettingsCardRelatedLinks"
                             HorizontalContentAlignment="Left"
+                            l:Uids.Uid="SettingsCardRelatedLinks"
                             ContentAlignment="Vertical">
                             <StackPanel>
                                 <HyperlinkButton
-                                    x:Uid="HyperlinkButtonTranslate"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
+                                    l:Uids.Uid="HyperlinkButtonTranslate"
                                     NavigateUri="https://crowdin.com/project/auraclick" />
                                 <HyperlinkButton
-                                    x:Uid="HyperlinkButtonSource"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
+                                    l:Uids.Uid="HyperlinkButtonSource"
                                     NavigateUri="https://github.com/ryanlua/auraclick" />
                             </StackPanel>
                         </controls:SettingsCard>
 
                         <!--  Dependencies  -->
                         <controls:SettingsCard
-                            x:Uid="SettingsCardDependencies"
                             HorizontalContentAlignment="Left"
+                            l:Uids.Uid="SettingsCardDependencies"
                             ContentAlignment="Vertical">
                             <StackPanel>
                                 <HyperlinkButton
