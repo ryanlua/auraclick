@@ -65,6 +65,32 @@ public sealed partial class MainPage
         return [new KeyVisualInfo { Key = VirtualKey.F6, KeyName = "F6" }];
     }
 
+    private async Task ShowHotkeyRegistrationFailedAsync()
+    {
+        ContentDialog dialog = new()
+        {
+            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            XamlRoot = XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "Failed to register hotkey",
+            Content = "Please modify the hotkey setting.",
+            CloseButtonText = "OK",
+            DefaultButton = ContentDialogButton.Primary
+        };
+
+        _ = await dialog.ShowAsync();
+    }
+
+    private async Task ApplyHotkeySelectionAsync()
+    {
+        if (HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys))
+        {
+            return;
+        }
+
+        await ShowHotkeyRegistrationFailedAsync();
+    }
+
     /// <summary>
     /// Determines whether a control should be enabled based on a checkbox state and a running-state toggle.
     /// </summary>
@@ -76,7 +102,7 @@ public sealed partial class MainPage
     /// <summary>
     /// Handles the Loaded event of the MainPage control.
     /// </summary>
-    private void MainPage_Loaded(object sender, RoutedEventArgs e)
+    private async void MainPage_Loaded(object sender, RoutedEventArgs e)
     {
         // Set badge notification
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
@@ -90,7 +116,7 @@ public sealed partial class MainPage
         }
 
         // Register hotkey
-        HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
+        await ApplyHotkeySelectionAsync();
     }
 
     /// <summary>
@@ -176,21 +202,21 @@ public sealed partial class MainPage
     /// <summary>
     /// Handles the PrimaryButtonClick event of the Shortcut control.
     /// </summary>
-    private void ToggleShortcut_PrimaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
+    private async void ToggleShortcut_PrimaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
-        HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
+        await ApplyHotkeySelectionAsync();
     }
 
     /// <summary>
     /// Handles the SecondaryButtonClick event of the Shortcut control.
     /// </summary>
-    private void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
+    private async void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
         ToggleShortcut.Keys = CreateDefaultShortcut();
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
-        HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
+        await ApplyHotkeySelectionAsync();
     }
 }
