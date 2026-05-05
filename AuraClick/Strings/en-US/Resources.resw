@@ -321,4 +321,12 @@
     <value>Dependencies</value>
     <comment>Header text of Dependencies on the About panel</comment>
   </data>
+  <data name="SettingsCardLanguage.Header" xml:space="preserve">
+    <value>Language</value>
+    <comment>Title of Language expander</comment>
+  </data>
+  <data name="SettingsCardLanguage.Description" xml:space="preserve">
+    <value>Select which app language to display</value>
+    <comment>Description of Language expander</comment>
+  </data>
 </root>
