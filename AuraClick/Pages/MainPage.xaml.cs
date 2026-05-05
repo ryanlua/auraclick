@@ -72,10 +72,10 @@ public sealed partial class MainPage
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             XamlRoot = XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "Failed to register hotkey",
-            Content = "Please modify the hotkey setting.",
-            CloseButtonText = "OK",
-            DefaultButton = ContentDialogButton.Primary
+            Title = "Invalid hotkey",
+            Content = "Failed to register hotkey. Change the hotkey to another key.",
+            CloseButtonText = "Close",
+            DefaultButton = ContentDialogButton.Close
         };
 
         _ = await dialog.ShowAsync();
