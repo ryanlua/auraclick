@@ -113,10 +113,10 @@
             <dev:IsEnabledTextBlock
                 x:Name="HotkeyTextBlock"
                 x:Uid="TextBlockHotkey"
-                IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}" />
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <dev:Shortcut
                 x:Name="ToggleShortcut"
-                IsEnabled="{x:Bind ToggleButtonStart.IsChecked.Value, Converter={StaticResource BoolNegationConverter}}"
+                IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
                 PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
                 SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick" />
         </StackPanel>
