@@ -82,9 +82,12 @@ public sealed partial class MainPage
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
 
         // Set up window message monitor
-        MainWindow window = App.MainWindow;
-        monitor = new(window);
-        monitor.WindowMessageReceived += OnWindowMessageReceived;
+        if (monitor is null)
+        {
+            MainWindow window = App.MainWindow;
+            monitor = new(window);
+            monitor.WindowMessageReceived += OnWindowMessageReceived;
+        }
 
         // Register hotkey
         HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
