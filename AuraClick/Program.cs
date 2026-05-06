@@ -87,7 +87,7 @@ public partial class Program
     [LibraryImport("ole32.dll")]
     private static partial uint CoWaitForMultipleObjects(
         uint dwFlags, uint dwMilliseconds, ulong nHandles,
-        [In][Out] IntPtr[] pHandles, out uint dwIndex);
+        [In] [Out] IntPtr[] pHandles, out uint dwIndex);
 
     [LibraryImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]

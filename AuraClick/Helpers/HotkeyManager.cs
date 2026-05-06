@@ -28,20 +28,24 @@ internal static class HotkeyManager
 {
     public static bool RegisterHotkey(int hotkeyId, IEnumerable<object>? keys)
     {
-        if (!TryGetHotkey(keys, out var modifiers, out var virtualKey))
+        if (!TryGetHotkey(keys, out VirtualKeyModifiers modifiers, out VirtualKey virtualKey))
         {
             return false;
         }
 
-        var hWnd = new HWND(WindowNative.GetWindowHandle(App.MainWindow));
+        HWND hWnd = new(WindowNative.GetWindowHandle(App.MainWindow));
         UnregisterHotkey(hotkeyId);
-        return PInvoke.RegisterHotKey(hWnd, hotkeyId, ToWin32Modifiers(modifiers) | HOT_KEY_MODIFIERS.MOD_NOREPEAT, (uint)virtualKey);
+        return PInvoke.RegisterHotKey(hWnd, hotkeyId, ToWin32Modifiers(modifiers) | HOT_KEY_MODIFIERS.MOD_NOREPEAT,
+            (uint)virtualKey);
     }
 
     public static bool UnregisterHotkey(int hotkeyId)
-        => PInvoke.UnregisterHotKey(new HWND(WindowNative.GetWindowHandle(App.MainWindow)), hotkeyId);
+    {
+        return PInvoke.UnregisterHotKey(new HWND(WindowNative.GetWindowHandle(App.MainWindow)), hotkeyId);
+    }
 
-    private static bool TryGetHotkey(IEnumerable<object>? keys, out VirtualKeyModifiers modifiers, out VirtualKey virtualKey)
+    private static bool TryGetHotkey(IEnumerable<object>? keys, out VirtualKeyModifiers modifiers,
+        out VirtualKey virtualKey)
     {
         modifiers = VirtualKeyModifiers.None;
         virtualKey = VirtualKey.None;
@@ -51,14 +55,14 @@ internal static class HotkeyManager
             return false;
         }
 
-        foreach (var key in keys)
+        foreach (object key in keys)
         {
             if (key is not KeyVisualInfo keyInfo || keyInfo.Key is not VirtualKey keyCode)
             {
                 continue;
             }
 
-            if (TryGetModifier(keyCode, out var modifier))
+            if (TryGetModifier(keyCode, out VirtualKeyModifiers modifier))
             {
                 modifiers |= modifier;
             }
@@ -79,7 +83,7 @@ internal static class HotkeyManager
             VirtualKey.Shift or VirtualKey.LeftShift or VirtualKey.RightShift => VirtualKeyModifiers.Shift,
             VirtualKey.Menu or VirtualKey.LeftMenu or VirtualKey.RightMenu => VirtualKeyModifiers.Menu,
             VirtualKey.LeftWindows or VirtualKey.RightWindows => VirtualKeyModifiers.Windows,
-            _ => VirtualKeyModifiers.None,
+            _ => VirtualKeyModifiers.None
         };
 
         return modifier != VirtualKeyModifiers.None;
@@ -88,11 +92,26 @@ internal static class HotkeyManager
     private static HOT_KEY_MODIFIERS ToWin32Modifiers(VirtualKeyModifiers modifiers)
     {
         HOT_KEY_MODIFIERS result = 0;
-        if ((modifiers & VirtualKeyModifiers.Control) != 0) result |= HOT_KEY_MODIFIERS.MOD_CONTROL;
-        if ((modifiers & VirtualKeyModifiers.Menu) != 0) result |= HOT_KEY_MODIFIERS.MOD_ALT;
-        if ((modifiers & VirtualKeyModifiers.Shift) != 0) result |= HOT_KEY_MODIFIERS.MOD_SHIFT;
-        if ((modifiers & VirtualKeyModifiers.Windows) != 0) result |= HOT_KEY_MODIFIERS.MOD_WIN;
+        if ((modifiers & VirtualKeyModifiers.Control) != 0)
+        {
+            result |= HOT_KEY_MODIFIERS.MOD_CONTROL;
+        }
+
+        if ((modifiers & VirtualKeyModifiers.Menu) != 0)
+        {
+            result |= HOT_KEY_MODIFIERS.MOD_ALT;
+        }
+
+        if ((modifiers & VirtualKeyModifiers.Shift) != 0)
+        {
+            result |= HOT_KEY_MODIFIERS.MOD_SHIFT;
+        }
+
+        if ((modifiers & VirtualKeyModifiers.Windows) != 0)
+        {
+            result |= HOT_KEY_MODIFIERS.MOD_WIN;
+        }
+
         return result;
     }
-
 }

@@ -37,19 +37,18 @@ public static class AutoClicker
     public static bool clickDelayOffsetEnabled = false;
 
     private static Thread? _autoClickerThread;
-    private static bool _isAutoClickerRunning;
 
     /// <summary>
     /// Gets a value indicating whether the auto clicker is currently running.
     /// </summary>
-    public static bool IsRunning => _isAutoClickerRunning;
+    public static bool IsRunning { get; private set; }
 
     /// <summary>
     /// Starts the auto clicker thread.
     /// </summary>
     public static void Start()
     {
-        _isAutoClickerRunning = true;
+        IsRunning = true;
         _autoClickerThread = new Thread(AutoClickerThread);
         _autoClickerThread.Start();
     }
@@ -59,7 +58,7 @@ public static class AutoClicker
     /// </summary>
     public static void Stop()
     {
-        _isAutoClickerRunning = false;
+        IsRunning = false;
         _autoClickerThread?.Join();
     }
 
@@ -68,7 +67,7 @@ public static class AutoClicker
         int clickCount = 0;
         int effectiveClickAmount = clickAmountEnabled ? clickAmount : 0;
 
-        while (_isAutoClickerRunning)
+        while (IsRunning)
         {
             // Stop if we click more than repeat amount (only if enabled)
             if (effectiveClickAmount > 0 && clickCount >= effectiveClickAmount)

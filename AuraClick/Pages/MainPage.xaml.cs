@@ -34,6 +34,11 @@ namespace AuraClick;
 public sealed partial class MainPage
 {
     /// <summary>
+    /// Hotkey ID for the toggle shortcut.
+    /// </summary>
+    private const int ToggleHotkeyId = 1;
+
+    /// <summary>
     /// The settings page instance.
     /// </summary>
     private static readonly SettingsPage settingsPage = new();
@@ -42,11 +47,6 @@ public sealed partial class MainPage
     /// Window message monitor for hotkey handling.
     /// </summary>
     private WindowMessageMonitor? monitor;
-
-    /// <summary>
-    /// Hotkey ID for the toggle shortcut.
-    /// </summary>
-    private const int ToggleHotkeyId = 1;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainPage" /> class.
@@ -111,7 +111,7 @@ public sealed partial class MainPage
         if (monitor is null)
         {
             MainWindow window = App.MainWindow;
-            monitor = new(window);
+            monitor = new WindowMessageMonitor(window);
             monitor.WindowMessageReceived += OnWindowMessageReceived;
         }
 
