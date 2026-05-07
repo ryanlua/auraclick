@@ -16,8 +16,10 @@
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
 using Microsoft.UI.Xaml;
+using Windows.Storage;
 using Windows.Win32;
 using Windows.Win32.System.Threading;
+using WinUI3Localizer;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,7 +37,7 @@ public partial class App
     public static readonly MainWindow MainWindow = new();
 
     /// <summary>
-    /// Initializes the singleton application object.  This is the first line of authored code
+    /// Initializes the singleton application object. This is the first line of authored code
     /// executed, and as such is the logical equivalent of main() or WinMain().
     /// </summary>
     public App()
@@ -65,8 +67,52 @@ public partial class App
     /// Invoked when the application is launched.
     /// </summary>
     /// <param name="args">Details about the launch request and process.</param>
-    protected override void OnLaunched(LaunchActivatedEventArgs args)
+    protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
+        await InitializeLocalizer();
+
         MainWindow.Activate();
+    }
+
+    private static async Task InitializeLocalizer()
+    {
+        // Initialize a "Strings" folder in the "LocalFolder" for the packaged app.
+        StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+        StorageFolder stringsFolder = await localFolder.CreateFolderAsync(
+          "Strings",
+           CreationCollisionOption.OpenIfExists);
+
+        // Create string resources file from app resources if doesn't exists.
+        string resourceFileName = "Resources.resw";
+        await CreateStringResourceFileIfNotExists(stringsFolder, "en-US", resourceFileName);
+        await CreateStringResourceFileIfNotExists(stringsFolder, "es-ES", resourceFileName);
+
+        ILocalizer localizer = await new LocalizerBuilder()
+            .AddStringResourcesFolderForLanguageDictionaries(stringsFolder.Path)
+            .SetOptions(options =>
+            {
+                options.DefaultLanguage = "en-US";
+            })
+            .Build();
+    }
+
+    private static async Task CreateStringResourceFileIfNotExists(StorageFolder stringsFolder, string language, string resourceFileName)
+    {
+        StorageFolder languageFolder = await stringsFolder.CreateFolderAsync(
+            language,
+            CreationCollisionOption.OpenIfExists);
+
+        if (await languageFolder.TryGetItemAsync(resourceFileName) is null)
+        {
+            string resourceFilePath = Path.Combine(stringsFolder.Name, language, resourceFileName);
+            StorageFile resourceFile = await LoadStringResourcesFileFromAppResource(resourceFilePath);
+            _ = await resourceFile.CopyAsync(languageFolder);
+        }
+    }
+
+    private static async Task<StorageFile> LoadStringResourcesFileFromAppResource(string filePath)
+    {
+        Uri resourcesFileUri = new($"ms-appx:///{filePath}");
+        return await StorageFile.GetFileFromApplicationUriAsync(resourcesFileUri);
     }
 }
