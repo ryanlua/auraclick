@@ -16,6 +16,7 @@
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
 using Microsoft.UI.Xaml;
+using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.Win32;
 using Windows.Win32.System.Threading;
@@ -79,13 +80,18 @@ public partial class App
         // Initialize a "Strings" folder in the "LocalFolder" for the packaged app.
         StorageFolder localFolder = ApplicationData.Current.LocalFolder;
         StorageFolder stringsFolder = await localFolder.CreateFolderAsync(
-          "Strings",
-           CreationCollisionOption.OpenIfExists);
+            "Strings",
+            CreationCollisionOption.OpenIfExists);
 
-        // Create string resources file from app resources if doesn't exists.
+        // Create string resources file from app resources if they don't exist.
         string resourceFileName = "Resources.resw";
-        await CreateStringResourceFileIfNotExists(stringsFolder, "en-US", resourceFileName);
-        await CreateStringResourceFileIfNotExists(stringsFolder, "es-ES", resourceFileName);
+        StorageFolder installedStringsFolder = await Package.Current.InstalledLocation.GetFolderAsync(stringsFolder.Name);
+        IReadOnlyList<StorageFolder> languageFolders = await installedStringsFolder.GetFoldersAsync();
+
+        foreach (StorageFolder languageFolder in languageFolders)
+        {
+            await CreateStringResourceFileIfNotExists(stringsFolder, languageFolder.Name, resourceFileName);
+        }
 
         ILocalizer localizer = await new LocalizerBuilder()
             .AddStringResourcesFolderForLanguageDictionaries(stringsFolder.Path)
