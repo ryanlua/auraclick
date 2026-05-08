@@ -71,6 +71,7 @@ public partial class App
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         await InitializeLocalizer();
+        await ApplySavedLanguage();
 
         MainWindow.Activate();
     }
@@ -120,5 +121,22 @@ public partial class App
     {
         Uri resourcesFileUri = new($"ms-appx:///{filePath}");
         return await StorageFile.GetFileFromApplicationUriAsync(resourcesFileUri);
+    }
+
+    private static async Task ApplySavedLanguage()
+    {
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        if (localSettings.Values["LanguageSelectedIndex"] is int savedIndex)
+        {
+            var languages = Localizer.Get()
+                .GetAvailableLanguages()
+                .OrderBy(x => new System.Globalization.CultureInfo(x).DisplayName)
+                .ToList();
+
+            if (savedIndex >= 0 && savedIndex < languages.Count)
+            {
+                await Localizer.Get().SetLanguage(languages[savedIndex]);
+            }
+        }
     }
 }

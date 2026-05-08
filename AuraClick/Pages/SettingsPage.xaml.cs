@@ -159,16 +159,50 @@ public sealed partial class SettingsPage
         }
     }
 
+    private List<string>? cachedLanguages;
+
+    /// <summary>
+    /// Gets the list of available language display names, sorted alphabetically.
+    /// </summary>
+    public ObservableCollection<string> LanguageDisplayNames =>
+        new(GetAvailableLanguages().Select(x => new CultureInfo(x).DisplayName));
+
     /// <summary>
     /// Gets or sets the selected language index.
     /// </summary>
     public int LanguageSelectedIndex
     {
-        get => (int)(localSettings.Values[nameof(LanguageSelectedIndex)] ?? 0);
+        get
+        {
+            string currentLanguage = Localizer.Get().GetCurrentLanguage();
+            List<string> languages = GetAvailableLanguages();
+            int index = languages.IndexOf(currentLanguage);
+            return index >= 0 ? index : 0;
+        }
         set
         {
-            // Placeholder
+            List<string> languages = GetAvailableLanguages();
+            if (value >= 0 && value < languages.Count)
+            {
+                localSettings.Values[nameof(LanguageSelectedIndex)] = value;
+                _ = Localizer.Get().SetLanguage(languages[value]);
+            }
         }
+    }
+
+    /// <summary>
+    /// Gets the cached list of available languages, sorted by display name.
+    /// </summary>
+    private List<string> GetAvailableLanguages()
+    {
+        if (cachedLanguages == null)
+        {
+            cachedLanguages = Localizer.Get()
+                .GetAvailableLanguages()
+                .OrderBy(x => new CultureInfo(x).DisplayName)
+                .ToList();
+        }
+        return cachedLanguages;
     }
 
     /// <summary>

@@ -44,7 +44,7 @@
                 <controls:SettingsCard l:Uids.Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                     <ComboBox
                         x:Name="LanguageComboBox"
-                        ItemsSource="{x:Bind LanguageDisplayNames}"
+                        ItemsSource="{x:Bind LanguageDisplayNames, Mode=OneWay}"
                         SelectedIndex="{x:Bind LanguageSelectedIndex}" />
                 </controls:SettingsCard>
 
