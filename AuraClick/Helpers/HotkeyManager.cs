@@ -26,20 +26,16 @@ namespace AuraClick.Helpers;
 
 internal static class HotkeyManager
 {
+    private static readonly HWND hWnd = new(WindowNative.GetWindowHandle(App.MainWindow));
+
     public static bool RegisterHotkey(int hotkeyId, IEnumerable<object>? keys)
     {
-        if (!TryGetHotkey(keys, out var modifiers, out var virtualKey))
-        {
-            return false;
-        }
-
-        var hWnd = new HWND(WindowNative.GetWindowHandle(App.MainWindow));
+        TryGetHotkey(keys, out VirtualKeyModifiers modifiers, out VirtualKey virtualKey);
         UnregisterHotkey(hotkeyId);
         return PInvoke.RegisterHotKey(hWnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
     }
 
-    public static bool UnregisterHotkey(int hotkeyId)
-        => PInvoke.UnregisterHotKey(new HWND(WindowNative.GetWindowHandle(App.MainWindow)), hotkeyId);
+    public static bool UnregisterHotkey(int hotkeyId) => PInvoke.UnregisterHotKey(hWnd, hotkeyId);
 
     private static bool TryGetHotkey(IEnumerable<object>? keys, out VirtualKeyModifiers modifiers, out VirtualKey virtualKey)
     {
@@ -47,42 +43,34 @@ internal static class HotkeyManager
         virtualKey = VirtualKey.None;
 
         if (keys is null)
-        {
             return false;
-        }
 
         foreach (var key in keys)
         {
-            if (key is not KeyVisualInfo keyInfo || keyInfo.Key is not VirtualKey keyCode)
-            {
+            if (key is not KeyVisualInfo { Key: VirtualKey keyCode })
                 continue;
-            }
 
-            if (TryGetModifier(keyCode, out var modifier))
+            switch (keyCode)
             {
-                modifiers |= modifier;
-            }
-            else
-            {
-                virtualKey = keyCode;
+                case VirtualKey.Control:
+                    modifiers |= VirtualKeyModifiers.Control;
+                    break;
+                case VirtualKey.Shift:
+                    modifiers |= VirtualKeyModifiers.Shift;
+                    break;
+                case VirtualKey.Menu:
+                    modifiers |= VirtualKeyModifiers.Menu;
+                    break;
+                case VirtualKey.LeftWindows:
+                    modifiers |= VirtualKeyModifiers.Windows;
+                    break;
+                default:
+                    virtualKey = keyCode;
+                    break;
             }
         }
 
         return virtualKey != VirtualKey.None;
-    }
-
-    private static bool TryGetModifier(VirtualKey keyCode, out VirtualKeyModifiers modifier)
-    {
-        modifier = keyCode switch
-        {
-            VirtualKey.Control => VirtualKeyModifiers.Control,
-            VirtualKey.Shift => VirtualKeyModifiers.Shift,
-            VirtualKey.Menu => VirtualKeyModifiers.Menu,
-            VirtualKey.LeftWindows => VirtualKeyModifiers.Windows,
-            _ => VirtualKeyModifiers.None,
-        };
-
-        return modifier != VirtualKeyModifiers.None;
     }
 
     private static HOT_KEY_MODIFIERS HotKeyModifiers(VirtualKeyModifiers modifiers)
@@ -105,7 +93,7 @@ internal static class HotkeyManager
         }
 
         if (modifiers.HasFlag(VirtualKeyModifiers.Windows))
-    {
+        {
             result |= HOT_KEY_MODIFIERS.MOD_WIN;
         }
 
