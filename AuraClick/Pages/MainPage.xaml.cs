@@ -49,6 +49,11 @@ public sealed partial class MainPage
     private const int ToggleHotkeyId = 1;
 
     /// <summary>
+    /// Flag to track if the ToggleShortcut dialog is open.
+    /// </summary>
+    private bool shortcutDialogOpen;
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="MainPage" /> class.
     /// </summary>
     public MainPage()
@@ -126,6 +131,12 @@ public sealed partial class MainPage
     {
         // Allow hotkey only on main page
         if (Frame.Content is not MainPage)
+        {
+            return;
+        }
+
+        // Disable hotkey when ToggleShortcut dialog is open
+        if (shortcutDialogOpen)
         {
             return;
         }
@@ -218,5 +229,15 @@ public sealed partial class MainPage
         ToggleShortcut.UpdatePreviewKeys();
         ToggleShortcut.CloseContentDialog();
         await ApplyHotkeySelectionAsync();
+    }
+
+    private void ToggleShortcut_OpenedContentDialog(object sender, ContentDialogOpenedEventArgs e)
+    {
+        shortcutDialogOpen = true;
+    }
+
+    private void ToggleShortcut_ClosedContentDialog(object sender, ContentDialogClosedEventArgs e)
+    {
+        shortcutDialogOpen = false;
     }
 }

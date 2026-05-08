@@ -116,7 +116,9 @@
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <dev:Shortcut
                 x:Name="ToggleShortcut"
+                ClosedContentDialog="ToggleShortcut_ClosedContentDialog"
                 IsEnabled="{x:Bind ToggleButtonStart.IsChecked, Converter={StaticResource BoolNegationConverter}}"
+                OpenedContentDialog="ToggleShortcut_OpenedContentDialog"
                 PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
                 SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick" />
         </StackPanel>
