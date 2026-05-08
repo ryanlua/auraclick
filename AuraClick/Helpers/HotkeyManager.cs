@@ -75,10 +75,10 @@ internal static class HotkeyManager
     {
         modifier = keyCode switch
         {
-            VirtualKey.Control or VirtualKey.LeftControl or VirtualKey.RightControl => VirtualKeyModifiers.Control,
-            VirtualKey.Shift or VirtualKey.LeftShift or VirtualKey.RightShift => VirtualKeyModifiers.Shift,
-            VirtualKey.Menu or VirtualKey.LeftMenu or VirtualKey.RightMenu => VirtualKeyModifiers.Menu,
-            VirtualKey.LeftWindows or VirtualKey.RightWindows => VirtualKeyModifiers.Windows,
+            VirtualKey.Control => VirtualKeyModifiers.Control,
+            VirtualKey.Shift => VirtualKeyModifiers.Shift,
+            VirtualKey.Menu => VirtualKeyModifiers.Menu,
+            VirtualKey.LeftWindows => VirtualKeyModifiers.Windows,
             _ => VirtualKeyModifiers.None,
         };
 
