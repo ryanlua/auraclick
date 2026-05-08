@@ -35,7 +35,7 @@ internal static class HotkeyManager
 
         var hWnd = new HWND(WindowNative.GetWindowHandle(App.MainWindow));
         UnregisterHotkey(hotkeyId);
-        return PInvoke.RegisterHotKey(hWnd, hotkeyId, ToWin32Modifiers(modifiers) | HOT_KEY_MODIFIERS.MOD_NOREPEAT, (uint)virtualKey);
+        return PInvoke.RegisterHotKey(hWnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
     }
 
     public static bool UnregisterHotkey(int hotkeyId)
@@ -85,14 +85,30 @@ internal static class HotkeyManager
         return modifier != VirtualKeyModifiers.None;
     }
 
-    private static HOT_KEY_MODIFIERS ToWin32Modifiers(VirtualKeyModifiers modifiers)
+    private static HOT_KEY_MODIFIERS HotKeyModifiers(VirtualKeyModifiers modifiers)
     {
-        HOT_KEY_MODIFIERS result = 0;
-        if ((modifiers & VirtualKeyModifiers.Control) != 0) result |= HOT_KEY_MODIFIERS.MOD_CONTROL;
-        if ((modifiers & VirtualKeyModifiers.Menu) != 0) result |= HOT_KEY_MODIFIERS.MOD_ALT;
-        if ((modifiers & VirtualKeyModifiers.Shift) != 0) result |= HOT_KEY_MODIFIERS.MOD_SHIFT;
-        if ((modifiers & VirtualKeyModifiers.Windows) != 0) result |= HOT_KEY_MODIFIERS.MOD_WIN;
+        HOT_KEY_MODIFIERS result = HOT_KEY_MODIFIERS.MOD_NOREPEAT;
+
+        if (modifiers.HasFlag(VirtualKeyModifiers.Control))
+        {
+            result |= HOT_KEY_MODIFIERS.MOD_CONTROL;
+        }
+
+        if (modifiers.HasFlag(VirtualKeyModifiers.Menu))
+        {
+            result |= HOT_KEY_MODIFIERS.MOD_ALT;
+        }
+
+        if (modifiers.HasFlag(VirtualKeyModifiers.Shift))
+        {
+            result |= HOT_KEY_MODIFIERS.MOD_SHIFT;
+        }
+
+        if (modifiers.HasFlag(VirtualKeyModifiers.Windows))
+    {
+            result |= HOT_KEY_MODIFIERS.MOD_WIN;
+        }
+
         return result;
     }
-
 }
