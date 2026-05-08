@@ -59,7 +59,19 @@ public sealed partial class MainPage
 
         ToggleShortcut.Keys = CreateDefaultShortcut();
         UpdateToggleButtonTooltip();
-        Localizer.Get().LanguageChanged += (s, e) => UpdateToggleButtonTooltip();
+        Localizer.Get().LanguageChanged += (s, e) => 
+        {
+            UpdateToggleButtonTooltip();
+            RefreshMouseButtonComboBox();
+        };
+    }
+
+    private void RefreshMouseButtonComboBox()
+    {
+        // Refresh mouse button combobox display
+        int currentIndex = MouseButtonTypeComboBox.SelectedIndex;
+        MouseButtonTypeComboBox.SelectedIndex = -1;
+        MouseButtonTypeComboBox.SelectedIndex = currentIndex;
     }
 
     private void UpdateToggleButtonTooltip()

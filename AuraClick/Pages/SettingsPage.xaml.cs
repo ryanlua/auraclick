@@ -59,6 +59,22 @@ public sealed partial class SettingsPage
         // Initialize app name and version
         AppAboutSettingsExpander.Header = AppName;
         AppVersionTextBlock.Text = AppVersion;
+
+        // Refresh comboboxes when language changes
+        Localizer.Get().LanguageChanged += (s, e) => RefreshComboBoxes();
+    }
+
+    private void RefreshComboBoxes()
+    {
+        // Refresh theme combobox display
+        int themeIndex = ThemeComboBox.SelectedIndex;
+        ThemeComboBox.SelectedIndex = -1;
+        ThemeComboBox.SelectedIndex = themeIndex;
+
+        // Refresh backdrop combobox display
+        int backdropIndex = BackdropComboBox.SelectedIndex;
+        BackdropComboBox.SelectedIndex = -1;
+        BackdropComboBox.SelectedIndex = backdropIndex;
     }
 
     /// <summary>
