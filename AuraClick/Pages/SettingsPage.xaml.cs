@@ -20,8 +20,12 @@ using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Windows.ApplicationModel;
+using System.Globalization;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
 using Windows.Storage;
 using WinUIEx;
+using WinUI3Localizer;
 using SystemBackdrop = Microsoft.UI.Xaml.Media.SystemBackdrop;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -50,6 +54,7 @@ public sealed partial class SettingsPage
         ThemeSelectedIndex = ThemeSelectedIndex;
         BackdropSelectedIndex = BackdropSelectedIndex;
         IsAlwaysOnTop = IsAlwaysOnTop;
+        LanguageSelectedIndex = LanguageSelectedIndex;
 
         // Initialize app name and version
         AppAboutSettingsExpander.Header = AppName;
@@ -151,6 +156,18 @@ public sealed partial class SettingsPage
                     _ => new MicaBackdrop()
                 };
             }
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the selected language index.
+    /// </summary>
+    public int LanguageSelectedIndex
+    {
+        get => (int)(localSettings.Values[nameof(LanguageSelectedIndex)] ?? 0);
+        set
+        {
+            // Placeholder
         }
     }
 

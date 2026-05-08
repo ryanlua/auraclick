@@ -42,7 +42,10 @@
 
                 <!--  Language  -->
                 <controls:SettingsCard l:Uids.Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
-                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}" />
+                    <ComboBox
+                        x:Name="LanguageComboBox"
+                        ItemsSource="{x:Bind LanguageDisplayNames}"
+                        SelectedIndex="{x:Bind LanguageSelectedIndex}" />
                 </controls:SettingsCard>
 
                 <!--  App theme  -->
