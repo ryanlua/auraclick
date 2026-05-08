@@ -75,24 +75,13 @@ internal static class HotkeyManager
         HOT_KEY_MODIFIERS result = HOT_KEY_MODIFIERS.MOD_NOREPEAT;
 
         if (modifiers.HasFlag(VirtualKeyModifiers.Control))
-        {
             result |= HOT_KEY_MODIFIERS.MOD_CONTROL;
-        }
-
         if (modifiers.HasFlag(VirtualKeyModifiers.Menu))
-        {
             result |= HOT_KEY_MODIFIERS.MOD_ALT;
-        }
-
         if (modifiers.HasFlag(VirtualKeyModifiers.Shift))
-        {
             result |= HOT_KEY_MODIFIERS.MOD_SHIFT;
-        }
-
         if (modifiers.HasFlag(VirtualKeyModifiers.Windows))
-        {
             result |= HOT_KEY_MODIFIERS.MOD_WIN;
-        }
 
         return result;
     }
