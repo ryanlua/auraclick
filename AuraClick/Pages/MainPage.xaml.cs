@@ -23,6 +23,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
 using Windows.System;
 using Windows.Win32;
+using WinUI3Localizer;
 using WindowMessageEventArgs = WinUIEx.Messaging.WindowMessageEventArgs;
 using WindowMessageMonitor = WinUIEx.Messaging.WindowMessageMonitor;
 
@@ -57,7 +58,16 @@ public sealed partial class MainPage
         Loaded += MainPage_Loaded;
 
         ToggleShortcut.Keys = CreateDefaultShortcut();
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
+        UpdateToggleButtonTooltip();
+        Localizer.Get().LanguageChanged += (s, e) => UpdateToggleButtonTooltip();
+    }
+
+    private void UpdateToggleButtonTooltip()
+    {
+        string tooltipKey = ToggleButtonStart.IsChecked == true 
+            ? "ToggleButtonStartTooltipStop" 
+            : "ToggleButtonStartTooltipStart";
+        ToolTipService.SetToolTip(ToggleButtonStart, Localizer.Get().GetLocalizedString(tooltipKey));
     }
 
     private static List<object> CreateDefaultShortcut()
@@ -172,7 +182,7 @@ public sealed partial class MainPage
 
         FontIconStart.Glyph = "\uEDB4";
         SetNotificationBadge(BadgeNotificationGlyph.Playing);
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
+        UpdateToggleButtonTooltip();
         AutoClicker.Start();
 
         await Task.Delay(1000);
@@ -187,7 +197,7 @@ public sealed partial class MainPage
         ToggleButtonStart.IsEnabled = true;
         FontIconStart.Glyph = "\uEE4A";
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
+        UpdateToggleButtonTooltip();
         AutoClicker.Stop();
     }
 
