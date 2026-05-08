@@ -28,22 +28,19 @@ internal static class HotkeyManager
 {
     private static readonly HWND hWnd = new(WindowNative.GetWindowHandle(App.MainWindow));
 
-    public static bool RegisterHotkey(int hotkeyId, IEnumerable<object>? keys)
+    public static bool RegisterHotkey(int hotkeyId, IEnumerable<object> keys)
     {
-        TryGetHotkey(keys, out VirtualKeyModifiers modifiers, out VirtualKey virtualKey);
+        (VirtualKeyModifiers modifiers, VirtualKey virtualKey) = GetHotkey(keys);
         UnregisterHotkey(hotkeyId);
         return PInvoke.RegisterHotKey(hWnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
     }
 
     public static bool UnregisterHotkey(int hotkeyId) => PInvoke.UnregisterHotKey(hWnd, hotkeyId);
 
-    private static bool TryGetHotkey(IEnumerable<object>? keys, out VirtualKeyModifiers modifiers, out VirtualKey virtualKey)
+    private static (VirtualKeyModifiers Modifiers, VirtualKey VirtualKey) GetHotkey(IEnumerable<object> keys)
     {
-        modifiers = VirtualKeyModifiers.None;
-        virtualKey = VirtualKey.None;
-
-        if (keys is null)
-            return false;
+        VirtualKeyModifiers modifiers = VirtualKeyModifiers.None;
+        VirtualKey virtualKey = VirtualKey.None;
 
         foreach (var key in keys)
         {
@@ -70,7 +67,7 @@ internal static class HotkeyManager
             }
         }
 
-        return virtualKey != VirtualKey.None;
+        return (modifiers, virtualKey);
     }
 
     private static HOT_KEY_MODIFIERS HotKeyModifiers(VirtualKeyModifiers modifiers)
