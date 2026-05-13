@@ -7,7 +7,7 @@
 <div align="center">
 
   [![CI](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml)
-  [![Crowdin](https://badges.crowdin.net/fluentautoclicker/localized.svg)](https://crowdin.com/project/auraclick)
+  [![Crowdin](https://badges.crowdin.net/auraclick/localized.svg)](https://crowdin.com/project/auraclick)
 
 </div>
 
