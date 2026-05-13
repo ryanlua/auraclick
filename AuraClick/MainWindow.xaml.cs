@@ -45,16 +45,8 @@ public sealed partial class MainWindow : WinUIEx.WindowEx
         RootFrame.Navigate(typeof(MainPage));
     }
 
-    private void AppTitleBar_BackRequested(TitleBar sender, object args)
+    private void TitleBar_BackRequested(TitleBar sender, object args)
     {
-        if (RootFrame.CanGoBack)
-        {
-            RootFrame.GoBack();
-        }
-    }
-
-    private void RootFrame_Navigated(object sender, NavigationEventArgs e)
-    {
-        AppTitleBar.IsBackButtonVisible = e.SourcePageType != typeof(MainPage);
+        RootFrame.GoBack();
     }
 }
