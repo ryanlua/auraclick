@@ -23,7 +23,7 @@
             x:Name="AppTitleBar"
             x:Uid="AppTitleBar"
             BackRequested="TitleBar_BackRequested"
-            IsBackButtonVisible="{x:Bind RootFrame.CanGoBack, Mode=OneWay}">
+            IsBackButtonVisible="{x:Bind NavFrame.CanGoBack, Mode=OneWay}">
             <TitleBar.IconSource>
                 <ImageIconSource ImageSource="Assets/AppIcon.ico" />
             </TitleBar.IconSource>
@@ -34,6 +34,6 @@
             MainPage.xaml rather than here so you can use Page features such as
             navigation events and the Loaded lifecycle.
         -->
-        <Frame x:Name="RootFrame" Grid.Row="1" />
+        <Frame x:Name="NavFrame" Grid.Row="1" />
     </Grid>
 </windowex:WindowEx>
