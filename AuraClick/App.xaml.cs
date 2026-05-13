@@ -27,7 +27,7 @@ namespace AuraClick;
 /// <summary>
 /// Provides application-specific behavior to supplement the default Application class.
 /// </summary>
-public partial class App
+public partial class App : Application
 {
     /// <summary>
     /// The main window of the application.

@@ -16,23 +16,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <!--  Title Bar  -->
             <RowDefinition Height="*" />
-            <!--  App Content  -->
         </Grid.RowDefinitions>
+
         <TitleBar
             x:Name="AppTitleBar"
             x:Uid="AppTitleBar"
             BackRequested="AppTitleBar_BackRequested">
             <TitleBar.IconSource>
-                <ImageIconSource ImageSource="ms-appx:///Assets/StoreLogo.png" />
+                <ImageIconSource ImageSource="Assets/AppIcon.ico" />
             </TitleBar.IconSource>
         </TitleBar>
 
-        <!--  App content  -->
+        <!--
+            The Frame hosts pages for your application content. Add your UI to
+            MainPage.xaml rather than here so you can use Page features such as
+            navigation events and the Loaded lifecycle.
+        -->
         <Frame
-            x:Name="NavFrame"
+            x:Name="RootFrame"
             Grid.Row="1"
-            Navigated="NavFrame_Navigated" />
+            Navigated="RootFrame_Navigated" />
     </Grid>
 </windowex:WindowEx>

@@ -37,18 +37,13 @@ public sealed partial class MainWindow
     {
         InitializeComponent();
 
-        // Set up window
-        Title = "AppDisplayName".GetLocalized();
-        AppWindow.SetIcon("Assets/WindowIcon.ico");
-
-        // Set up window title bar
         ExtendsContentIntoTitleBar = true;
+        SetTitleBar(AppTitleBar);
 
-        // Set up frame
-        _ = NavFrame.Navigate(typeof(MainPage));
+        AppWindow.SetIcon("Assets/AppIcon.ico");
 
-        // Center the window on the screen
-        this.CenterOnScreen();
+        // Navigate the root frame to the main page on startup.
+        RootFrame.Navigate(typeof(MainPage));
     }
 
     /// <summary>
@@ -58,18 +53,18 @@ public sealed partial class MainWindow
     /// <param name="args">The event data.</param>
     private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {
-        if (NavFrame.CanGoBack)
+        if (RootFrame.CanGoBack)
         {
-            NavFrame.GoBack();
+            RootFrame.GoBack();
         }
     }
 
     /// <summary>
-    /// Handles the Navigated event of the NavFrame control.
+    /// Handles the Navigated event of the RootFrame control.
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">The event data.</param>
-    private void NavFrame_Navigated(object sender, NavigationEventArgs e)
+    private void RootFrame_Navigated(object sender, NavigationEventArgs e)
     {
         AppTitleBar.IsBackButtonVisible = e.SourcePageType != typeof(MainPage);
     }

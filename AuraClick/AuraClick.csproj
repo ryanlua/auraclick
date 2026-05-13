@@ -15,7 +15,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
     <Copyright>Copyright © 2026 Ryan Luu</Copyright>
-    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
     <AssemblyTitle>Aura Click</AssemblyTitle>
   </PropertyGroup>
 
