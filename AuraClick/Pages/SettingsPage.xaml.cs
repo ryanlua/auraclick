@@ -18,6 +18,7 @@
 using AuraClick.Helpers;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Windows.ApplicationModel;
 using Windows.Storage;
@@ -32,7 +33,7 @@ namespace AuraClick;
 /// <summary>
 /// Represents the settings page.
 /// </summary>
-public sealed partial class SettingsPage
+public sealed partial class SettingsPage : Page
 {
     /// <summary>
     /// Application settings container in the local app data store.

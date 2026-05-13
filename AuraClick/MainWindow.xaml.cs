@@ -17,7 +17,6 @@
 
 using AuraClick.Helpers;
 using Microsoft.UI.Xaml.Navigation;
-using WinUIEx;
 using TitleBar = Microsoft.UI.Xaml.Controls.TitleBar;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -26,13 +25,12 @@ using TitleBar = Microsoft.UI.Xaml.Controls.TitleBar;
 namespace AuraClick;
 
 /// <summary>
-/// An window that displays a page's contents.
+/// The application window. This hosts a Frame that displays pages. Add your
+/// UI and logic to MainPage.xaml / MainPage.xaml.cs instead of here so you
+/// can use Page features such as navigation events and the Loaded lifecycle.
 /// </summary>
-public sealed partial class MainWindow
+public sealed partial class MainWindow : WinUIEx.WindowEx
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MainWindow" /> class.
-    /// </summary>
     public MainWindow()
     {
         InitializeComponent();
@@ -40,17 +38,13 @@ public sealed partial class MainWindow
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(AppTitleBar);
 
+        Title = "AppDisplayName".GetLocalized();
         AppWindow.SetIcon("Assets/AppIcon.ico");
 
         // Navigate the root frame to the main page on startup.
         RootFrame.Navigate(typeof(MainPage));
     }
 
-    /// <summary>
-    /// Handles the BackRequested event of the AppTitleBar control.
-    /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="args">The event data.</param>
     private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {
         if (RootFrame.CanGoBack)
@@ -59,11 +53,6 @@ public sealed partial class MainWindow
         }
     }
 
-    /// <summary>
-    /// Handles the Navigated event of the RootFrame control.
-    /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">The event data.</param>
     private void RootFrame_Navigated(object sender, NavigationEventArgs e)
     {
         AppTitleBar.IsBackButtonVisible = e.SourcePageType != typeof(MainPage);

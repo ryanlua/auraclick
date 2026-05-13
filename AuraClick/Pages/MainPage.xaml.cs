@@ -29,9 +29,10 @@ using WindowMessageMonitor = WinUIEx.Messaging.WindowMessageMonitor;
 namespace AuraClick;
 
 /// <summary>
-/// The main page containing all controls displayed on the main window.
+/// The main content page displayed inside the application window.
+/// Add your UI logic, event handlers, and data binding here.
 /// </summary>
-public sealed partial class MainPage
+public sealed partial class MainPage : Page
 {
     /// <summary>
     /// The settings page instance.
