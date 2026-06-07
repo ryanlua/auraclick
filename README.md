@@ -45,6 +45,10 @@ When you're ready, [make your first contribution](https://github.com/ryanlua/aur
 
 Help support this app by [sponsoring us](https://github.com/sponsors/ryanlua) to support it's development and future updates.
 
+## ✒️ Code signing policy
+
+Free code signing provided by [SignPath.io](https://about.signpath.io/), certificate by [SignPath Foundation](https://signpath.org/).
+
 ## 🪪 License
 
 Aura Click is released under the [GNU General Public License v3.0](COPYING.md).
