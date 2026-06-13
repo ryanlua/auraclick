@@ -22,6 +22,7 @@ jobs:
 
     env:
       Solution_Name: AuraClick.slnx
+      Dir_Name: AuraClick
 
     steps:
     - name: Checkout repository
@@ -53,4 +54,4 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: ${{ github.workspace }}\Packages\**
+        path: ${{ env.Dir_Name }}\Packages\
