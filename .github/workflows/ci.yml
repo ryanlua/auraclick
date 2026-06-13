@@ -22,13 +22,10 @@ jobs:
 
     env:
       Solution_Name: AuraClick.slnx
-      Dir_Name: AuraClick
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
-      with:
-        fetch-depth: 0
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -56,4 +53,4 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: ${{ env.Dir_Name }}\Packages\**
+        path: ${{ env.Solution_Name }}\\Packages
