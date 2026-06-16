@@ -1,10 +1,9 @@
-name: CI
+name: Create Release
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - v*.*.*
 
 permissions:
   contents: read
@@ -55,4 +54,22 @@ jobs:
       with:
         name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
         path: ${{ env.Dir_Name }}\Packages\
+        if-no-files-found: error
+
+    - name: sign
+      uses: signpath/github-action-submit-signing-request@v2
+      with:
+        api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+        organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+        project-slug: auraclick
+        signing-policy-slug: test-signing
+        github-artifact-id: ${{steps.upload-unsigned-artifact.outputs.artifact-id}}
+        wait-for-completion: true
+        output-artifact-directory: msix-package-signed
+
+    - name: Upload MSIX package
+      uses: actions/upload-artifact@v7
+      with:
+        name: Signed MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
+        path: msix-package-signed
         if-no-files-found: error
