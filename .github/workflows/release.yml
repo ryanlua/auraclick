@@ -40,19 +40,22 @@ jobs:
       env:
         Configuration: ${{ matrix.configuration }}
 
-    - name: Create the app package
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true
+    - name: Create the app package and appinstaller
+      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true /p:GenerateAppInstallerFile=true /p:AppxPackageSigningEnabled=false /p:AppxPackageSigningTimestampDigestAlgorithm=SHA256 /p:AppxAutoIncrementPackageRevision=false /p:GenerateTestArtifacts=false /p:AppInstallerUri=$env:AppInstaller_Uri /p:HoursBetweenUpdateChecks=$env:Hours_Between_Update_Checks
       env:
         Appx_Bundle: Never
         Appx_Package_Build_Mode: SideloadOnly
         Appx_Package_Dir: Packages\
+        AppInstaller_Uri: https://cdn.auraclick.app/
+        Hours_Between_Update_Checks: 24
         Configuration: ${{ matrix.configuration }}
         Platform: ${{ matrix.platform }}
 
-    - name: Upload MSIX package
+    - name: Upload unsigned package artifacts
+      id: upload-unsigned-artifact
       uses: actions/upload-artifact@v7
       with:
-        name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
+        name: Unsigned Package (${{ matrix.configuration }}, ${{ matrix.platform }})
         path: ${{ env.Dir_Name }}\Packages\
         if-no-files-found: error
 
@@ -67,9 +70,9 @@ jobs:
         wait-for-completion: true
         output-artifact-directory: msix-package-signed
 
-    - name: Upload MSIX package
+    - name: Upload signed package artifacts
       uses: actions/upload-artifact@v7
       with:
-        name: Signed MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
+        name: Signed Package (${{ matrix.configuration }}, ${{ matrix.platform }})
         path: msix-package-signed
         if-no-files-found: error
