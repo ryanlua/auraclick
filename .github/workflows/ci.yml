@@ -17,16 +17,15 @@ jobs:
 
     strategy:
       matrix:
-        configuration: [Release]
-        platform: [x64, x86, ARM64]
+        configuration: [Debug]
+        platform: [x86, x64, ARM64]
 
     env:
       Solution_Name: AuraClick.slnx
-      Dir_Name: AuraClick
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
@@ -44,15 +43,17 @@ jobs:
     - name: Create the app package
       run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true
       env:
-        Appx_Bundle: Never
+        Appx_Bundle: Always
+        Appx_Bundle_Platforms: x86|x64|ARM64
         Appx_Package_Build_Mode: SideloadOnly
         Appx_Package_Dir: Packages\
         Configuration: ${{ matrix.configuration }}
         Platform: ${{ matrix.platform }}
+        AppInstallerUri: https://cdn.auraclick.app
 
     - name: Upload MSIX package
       uses: actions/upload-artifact@v7
       with:
         name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: ${{ env.Dir_Name }}\Packages\
+        path: ${{ env.Appx_Package_Dir }}
         if-no-files-found: error
