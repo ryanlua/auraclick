@@ -22,6 +22,7 @@ jobs:
 
     env:
       Solution_Name: AuraClick.slnx
+      Appx_Package_Dir: Packages\
 
     steps:
     - name: Checkout repository
@@ -46,7 +47,6 @@ jobs:
         Appx_Bundle: Always
         Appx_Bundle_Platforms: x86|x64|ARM64
         Appx_Package_Build_Mode: SideloadOnly
-        Appx_Package_Dir: Packages\
         Configuration: ${{ matrix.configuration }}
         Platform: ${{ matrix.platform }}
         AppInstallerUri: https://cdn.auraclick.app
