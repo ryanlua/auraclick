@@ -17,6 +17,7 @@
 
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Settings;
 using Microsoft.Windows.AppLifecycle;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -39,6 +40,12 @@ public partial class Program
     [STAThread]
     private static int Main()
     {
+        // Optional XAML performance changes
+        XamlOptionalChanges.EnableChange(XamlChangeId.IconNoGridOptimization);
+        XamlOptionalChanges.EnableChange(XamlChangeId.OptimizeApplyStyles);
+        XamlOptionalChanges.EnableChange(XamlChangeId.DefaultStyleOptimizations);
+        XamlOptionalChanges.EnableChange(XamlChangeId.DeferContextFlyoutInit);
+
         ComWrappersSupport.InitializeComWrappers();
         bool isRedirect = DecideRedirection();
 
