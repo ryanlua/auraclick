@@ -13,7 +13,7 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
     <Copyright>Copyright © 2026 Ryan Luu</Copyright>
     <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
     <AssemblyTitle>Aura Click</AssemblyTitle>
