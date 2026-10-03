@@ -61,6 +61,7 @@ public sealed partial class MainPage : Page
     {
         InitializeComponent();
         Loaded += MainPage_Loaded;
+        AutoClicker.ClickLimitReached += (_, _) => DispatcherQueue.TryEnqueue(() => ToggleButtonStart.IsChecked = AutoClicker.IsRunning);
 
         ToggleShortcut.Keys = CreateDefaultShortcut();
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());

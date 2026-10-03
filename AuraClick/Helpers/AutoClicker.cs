@@ -22,119 +22,96 @@ using Windows.Win32.UI.Input.KeyboardAndMouse;
 namespace AuraClick.Helpers;
 
 /// <summary>
-/// Helper for creating threads to synthesize mouse input.
+/// Synthesizes mouse clicks on a background task.
 /// </summary>
 public static class AutoClicker
 {
-    public static int millisecondsDelay = 100;
-    public static int secondsDelay = 0;
-    public static int minutesDelay = 0;
-    public static int hoursDelay = 0;
-    public static int clickAmount = 100;
-    public static int mouseButtonType = 0;
-    public static int clickDelayOffset = 10;
-    public static bool clickAmountEnabled = false;
-    public static bool clickDelayOffsetEnabled = false;
+    private static CancellationTokenSource? _cts;
 
-    private static Thread? _autoClickerThread;
-    private static bool _isAutoClickerRunning;
+    /// <summary>
+    /// Raised on a background thread when the click limit is reached.
+    /// </summary>
+    public static event EventHandler? ClickLimitReached;
+
+    public static int HoursDelay { get; set; }
+
+    public static int MinutesDelay { get; set; }
+
+    public static int SecondsDelay { get; set; }
+
+    public static int MillisecondsDelay { get; set; } = 100;
+
+    public static int MouseButton { get; set; }
+
+    public static bool ClickAmountEnabled { get; set; }
+
+    public static int ClickAmount { get; set; } = 100;
+
+    public static bool ClickDelayOffsetEnabled { get; set; }
+
+    public static int ClickDelayOffset { get; set; } = 10;
 
     /// <summary>
     /// Gets a value indicating whether the auto clicker is currently running.
     /// </summary>
-    public static bool IsRunning => _isAutoClickerRunning;
+    public static bool IsRunning => _cts is { IsCancellationRequested: false };
 
     /// <summary>
-    /// Starts the auto clicker thread.
+    /// Starts clicking with a snapshot of the current settings, stopping any previous run.
     /// </summary>
     public static void Start()
     {
-        _isAutoClickerRunning = true;
-        _autoClickerThread = new Thread(AutoClickerThread);
-        _autoClickerThread.Start();
+        Stop();
+        CancellationTokenSource cts = _cts = new();
+
+        INPUT[] click = CreateClickInputs(MouseButton);
+        long clickLimit = ClickAmountEnabled ? ClickAmount : long.MaxValue;
+        TimeSpan delay = TimeSpan.FromHours(HoursDelay, MinutesDelay, SecondsDelay, MillisecondsDelay);
+        int maxOffset = ClickDelayOffsetEnabled ? Math.Max(0, ClickDelayOffset) : 0;
+
+        _ = Task.Run(async () =>
+        {
+            for (long clicks = 1; !cts.IsCancellationRequested; clicks++)
+            {
+                _ = PInvoke.SendInput(click, Marshal.SizeOf<INPUT>());
+                if (clicks >= clickLimit)
+                {
+                    cts.Cancel();
+                    ClickLimitReached?.Invoke(null, EventArgs.Empty);
+                    return;
+                }
+
+                TimeSpan offset = TimeSpan.FromMilliseconds(Random.Shared.NextInt64(maxOffset + 1L));
+                await Task.Delay(delay + offset, cts.Token).ConfigureAwait(ConfigureAwaitOptions.SuppressThrowing);
+            }
+        });
     }
 
     /// <summary>
-    /// Stops the auto clicker thread.
+    /// Stops the auto clicker.
     /// </summary>
     public static void Stop()
     {
-        _isAutoClickerRunning = false;
-        _autoClickerThread?.Join();
-    }
-
-    private static async void AutoClickerThread()
-    {
-        int clickCount = 0;
-        int effectiveClickAmount = clickAmountEnabled ? clickAmount : 0;
-
-        while (_isAutoClickerRunning)
-        {
-            // Stop if we click more than repeat amount (only if enabled)
-            if (effectiveClickAmount > 0 && clickCount >= effectiveClickAmount)
-            {
-                Stop();
-                break;
-            }
-
-            // Click mouse and increment click count
-            ClickMouse(mouseButtonType);
-            clickCount++;
-
-            // Delay before next click
-            int effectiveClickDelayOffset = clickDelayOffsetEnabled ? clickDelayOffset : 0;
-            int randomClickOffset = effectiveClickDelayOffset > 0 ? new Random().Next(0, effectiveClickDelayOffset) : 0;
-
-            int clickDelay = millisecondsDelay
-                             + (secondsDelay * 1000)
-                             + (minutesDelay * 60 * 1000)
-                             + (hoursDelay * 60 * 60 * 1000)
-                             + randomClickOffset;
-            await Task.Delay(clickDelay);
-        }
+        _cts?.Cancel();
     }
 
     /// <summary>
-    /// Clicks the mouse button.
+    /// Creates the press and release inputs for a single click of the given mouse button.
     /// </summary>
-    /// <param name="mouseButton">The mouse button to click.</param>
-    private static void ClickMouse(int mouseButton)
+    /// <param name="mouseButton">The mouse button to click: 0 for left, 1 for middle, 2 for right.</param>
+    private static INPUT[] CreateClickInputs(int mouseButton)
     {
-        switch (mouseButton)
+        (MOUSE_EVENT_FLAGS down, MOUSE_EVENT_FLAGS up) = mouseButton switch
         {
-            // Left mouse button
-            case 0:
-                SendMouseInput(MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTDOWN);
-                SendMouseInput(MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTUP);
-                break;
-            // Middle mouse button
-            case 1:
-                SendMouseInput(MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEDOWN);
-                SendMouseInput(MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEUP);
-                break;
-            // Right mouse button
-            case 2:
-                SendMouseInput(MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTDOWN);
-                SendMouseInput(MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTUP);
-                break;
-        }
+            1 => (MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEDOWN, MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEUP),
+            2 => (MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTDOWN, MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTUP),
+            _ => (MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTDOWN, MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTUP),
+        };
+        return [MouseInput(down), MouseInput(up)];
     }
 
-    /// <summary>
-    /// Sends a mouse input event.
-    /// </summary>
-    /// <param name="dwFlags">The mouse event flags that specify the type of mouse event.</param>
-    private static void SendMouseInput(MOUSE_EVENT_FLAGS dwFlags)
+    private static INPUT MouseInput(MOUSE_EVENT_FLAGS flags)
     {
-        INPUT[] inputs =
-        [
-            new()
-            {
-                type = INPUT_TYPE.INPUT_MOUSE,
-                Anonymous = new INPUT._Anonymous_e__Union { mi = new MOUSEINPUT { dwFlags = dwFlags } }
-            }
-        ];
-
-        _ = PInvoke.SendInput(inputs, Marshal.SizeOf<INPUT>());
+        return new() { type = INPUT_TYPE.INPUT_MOUSE, Anonymous = new() { mi = new() { dwFlags = flags } } };
     }
 }
