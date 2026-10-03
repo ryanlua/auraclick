@@ -23,7 +23,7 @@ A high-performance modern auto clicker for Windows. Automate mouse clicks with a
   </picture>
   <br>
   <br>
-  <!-- <a href="https://apps.microsoft.com/detail/9P567Q0980BH?referrer=appbadge&mode=full">
+  <!-- <a href="https://apps.microsoft.com/detail/9NTVRZD0MF7F?referrer=appbadge&mode=full">
     <picture>
       <source media="(prefers-color-scheme: dark)" width="200" srcset="https://get.microsoft.com/images/en-us%20light.svg">
       <img width="200" src="https://get.microsoft.com/images/en-us%20dark.svg">

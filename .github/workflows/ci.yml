@@ -23,6 +23,7 @@ jobs:
     env:
       Solution_Name: AuraClick.slnx
       Appx_Package_Dir: Packages\
+      Dir_Name: AuraClick
 
     steps:
     - name: Checkout repository
@@ -55,5 +56,5 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: ${{ env.Appx_Package_Dir }}
+        path: ${{ env.Dir_Name }}\${{ env.Appx_Package_Dir }}
         if-no-files-found: error
