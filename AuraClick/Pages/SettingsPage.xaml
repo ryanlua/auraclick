@@ -124,31 +124,6 @@
                             </StackPanel>
                         </controls:SettingsCard>
 
-                        <!--  Dependencies  -->
-                        <controls:SettingsCard
-                            x:Uid="SettingsCardDependencies"
-                            HorizontalContentAlignment="Left"
-                            ContentAlignment="Vertical">
-                            <StackPanel>
-                                <HyperlinkButton
-                                    Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    Content="Windows App SDK"
-                                    NavigateUri="https://github.com/microsoft/WindowsAppSDK" />
-                                <HyperlinkButton
-                                    Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    Content="Windows Community Toolkit"
-                                    NavigateUri="https://github.com/CommunityToolkit/Windows" />
-                                <HyperlinkButton
-                                    Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    Content="CsWin32"
-                                    NavigateUri="https://github.com/Microsoft/CsWin32" />
-                                <HyperlinkButton
-                                    Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    Content="DevWinUI"
-                                    NavigateUri="https://github.com/ghost1372/DevWinUI" />
-                            </StackPanel>
-                        </controls:SettingsCard>
-
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
             </StackPanel>
