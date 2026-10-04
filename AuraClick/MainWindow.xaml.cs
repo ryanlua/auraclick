@@ -16,8 +16,7 @@
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
 using AuraClick.Helpers;
-using Microsoft.UI.Xaml.Navigation;
-using TitleBar = Microsoft.UI.Xaml.Controls.TitleBar;
+using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
