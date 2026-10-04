@@ -110,13 +110,17 @@
                             ContentAlignment="Vertical">
                             <StackPanel>
                                 <HyperlinkButton
-                                    x:Uid="HyperlinkButtonTranslate"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
-                                    NavigateUri="https://crowdin.com/project/auraclick" />
+                                    Content="Discord"
+                                    NavigateUri="https://discord.gg/VVSxKCCQ5D" />
                                 <HyperlinkButton
-                                    x:Uid="HyperlinkButtonSource"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
+                                    Content="GitHub"
                                     NavigateUri="https://github.com/ryanlua/auraclick" />
+                                <HyperlinkButton
+                                    Margin="{StaticResource HyperlinkButtonNegativeMargin}"
+                                    Content="Crowdin"
+                                    NavigateUri="https://crowdin.com/project/auraclick" />
                             </StackPanel>
                         </controls:SettingsCard>
 
