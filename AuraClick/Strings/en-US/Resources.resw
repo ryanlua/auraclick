@@ -277,14 +277,6 @@
     <value>Privacy policy</value>
     <comment>Displayed on a link to the app privacy policy on the About panel</comment>
   </data>
-  <data name="HyperlinkButtonSource.Content" xml:space="preserve">
-    <value>Source code</value>
-    <comment>Displayed on a link to the GitHub repository with the app source code on the About panel</comment>
-  </data>
-  <data name="HyperlinkButtonTranslate.Content" xml:space="preserve">
-    <value>Translate</value>
-    <comment>Displayed on a link to Crowdin for helping translate the app on the About panel</comment>
-  </data>
   <data name="HyperlinkButtonLicense.Content" xml:space="preserve">
     <value>License</value>
     <comment>Displayed on a link to the app open source license on the About panel</comment>
