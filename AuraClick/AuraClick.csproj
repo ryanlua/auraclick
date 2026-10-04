@@ -4,6 +4,9 @@
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>AuraClick</RootNamespace>
+    <BuildRing Condition="'$(BuildRing)'==''">Dev</BuildRing>
+    <ApplicationIcon Condition="'$(BuildRing)'=='Dev'">Assets\Dev\AppIcon.ico</ApplicationIcon>
+    <ApplicationIcon Condition="'$(BuildRing)'=='Stable'">Assets\Stable\AppIcon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
@@ -15,9 +18,36 @@
     <Nullable>enable</Nullable>
     <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
     <Copyright>Copyright © 2026 Ryan Luu</Copyright>
-    <ApplicationIcon>Assets\AppIcon.ico</ApplicationIcon>
-    <AssemblyTitle>Aura Click</AssemblyTitle>
   </PropertyGroup>
+
+  <!-- To build with the correct logo assets, only include the ones for the current build ring.
+       Place them in a common location, so references to them don't need to adjust for build ring. -->
+  <ItemGroup>
+    <Content Remove="Assets\Dev\*" />
+    <Content Remove="Assets\Stable\*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(BuildRing)' == 'Dev'">
+    <Content Include="Assets\Dev\**" Link="Assets\%(Filename)%(Extension)" CopyToOutputDirectory="Always" />
+    <AppxManifest Include="Package-Dev.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(BuildRing)' == 'Stable'">
+    <Content Include="Assets\Stable\**" Link="Assets\%(Filename)%(Extension)" CopyToOutputDirectory="Always" />
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Dev\AppIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Dev\AppIcon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
