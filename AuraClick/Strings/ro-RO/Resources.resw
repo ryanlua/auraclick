@@ -309,8 +309,4 @@
     <value>Despre</value>
     <comment>Subtitle of about message on Settings page</comment>
   </data>
-  <data name="SettingsCardDependencies.Header" xml:space="preserve">
-    <value>Dependențe</value>
-    <comment>Header text of Dependencies on the About panel</comment>
-  </data>
 </root>
