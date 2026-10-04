@@ -265,7 +265,7 @@
     <value>Behavior</value>
     <comment>Subtitle of behavior setting on Settings page</comment>
   </data>
-  <data name="AppTitleBar.Subtitle" xml:space="preserve">
+  <data name="AppTitleBarSubtitleStable" xml:space="preserve">
     <value>Preview</value>
     <comment>Subtitle text of app title bar</comment>
   </data>
@@ -308,5 +308,11 @@
   <data name="TextBlockAbout.Text" xml:space="preserve">
     <value>About</value>
     <comment>Subtitle of about message on Settings page</comment>
+  </data>
+  <data name="AppDisplayNameDev" xml:space="preserve">
+    <value>Aura Click (Dev)</value>
+  </data>
+  <data name="AppTitleBarSubtitleDev" xml:space="preserve">
+    <value>Dev</value>
   </data>
 </root>

@@ -265,7 +265,7 @@
     <value>Поведение</value>
     <comment>Subtitle of behavior setting on Settings page</comment>
   </data>
-  <data name="AppTitleBar.Subtitle" xml:space="preserve">
+  <data name="AppTitleBarSubtitleStable" xml:space="preserve">
     <value>Preview</value>
     <comment>Subtitle text of app title bar</comment>
   </data>

@@ -4,7 +4,7 @@
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>AuraClick</RootNamespace>
-    <BuildRing Condition="'$(BuildRing)'==''">Dev</BuildRing>
+    <BuildRing Condition="'$(BuildRing)'==''">Stable</BuildRing>
     <ApplicationIcon Condition="'$(BuildRing)'=='Dev'">Assets\Dev\AppIcon.ico</ApplicationIcon>
     <ApplicationIcon Condition="'$(BuildRing)'=='Stable'">Assets\Stable\AppIcon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -89,5 +89,13 @@
     <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(BuildRing)'=='Dev'">
+    <DefineConstants>$(DefineConstants);BUILD_RING_DEV</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(BuildRing)'=='Stable'">
+    <DefineConstants>$(DefineConstants);BUILD_RING_STABLE</DefineConstants>
   </PropertyGroup>
 </Project>

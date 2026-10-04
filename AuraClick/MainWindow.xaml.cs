@@ -16,7 +16,6 @@
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
 using AuraClick.Helpers;
-using Microsoft.UI.Xaml.Navigation;
 using TitleBar = Microsoft.UI.Xaml.Controls.TitleBar;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -40,6 +39,11 @@ public sealed partial class MainWindow : WinUIEx.WindowEx
 
         Title = "AppDisplayName".GetLocalized();
         AppWindow.SetIcon("Assets/AppIcon.ico");
+#if BUILD_RING_DEV
+        AppTitleBar.Subtitle = "AppTitleBarSubtitleDev".GetLocalized();
+#else
+        AppTitleBar.Subtitle = "AppTitleBarSubtitleStable".GetLocalized();
+#endif
 
         // Navigate the root frame to the main page on startup.
         NavFrame.Navigate(typeof(MainPage));
