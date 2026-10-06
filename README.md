@@ -8,6 +8,7 @@
 
   [![CI](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml/badge.svg)](https://github.com/ryanlua/auraclick/actions/workflows/ci.yml)
   [![Crowdin](https://badges.crowdin.net/auraclick/localized.svg)](https://crowdin.com/project/auraclick)
+  [![Discord](https://discord.com/api/guilds/1439913117067907094/widget.png)](https://discord.gg/VVSxKCCQ5D)
 
 </div>
 
