@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
+using DevWinUI;
 using Microsoft.UI.Xaml;
 using Windows.Win32;
 using Windows.Win32.System.Threading;
@@ -64,6 +65,8 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        SingleInstanceWindowActivator.Register(MainWindow);
+
         MainWindow.Activate();
     }
 }
