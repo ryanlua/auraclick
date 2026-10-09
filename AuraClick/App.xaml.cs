@@ -30,9 +30,6 @@ namespace AuraClick;
 /// </summary>
 public partial class App : Application
 {
-    /// <summary>
-    /// The main window of the application.
-    /// </summary>
     public static readonly MainWindow MainWindow = new();
 
     /// <summary>
