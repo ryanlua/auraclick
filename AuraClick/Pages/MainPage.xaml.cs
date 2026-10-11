@@ -23,6 +23,8 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
 using Windows.System;
 using Windows.Win32;
+using Windows.Win32.Foundation;
+using WinRT.Interop;
 using WindowMessageEventArgs = WinUIEx.Messaging.WindowMessageEventArgs;
 using WindowMessageMonitor = WinUIEx.Messaging.WindowMessageMonitor;
 
@@ -165,10 +167,12 @@ public sealed partial class MainPage : Page
         if (glyph == BadgeNotificationGlyph.Paused && settingsPage.NotificationBadgePaused)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
+            TaskbarHelper.SetProgressState(WindowNative.GetWindowHandle(App.MainWindow), TaskbarStates.NoProgress);
         }
         else if (glyph == BadgeNotificationGlyph.Playing && settingsPage.NotificationBadgePlaying)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
+            TaskbarHelper.SetProgressState(WindowNative.GetWindowHandle(App.MainWindow), TaskbarStates.Indeterminate);
         }
         else
         {
