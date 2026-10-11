@@ -1,6 +1,6 @@
 # Privacy Policy
 
-Effective date: April 14, 2025
+**Effective date: April 14, 2025**
 
 By using our application, you hereby consent to our privacy policy and agree to its terms.
 
