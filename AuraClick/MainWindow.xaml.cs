@@ -35,7 +35,6 @@ public sealed partial class MainWindow : WinUIEx.WindowEx
         InitializeComponent();
 
         ExtendsContentIntoTitleBar = true;
-        SetTitleBar(AppTitleBar);
 
         Title = "AppDisplayName".GetLocalized();
         AppWindow.SetIcon("Assets/AppIcon.ico");
