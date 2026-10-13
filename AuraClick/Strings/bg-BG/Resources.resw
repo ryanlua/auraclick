@@ -309,4 +309,24 @@
     <value>Относно</value>
     <comment>Subtitle of about message on Settings page</comment>
   </data>
+  <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
+    <value>Toggle hotkey</value>
+    <comment>Title of Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.Title" xml:space="preserve">
+    <value>Hotkey for starting and stopping the auto clicker</value>
+    <comment>Text block of Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
+    <value>Reset</value>
+    <comment>Displayed on the button to reset the shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.CloseButtonText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Displayed on the button to close the shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.PrimaryButtonText" xml:space="preserve">
+    <value>Save</value>
+    <comment>Displayed on the button to save the shortcut content dialog</comment>
+  </data>
 </root>
