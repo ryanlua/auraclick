@@ -183,24 +183,25 @@
                 Checked="ToggleButtonStart_OnChecked"
                 Unchecked="ToggleButtonStart_OnUnchecked">
                 <FontIcon x:Name="FontIconStart" Glyph="&#xEE4A;" />
+                <ToggleButton.Resources>
+                    <TeachingTip
+                        x:Name="StartButtonTeachingTip"
+                        Title="Start and stop the auto clicker"
+                        IsOpen="True"
+                        Target="{x:Bind ToggleButtonStart}">
+                        <TeachingTip.Content>
+                            <StackPanel
+                                VerticalAlignment="Bottom"
+                                Orientation="Horizontal"
+                                Spacing="4">
+                                <TextBlock Text="Press" />
+                                <dev:KeyVisual2 Content="End" />
+                                <TextBlock Text="or the set hotkey to stop" />
+                            </StackPanel>
+                        </TeachingTip.Content>
+                    </TeachingTip>
+                </ToggleButton.Resources>
             </ToggleButton>
-
-            <TeachingTip
-                x:Name="StartButtonTeachingTip"
-                Title="Start and stop the auto clicker"
-                IsOpen="True"
-                Target="{x:Bind ToggleButtonStart}">
-                <TeachingTip.Content>
-                    <StackPanel
-                        VerticalAlignment="Bottom"
-                        Orientation="Horizontal"
-                        Spacing="4">
-                        <TextBlock Text="You can always use" />
-                        <dev:KeyVisual2 Content="End" />
-                        <TextBlock Text="to stop" />
-                    </StackPanel>
-                </TeachingTip.Content>
-            </TeachingTip>
 
             <!--  Open Settings  -->
             <Button
