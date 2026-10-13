@@ -185,6 +185,23 @@
                 <FontIcon x:Name="FontIconStart" Glyph="&#xEE4A;" />
             </ToggleButton>
 
+            <TeachingTip
+                x:Name="StartButtonTeachingTip"
+                Title="Start and stop the auto clicker"
+                IsOpen="True"
+                Target="{x:Bind ToggleButtonStart}">
+                <TeachingTip.Content>
+                    <StackPanel
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal"
+                        Spacing="4">
+                        <TextBlock Text="You can always use" />
+                        <dev:KeyVisual2 Content="End" />
+                        <TextBlock Text="to stop" />
+                    </StackPanel>
+                </TeachingTip.Content>
+            </TeachingTip>
+
             <!--  Open Settings  -->
             <Button
                 x:Uid="ButtonSettings"
