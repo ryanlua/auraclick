@@ -124,6 +124,10 @@ public sealed partial class MainPage : Page
 
         // Register hotkey
         await ApplyHotkeySelectionAsync();
+
+        // Delay toggle button teaching tooltip until page transition is complete
+        await Task.Delay(500);
+        StartButtonTeachingTip.IsOpen = true;
     }
 
     /// <summary>

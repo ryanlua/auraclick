@@ -187,7 +187,6 @@
                     <TeachingTip
                         x:Name="StartButtonTeachingTip"
                         Title="Start and stop the auto clicker"
-                        IsOpen="True"
                         Target="{x:Bind ToggleButtonStart}">
                         <TeachingTip.Content>
                             <StackPanel
