@@ -7,9 +7,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:windowex="using:WinUIEx"
-    Width="400"
+    Width="380"
     Height="360"
-    MinWidth="400"
+    MinWidth="380"
     MinHeight="360"
     mc:Ignorable="d">
 
