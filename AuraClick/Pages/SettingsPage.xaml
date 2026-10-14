@@ -64,10 +64,17 @@
                     <ToggleSwitch IsOn="{x:Bind IsAlwaysOnTop}" />
                 </controls:SettingsCard>
 
-                <!--  Minimize on start  -->
-                <controls:SettingsCard x:Uid="SettingsCardMinimizeOnStart" HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
-                    <ToggleSwitch />
-                </controls:SettingsCard>
+                <!--  Automatic minimize  -->
+                <controls:SettingsExpander x:Uid="SettingsExpanderAutomaticMinimize" HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeStart" />
+                        </controls:SettingsCard>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeStop" />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
 
                 <!--  Notification badge  -->
                 <controls:SettingsExpander x:Uid="SettingsExpanderNotificationBadge" HeaderIcon="{ui:FontIcon Glyph=&#xEDAD;}">

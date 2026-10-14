@@ -329,12 +329,12 @@
     <value>Save</value>
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
-  <data name="SettingsCardMinimizeOnStart.Description" xml:space="preserve">
-    <value>Automatically minimize the window when auto clicking</value>
-    <comment>Description of Minimize on start settings card</comment>
+  <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
+    <value>Minimize the window when auto clicking</value>
+    <comment>Description of Automatic minimize expander</comment>
   </data>
-  <data name="SettingsCardMinimizeOnStart.Header" xml:space="preserve">
-    <value>Minimize on start</value>
-    <comment>Title of Minimize on start settings card</comment>
+  <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
+    <value>Automatic minimize</value>
+    <comment>Title of Automatic minimize expander</comment>
   </data>
 </root>
