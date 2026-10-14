@@ -64,6 +64,11 @@
                     <ToggleSwitch IsOn="{x:Bind IsAlwaysOnTop}" />
                 </controls:SettingsCard>
 
+                <!--  Minimize on start  -->
+                <controls:SettingsCard x:Uid="SettingsCardMinimizeOnStart" HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
+                    <ToggleSwitch />
+                </controls:SettingsCard>
+
                 <!--  Notification badge  -->
                 <controls:SettingsExpander x:Uid="SettingsExpanderNotificationBadge" HeaderIcon="{ui:FontIcon Glyph=&#xEDAD;}">
                     <controls:SettingsExpander.Items>
