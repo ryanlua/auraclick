@@ -68,10 +68,10 @@
                 <controls:SettingsExpander x:Uid="SettingsExpanderAutomaticMinimize" HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeStart" />
+                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeStart" IsChecked="{x:Bind AutomaticMinimizeStart}" />
                         </controls:SettingsCard>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeStop" />
+                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeStop" IsChecked="{x:Bind AutomaticMinimizeStop}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
