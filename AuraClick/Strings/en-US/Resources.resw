@@ -345,4 +345,12 @@
     <value>Restore on paused</value>
     <comment>Label for Restore on paused check box on the Behavior panel</comment>
   </data>
+  <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
+    <value>Progress indicator</value>
+    <comment>Title of Progress indicator settings card</comment>
+  </data>
+  <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
+    <value>Show status in the progress indicator on the app's taskbar button</value>
+    <comment>Description of Progress indicator settings card</comment>
+  </data>
 </root>

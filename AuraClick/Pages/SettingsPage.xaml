@@ -64,6 +64,11 @@
                     <ToggleSwitch IsOn="{x:Bind IsAlwaysOnTop}" />
                 </controls:SettingsCard>
 
+                <!--  Progress indicator  -->
+                <controls:SettingsCard x:Uid="SettingsCardProgressIndicator" HeaderIcon="{ui:FontIcon Glyph=&#xE75B;}">
+                    <ToggleSwitch />
+                </controls:SettingsCard>
+
                 <!--  Automatic minimize  -->
                 <controls:SettingsExpander x:Uid="SettingsExpanderAutomaticMinimize" HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
                     <controls:SettingsExpander.Items>
