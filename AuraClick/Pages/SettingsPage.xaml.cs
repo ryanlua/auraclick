@@ -62,7 +62,7 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool NotificationBadgePlaying
     {
-        get => (bool)(localSettings.Values[nameof(NotificationBadgePlaying)] ?? false);
+        get => (bool)(localSettings.Values[nameof(NotificationBadgePlaying)] ?? true);
         set
         {
             localSettings.Values[nameof(NotificationBadgePlaying)] = value;
@@ -75,7 +75,7 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool NotificationBadgePaused
     {
-        get => (bool)(localSettings.Values[nameof(NotificationBadgePaused)] ?? false);
+        get => (bool)(localSettings.Values[nameof(NotificationBadgePaused)] ?? true);
         set
         {
             localSettings.Values[nameof(NotificationBadgePaused)] = value;
@@ -88,7 +88,7 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool ProgressIndicator
     {
-        get => (bool)(localSettings.Values[nameof(ProgressIndicator)] ?? false);
+        get => (bool)(localSettings.Values[nameof(ProgressIndicator)] ?? true);
         set
         {
             localSettings.Values[nameof(ProgressIndicator)] = value;
