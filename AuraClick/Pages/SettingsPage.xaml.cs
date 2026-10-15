@@ -84,6 +84,19 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
+    /// Gets or sets a value indicating whether the taskbar button shows a progress indicator while clicking.
+    /// </summary>
+    public bool ProgressIndicator
+    {
+        get => (bool)(localSettings.Values[nameof(ProgressIndicator)] ?? true);
+        set
+        {
+            localSettings.Values[nameof(ProgressIndicator)] = value;
+            MainPage.RefreshProgressIndicator();
+        }
+    }
+
+    /// <summary>
     /// Gets or sets a value indicating whether the window is minimized when clicking starts.
     /// </summary>
     public bool AutomaticMinimizeMinimize
