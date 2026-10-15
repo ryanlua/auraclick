@@ -62,7 +62,7 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool NotificationBadgePlaying
     {
-        get => (bool)(localSettings.Values[nameof(NotificationBadgePlaying)] ?? true);
+        get => (bool)(localSettings.Values[nameof(NotificationBadgePlaying)] ?? false);
         set
         {
             localSettings.Values[nameof(NotificationBadgePlaying)] = value;
@@ -75,7 +75,7 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool NotificationBadgePaused
     {
-        get => (bool)(localSettings.Values[nameof(NotificationBadgePaused)] ?? true);
+        get => (bool)(localSettings.Values[nameof(NotificationBadgePaused)] ?? false);
         set
         {
             localSettings.Values[nameof(NotificationBadgePaused)] = value;
