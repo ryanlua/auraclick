@@ -6,8 +6,8 @@
     <RootNamespace>AuraClick</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
-    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture.ToString().ToLowerInvariant())</RuntimeIdentifier>
-    <PublishProfile Condition="Exists('Properties\PublishProfiles\win-$(Platform).pubxml')">win-$(Platform).pubxml</PublishProfile>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <WinUISDKReferences>false</WinUISDKReferences>
     <EnableMsixTooling>true</EnableMsixTooling>
@@ -32,10 +32,10 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevWinUI" Version="10.4.2" />
+    <PackageReference Include="DevWinUI" Version="10.7.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Converters" Version="8.3.260402-preview2" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.3.260402-preview2" />
-    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.335">
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.360">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

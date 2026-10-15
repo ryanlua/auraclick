@@ -15,9 +15,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
+using DevWinUI;
 using Microsoft.UI.Xaml;
-using Windows.Win32;
-using Windows.Win32.System.Threading;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -39,23 +38,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        PROCESS_POWER_THROTTLING_STATE powerThrottling = new()
-        {
-            ControlMask = PInvoke.PROCESS_POWER_THROTTLING_EXECUTION_SPEED,
-            StateMask = PInvoke.PROCESS_POWER_THROTTLING_EXECUTION_SPEED,
-            Version = PInvoke.PROCESS_POWER_THROTTLING_CURRENT_VERSION
-        };
-
-        // Set the process power throttling to efficiency mode
-        unsafe
-        {
-            _ = PInvoke.SetProcessInformation(PInvoke.GetCurrentProcess(),
-                PROCESS_INFORMATION_CLASS.ProcessPowerThrottling, &powerThrottling,
-                (uint)sizeof(PROCESS_POWER_THROTTLING_STATE));
-        }
-
-        // Set the process priority to idle
-        _ = PInvoke.SetPriorityClass(PInvoke.GetCurrentProcess(), PROCESS_CREATION_FLAGS.IDLE_PRIORITY_CLASS);
+        EcoQoSHelper.EnableEfficiencyMode();
     }
 
     /// <summary>
@@ -64,6 +47,8 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
+        SingleInstanceWindowActivator.Register(MainWindow);
+
         MainWindow.Activate();
     }
 }

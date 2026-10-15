@@ -15,7 +15,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
-using AuraClick.Helpers;
 using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -35,9 +34,7 @@ public sealed partial class MainWindow : WinUIEx.WindowEx
         InitializeComponent();
 
         ExtendsContentIntoTitleBar = true;
-        SetTitleBar(AppTitleBar);
 
-        Title = "AppDisplayName".GetLocalized();
         AppWindow.SetIcon("Assets/AppIcon.ico");
 
         // Navigate the root frame to the main page on startup.

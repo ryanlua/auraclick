@@ -32,6 +32,12 @@ A high-performance modern auto clicker for Windows. Automate mouse clicks with a
   </a> -->
 </p>
 
+## 💬 Discord Server
+
+Join the [Aura Click Discord server](https://discord.gg/VVSxKCCQ5D) for support and the latest news including development updates and more.
+
+[![Discord Server](https://discord.com/api/guilds/1439913117067907094/widget.png?style=banner4)](https://discord.gg/VVSxKCCQ5D)
+
 ## 🌐 Translating
 
 Help us translate Aura Click into more languages! Join our [Crowdin project](https://crowdin.com/project/auraclick) and start contributing translations.

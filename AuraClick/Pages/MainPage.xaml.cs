@@ -25,8 +25,10 @@ using Windows.System;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using WinRT.Interop;
+using WinUIEx;
 using WindowMessageEventArgs = WinUIEx.Messaging.WindowMessageEventArgs;
 using WindowMessageMonitor = WinUIEx.Messaging.WindowMessageMonitor;
+using WindowState = WinUIEx.WindowState;
 
 namespace AuraClick;
 
@@ -192,6 +194,11 @@ public sealed partial class MainPage : Page
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
         AutoClicker.Start();
 
+        if (settingsPage.AutomaticMinimizeMinimize)
+        {
+            App.MainWindow.Minimize();
+        }
+
         await Task.Delay(1000);
         ToggleButtonStart.IsEnabled = true;
     }
@@ -206,6 +213,12 @@ public sealed partial class MainPage : Page
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
         AutoClicker.Stop();
+
+        // Restore would also un-maximize a maximized window, so only restore when minimized
+        if (settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
+        {
+            App.MainWindow.Restore();
+        }
     }
 
     /// <summary>

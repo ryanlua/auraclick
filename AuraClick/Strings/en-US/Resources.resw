@@ -309,4 +309,40 @@
     <value>About</value>
     <comment>Subtitle of about message on Settings page</comment>
   </data>
+  <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
+    <value>Toggle hotkey</value>
+    <comment>Title of Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.Title" xml:space="preserve">
+    <value>Hotkey for starting and stopping the auto clicker</value>
+    <comment>Text block of Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
+    <value>Reset</value>
+    <comment>Displayed on the button to reset the shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.CloseButtonText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Displayed on the button to close the shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.PrimaryButtonText" xml:space="preserve">
+    <value>Save</value>
+    <comment>Displayed on the button to save the shortcut content dialog</comment>
+  </data>
+  <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
+    <value>Minimize the window when auto clicking</value>
+    <comment>Description of Automatic minimize expander</comment>
+  </data>
+  <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
+    <value>Automatic minimize</value>
+    <comment>Title of Automatic minimize expander</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
+    <value>Minimize on clicking</value>
+    <comment>Label for Minimize on clicking start check box on the Behavior panel</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
+    <value>Restore on paused</value>
+    <comment>Label for Restore on paused check box on the Behavior panel</comment>
+  </data>
 </root>
