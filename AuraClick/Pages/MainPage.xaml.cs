@@ -116,7 +116,7 @@ public sealed partial class MainPage : Page
     private async void MainPage_Loaded(object sender, RoutedEventArgs e)
     {
         // Set badge notification
-        SetNotificationBadge(BadgeNotificationGlyph.Paused);
+        RefreshNotificationBadge();
 
         // Set up window message monitor
         if (monitor is null)
@@ -158,7 +158,18 @@ public sealed partial class MainPage : Page
     /// </summary>
     public static void RefreshNotificationBadge()
     {
-        SetNotificationBadge(AutoClicker.IsRunning ? BadgeNotificationGlyph.Playing : BadgeNotificationGlyph.Paused);
+        if (AutoClicker.IsRunning && settingsPage.NotificationBadgePlaying)
+        {
+            BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Playing);
+        }
+        else if (!AutoClicker.IsRunning && settingsPage.NotificationBadgePaused)
+        {
+            BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Paused);
+        }
+        else
+        {
+            BadgeNotificationManager.Current.ClearBadge();
+        }
     }
 
     /// <summary>
@@ -177,26 +188,6 @@ public sealed partial class MainPage : Page
             TaskbarHelper.SetProgressState(hwnd, TaskbarStates.NoProgress);
         }
     }
-
-    /// <summary>
-    /// Sets the notification badge.
-    /// </summary>
-    private static void SetNotificationBadge(BadgeNotificationGlyph glyph)
-    {
-        if (glyph == BadgeNotificationGlyph.Paused && settingsPage.NotificationBadgePaused)
-        {
-            BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
-        }
-        else if (glyph == BadgeNotificationGlyph.Playing && settingsPage.NotificationBadgePlaying)
-        {
-            BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
-        }
-        else
-        {
-            BadgeNotificationManager.Current.ClearBadge();
-        }
-    }
-
     /// <summary>
     /// Handles the Checked event of the ToggleButtonStart control.
     /// </summary>
@@ -205,9 +196,9 @@ public sealed partial class MainPage : Page
         ToggleButtonStart.IsEnabled = false;
 
         FontIconStart.Glyph = "\uEDB4";
-        SetNotificationBadge(BadgeNotificationGlyph.Playing);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
         AutoClicker.Start();
+        RefreshNotificationBadge();
         RefreshProgressIndicator();
 
         if (settingsPage.AutomaticMinimizeMinimize)
@@ -226,9 +217,9 @@ public sealed partial class MainPage : Page
     {
         ToggleButtonStart.IsEnabled = true;
         FontIconStart.Glyph = "\uEE4A";
-        SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
         AutoClicker.Stop();
+        RefreshNotificationBadge();
         RefreshProgressIndicator();
 
         // Restore would also un-maximize a maximized window, so only restore when minimized
