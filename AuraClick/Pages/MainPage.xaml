@@ -186,7 +186,7 @@
                 <ToggleButton.Resources>
                     <TeachingTip
                         x:Name="StartButtonTeachingTip"
-                        Title="Start and stop the auto clicker"
+                        x:Uid="StartButtonTeachingTip"
                         Closed="StartButtonTeachingTip_Closed"
                         Target="{x:Bind ToggleButtonStart}">
                         <TeachingTip.Content>
@@ -194,9 +194,9 @@
                                 VerticalAlignment="Bottom"
                                 Orientation="Horizontal"
                                 Spacing="4">
-                                <TextBlock Text="Press" />
-                                <dev:KeyVisual2 Content="End" />
-                                <TextBlock Text="or the set hotkey to stop" />
+                                <TextBlock x:Uid="TextBlockStopKeyPress" />
+                                <dev:KeyVisual2 AutomationProperties.AccessibilityView="Content" Content="End" />
+                                <TextBlock x:Uid="TextBlockStopKeyTeachingTip" />
                             </StackPanel>
                         </TeachingTip.Content>
                     </TeachingTip>
