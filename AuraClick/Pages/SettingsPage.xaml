@@ -6,6 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AuraClick.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -22,6 +23,38 @@
             <Style.Setters>
                 <Setter Property="FontWeight" Value="SemiBold" />
                 <Setter Property="Margin" Value="1,20,0,6" />
+            </Style.Setters>
+        </Style>
+        <DataTemplate x:Key="CreditPersonTemplate" x:DataType="helpers:CreditPerson">
+            <PersonPicture
+                Width="40"
+                Height="40"
+                x:DefaultBindMode="OneTime"
+                AutomationProperties.Name="{x:Bind Name}"
+                DisplayName="{x:Bind Name}"
+                IsTabStop="True"
+                PointerEntered="CreditPersonPicture_PointerEntered"
+                PointerExited="CreditPersonPicture_PointerExited"
+                ProfilePicture="{x:Bind ProfilePicture}"
+                UseSystemFocusVisuals="True">
+                <ToolTipService.ToolTip>
+                    <ToolTip
+                        Content="{x:Bind Name}"
+                        Placement="Top"
+                        VerticalOffset="8" />
+                </ToolTipService.ToolTip>
+            </PersonPicture>
+        </DataTemplate>
+        <Style x:Key="CreditsItemsRepeaterStyle" TargetType="ItemsRepeater">
+            <Style.Setters>
+                <Setter Property="ItemTemplate" Value="{StaticResource CreditPersonTemplate}" />
+                <Setter Property="TabFocusNavigation" Value="Once" />
+                <Setter Property="XYFocusKeyboardNavigation" Value="Enabled" />
+                <Setter Property="Layout">
+                    <Setter.Value>
+                        <UniformGridLayout MinColumnSpacing="8" MinRowSpacing="8" />
+                    </Setter.Value>
+                </Setter>
             </Style.Setters>
         </Style>
     </Page.Resources>
@@ -136,6 +169,33 @@
                             </StackPanel>
                         </controls:SettingsCard>
 
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  Credits  -->
+                <controls:SettingsExpander
+                    x:Uid="SettingsExpanderCredits"
+                    x:DefaultBindMode="OneTime"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE716;}">
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard
+                            x:Uid="SettingsCardCreditsContributors"
+                            HorizontalContentAlignment="Left"
+                            ContentAlignment="Vertical">
+                            <ItemsRepeater ItemsSource="{x:Bind helpers:Credits.Contributors}" Style="{StaticResource CreditsItemsRepeaterStyle}" />
+                        </controls:SettingsCard>
+                        <controls:SettingsCard
+                            x:Uid="SettingsCardCreditsTranslators"
+                            HorizontalContentAlignment="Left"
+                            ContentAlignment="Vertical">
+                            <ItemsRepeater ItemsSource="{x:Bind helpers:Credits.Translators}" Style="{StaticResource CreditsItemsRepeaterStyle}" />
+                        </controls:SettingsCard>
+                        <controls:SettingsCard
+                            x:Uid="SettingsCardCreditsBoosters"
+                            HorizontalContentAlignment="Left"
+                            ContentAlignment="Vertical">
+                            <ItemsRepeater ItemsSource="{x:Bind helpers:Credits.Boosters}" Style="{StaticResource CreditsItemsRepeaterStyle}" />
+                        </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
             </StackPanel>

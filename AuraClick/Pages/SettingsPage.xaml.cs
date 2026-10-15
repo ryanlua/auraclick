@@ -19,6 +19,7 @@ using AuraClick.Helpers;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.ApplicationModel;
 using Windows.Storage;
@@ -185,4 +186,23 @@ public sealed partial class SettingsPage : Page
             MainWindow.IsAlwaysOnTop = value;
         }
     }
+
+    /// <summary>
+    /// Opens or closes the tool tip of a credited person's profile picture.
+    /// </summary>
+    /// <param name="personPicture">The profile picture that owns the tool tip.</param>
+    /// <param name="isOpen">Whether the tool tip is open.</param>
+    private static void SetCreditToolTipOpen(object personPicture, bool isOpen)
+    {
+        var owner = (UIElement)personPicture;
+        if (ToolTipService.GetToolTip(owner) is ToolTip toolTip)
+        {
+            toolTip.PlacementTarget = owner;
+            toolTip.IsOpen = isOpen;
+        }
+    }
+
+    private void CreditPersonPicture_PointerEntered(object sender, PointerRoutedEventArgs e) => SetCreditToolTipOpen(sender, true);
+
+    private void CreditPersonPicture_PointerExited(object sender, PointerRoutedEventArgs e) => SetCreditToolTipOpen(sender, false);
 }

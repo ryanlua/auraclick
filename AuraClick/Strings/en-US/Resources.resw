@@ -345,4 +345,36 @@
     <value>Restore on paused</value>
     <comment>Label for Restore on paused check box on the Behavior panel</comment>
   </data>
+  <data name="SettingsExpanderCredits.Header" xml:space="preserve">
+    <value>Credits</value>
+    <comment>Title of Credits expander on the About panel</comment>
+  </data>
+  <data name="SettingsExpanderCredits.Description" xml:space="preserve">
+    <value>Thanks to everyone who helps make Aura Click</value>
+    <comment>Description of Credits expander on the About panel</comment>
+  </data>
+  <data name="SettingsCardCreditsContributors.Header" xml:space="preserve">
+    <value>Contributors</value>
+    <comment>Header of the list of people who contributed code on GitHub</comment>
+  </data>
+  <data name="SettingsCardCreditsContributors.Description" xml:space="preserve">
+    <value>Contributed to the code on GitHub</value>
+    <comment>Description of the list of people who contributed code on GitHub</comment>
+  </data>
+  <data name="SettingsCardCreditsTranslators.Header" xml:space="preserve">
+    <value>Translators</value>
+    <comment>Header of the list of people who translated the app on Crowdin</comment>
+  </data>
+  <data name="SettingsCardCreditsTranslators.Description" xml:space="preserve">
+    <value>Translated the app on Crowdin</value>
+    <comment>Description of the list of people who translated the app on Crowdin</comment>
+  </data>
+  <data name="SettingsCardCreditsBoosters.Header" xml:space="preserve">
+    <value>Server boosters</value>
+    <comment>Header of the list of people who boosted the Discord server</comment>
+  </data>
+  <data name="SettingsCardCreditsBoosters.Description" xml:space="preserve">
+    <value>Boosted the Discord server</value>
+    <comment>Description of the list of people who boosted the Discord server</comment>
+  </data>
 </root>
