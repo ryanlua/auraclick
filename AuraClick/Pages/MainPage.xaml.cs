@@ -40,6 +40,11 @@ public sealed partial class MainPage : Page
     private static readonly SettingsPage settingsPage = new();
 
     /// <summary>
+    /// Keys for the stop shortcut, which always stops the auto clicker.
+    /// </summary>
+    private static readonly List<object> StopShortcut = [new KeyVisualInfo { Key = VirtualKey.End, KeyName = "End" }];
+
+    /// <summary>
     /// Window message monitor for hotkey handling.
     /// </summary>
     private WindowMessageMonitor? monitor;
@@ -48,6 +53,11 @@ public sealed partial class MainPage : Page
     /// Hotkey ID for the toggle shortcut.
     /// </summary>
     private const int ToggleHotkeyId = 1;
+
+    /// <summary>
+    /// Hotkey ID for the stop shortcut.
+    /// </summary>
+    private const int StopHotkeyId = 2;
 
     /// <summary>
     /// Flag to track if the ToggleShortcut dialog is open.
@@ -135,6 +145,14 @@ public sealed partial class MainPage : Page
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
+        // Stop hotkey works regardless of the current page or dialog
+        if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == StopHotkeyId)
+        {
+            ToggleButtonStart.IsChecked = false;
+            AutoClicker.Stop();
+            return;
+        }
+
         // Allow hotkey only on main page
         if (Frame.Content is not MainPage)
         {
@@ -190,6 +208,7 @@ public sealed partial class MainPage : Page
         FontIconStart.Glyph = "\uEDB4";
         SetNotificationBadge(BadgeNotificationGlyph.Playing);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
+        _ = HotkeyManager.RegisterHotkey(StopHotkeyId, StopShortcut);
         AutoClicker.Start();
 
         await Task.Delay(1000);
@@ -206,6 +225,7 @@ public sealed partial class MainPage : Page
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
         AutoClicker.Stop();
+        _ = HotkeyManager.UnregisterHotkey(StopHotkeyId);
     }
 
     /// <summary>
