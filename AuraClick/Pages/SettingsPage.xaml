@@ -66,7 +66,7 @@
 
                 <!--  Progress indicator  -->
                 <controls:SettingsCard x:Uid="SettingsCardProgressIndicator" HeaderIcon="{ui:FontIcon Glyph=&#xE75B;}">
-                    <ToggleSwitch />
+                    <ToggleSwitch IsOn="{x:Bind ProgressIndicator}" />
                 </controls:SettingsCard>
 
                 <!--  Automatic minimize  -->

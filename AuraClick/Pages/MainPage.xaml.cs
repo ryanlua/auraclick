@@ -162,6 +162,23 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
+    /// Refreshes the taskbar progress indicator using the current application state and settings.
+    /// </summary>
+    public static void RefreshProgressIndicator()
+    {
+        HWND hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
+
+        if (AutoClicker.IsRunning && settingsPage.ProgressIndicator)
+        {
+            TaskbarHelper.SetProgressState(hwnd, TaskbarStates.Indeterminate);
+        }
+        else
+        {
+            TaskbarHelper.SetProgressState(hwnd, TaskbarStates.NoProgress);
+        }
+    }
+
+    /// <summary>
     /// Sets the notification badge.
     /// </summary>
     private static void SetNotificationBadge(BadgeNotificationGlyph glyph)
@@ -169,12 +186,10 @@ public sealed partial class MainPage : Page
         if (glyph == BadgeNotificationGlyph.Paused && settingsPage.NotificationBadgePaused)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
-            TaskbarHelper.SetProgressState(WindowNative.GetWindowHandle(App.MainWindow), TaskbarStates.NoProgress);
         }
         else if (glyph == BadgeNotificationGlyph.Playing && settingsPage.NotificationBadgePlaying)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
-            TaskbarHelper.SetProgressState(WindowNative.GetWindowHandle(App.MainWindow), TaskbarStates.Indeterminate);
         }
         else
         {
@@ -193,6 +208,7 @@ public sealed partial class MainPage : Page
         SetNotificationBadge(BadgeNotificationGlyph.Playing);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
         AutoClicker.Start();
+        RefreshProgressIndicator();
 
         if (settingsPage.AutomaticMinimizeMinimize)
         {
@@ -213,6 +229,7 @@ public sealed partial class MainPage : Page
         SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
         AutoClicker.Stop();
+        RefreshProgressIndicator();
 
         // Restore would also un-maximize a maximized window, so only restore when minimized
         if (settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
