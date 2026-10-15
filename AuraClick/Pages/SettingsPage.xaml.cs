@@ -84,6 +84,24 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
+    /// Gets or sets a value indicating whether the window is minimized when clicking starts.
+    /// </summary>
+    public bool AutomaticMinimizeMinimize
+    {
+        get => (bool)(localSettings.Values[nameof(AutomaticMinimizeMinimize)] ?? false);
+        set => localSettings.Values[nameof(AutomaticMinimizeMinimize)] = value;
+    }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the window is unminimized when clicking stops.
+    /// </summary>
+    public bool AutomaticMinimizeRestore
+    {
+        get => (bool)(localSettings.Values[nameof(AutomaticMinimizeRestore)] ?? false);
+        set => localSettings.Values[nameof(AutomaticMinimizeRestore)] = value;
+    }
+
+    /// <summary>
     /// Gets the localized application name.
     /// </summary>
     private static string AppName => "AppDisplayName".GetLocalized();
