@@ -188,21 +188,19 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
-    /// Opens or closes the tool tip of a credited person's profile picture.
+    /// Opens or closes the tool tip of a profile picture without the default hover delay.
     /// </summary>
-    /// <param name="personPicture">The profile picture that owns the tool tip.</param>
-    /// <param name="isOpen">Whether the tool tip is open.</param>
-    private static void SetCreditToolTipOpen(object personPicture, bool isOpen)
+    private static void SetToolTipOpen(object sender, bool isOpen)
     {
-        var owner = (UIElement)personPicture;
-        if (ToolTipService.GetToolTip(owner) is ToolTip toolTip)
+        if (ToolTipService.GetToolTip((UIElement)sender) is ToolTip toolTip)
         {
-            toolTip.PlacementTarget = owner;
+            toolTip.PlacementTarget = (UIElement)sender;
             toolTip.IsOpen = isOpen;
         }
     }
 
-    private void CreditPersonPicture_PointerEntered(object sender, PointerRoutedEventArgs e) => SetCreditToolTipOpen(sender, true);
+    private void CreditPersonPicture_PointerEntered(object sender, PointerRoutedEventArgs e) => SetToolTipOpen(sender, true);
 
-    private void CreditPersonPicture_PointerExited(object sender, PointerRoutedEventArgs e) => SetCreditToolTipOpen(sender, false);
+    private void CreditPersonPicture_PointerExited(object sender, PointerRoutedEventArgs e) => SetToolTipOpen(sender, false);
+
 }

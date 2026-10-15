@@ -15,7 +15,17 @@
 // You should have received a copy of the GNU General Public License
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+
 namespace AuraClick.Helpers;
+
+/// <summary>
+/// Represents a person credited in the app.
+/// </summary>
+/// <param name="Name">The username of the person.</param>
+/// <param name="ProfilePicture">The profile picture of the person.</param>
+public sealed record CreditPerson(string Name, ImageSource ProfilePicture);
 
 /// <summary>
 /// Provides the people credited in the app.
@@ -26,25 +36,20 @@ public static class Credits
     /// <summary>
     /// Gets the people who contributed to the GitHub repository.
     /// </summary>
-    public static IReadOnlyList<CreditPerson> Contributors { get; } =
-    [
-        new("ryanlua", new Uri("https://github.com/ryanlua.png?size=80")),
-    ];
+    public static CreditPerson[] Contributors { get; } = [Create("ryanlua", "https://github.com/ryanlua.png?size=80")];
 
     /// <summary>
     /// Gets the people who translated the app on Crowdin.
     /// </summary>
-    public static IReadOnlyList<CreditPerson> Translators { get; } = CreateSample("translator", 14);
+    public static CreditPerson[] Translators { get; } = CreateSample("translator", 14);
 
     /// <summary>
     /// Gets the people who boosted the Discord server.
     /// </summary>
-    public static IReadOnlyList<CreditPerson> Boosters { get; } = CreateSample("booster", 4);
+    public static CreditPerson[] Boosters { get; } = CreateSample("booster", 4);
 
-    private static CreditPerson[] CreateSample(string prefix, int count)
-    {
-        return [.. Enumerable.Range(1, count).Select(i => new CreditPerson(
-            $"{prefix}{i}",
-            new Uri($"https://github.com/identicons/{prefix}{i}.png")))];
-    }
+    private static CreditPerson Create(string name, string avatarUrl) => new(name, new BitmapImage(new Uri(avatarUrl)));
+
+    private static CreditPerson[] CreateSample(string prefix, int count) =>
+        [.. Enumerable.Range(1, count).Select(i => Create($"{prefix}{i}", $"https://github.com/identicons/{prefix}{i}.png"))];
 }

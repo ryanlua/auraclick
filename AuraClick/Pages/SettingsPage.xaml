@@ -30,13 +30,10 @@
                 Width="40"
                 Height="40"
                 x:DefaultBindMode="OneTime"
-                AutomationProperties.Name="{x:Bind Name}"
                 DisplayName="{x:Bind Name}"
-                IsTabStop="True"
                 PointerEntered="CreditPersonPicture_PointerEntered"
                 PointerExited="CreditPersonPicture_PointerExited"
-                ProfilePicture="{x:Bind ProfilePicture}"
-                UseSystemFocusVisuals="True">
+                ProfilePicture="{x:Bind ProfilePicture}">
                 <ToolTipService.ToolTip>
                     <ToolTip
                         Content="{x:Bind Name}"
@@ -45,18 +42,10 @@
                 </ToolTipService.ToolTip>
             </PersonPicture>
         </DataTemplate>
-        <Style x:Key="CreditsItemsRepeaterStyle" TargetType="ItemsRepeater">
-            <Style.Setters>
-                <Setter Property="ItemTemplate" Value="{StaticResource CreditPersonTemplate}" />
-                <Setter Property="TabFocusNavigation" Value="Once" />
-                <Setter Property="XYFocusKeyboardNavigation" Value="Enabled" />
-                <Setter Property="Layout">
-                    <Setter.Value>
-                        <UniformGridLayout MinColumnSpacing="8" MinRowSpacing="8" />
-                    </Setter.Value>
-                </Setter>
-            </Style.Setters>
-        </Style>
+        <UniformGridLayout
+            x:Key="CreditsLayout"
+            MinColumnSpacing="8"
+            MinRowSpacing="8" />
     </Page.Resources>
 
     <ScrollViewer>
@@ -178,23 +167,23 @@
                     x:DefaultBindMode="OneTime"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE716;}">
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard
-                            x:Uid="SettingsCardCreditsContributors"
-                            HorizontalContentAlignment="Left"
-                            ContentAlignment="Vertical">
-                            <ItemsRepeater ItemsSource="{x:Bind helpers:Credits.Contributors}" Style="{StaticResource CreditsItemsRepeaterStyle}" />
+                        <controls:SettingsCard x:Uid="SettingsCardCreditsContributors" ContentAlignment="Vertical">
+                            <ItemsRepeater
+                                ItemTemplate="{StaticResource CreditPersonTemplate}"
+                                ItemsSource="{x:Bind helpers:Credits.Contributors}"
+                                Layout="{StaticResource CreditsLayout}" />
                         </controls:SettingsCard>
-                        <controls:SettingsCard
-                            x:Uid="SettingsCardCreditsTranslators"
-                            HorizontalContentAlignment="Left"
-                            ContentAlignment="Vertical">
-                            <ItemsRepeater ItemsSource="{x:Bind helpers:Credits.Translators}" Style="{StaticResource CreditsItemsRepeaterStyle}" />
+                        <controls:SettingsCard x:Uid="SettingsCardCreditsTranslators" ContentAlignment="Vertical">
+                            <ItemsRepeater
+                                ItemTemplate="{StaticResource CreditPersonTemplate}"
+                                ItemsSource="{x:Bind helpers:Credits.Translators}"
+                                Layout="{StaticResource CreditsLayout}" />
                         </controls:SettingsCard>
-                        <controls:SettingsCard
-                            x:Uid="SettingsCardCreditsBoosters"
-                            HorizontalContentAlignment="Left"
-                            ContentAlignment="Vertical">
-                            <ItemsRepeater ItemsSource="{x:Bind helpers:Credits.Boosters}" Style="{StaticResource CreditsItemsRepeaterStyle}" />
+                        <controls:SettingsCard x:Uid="SettingsCardCreditsBoosters" ContentAlignment="Vertical">
+                            <ItemsRepeater
+                                ItemTemplate="{StaticResource CreditPersonTemplate}"
+                                ItemsSource="{x:Bind helpers:Credits.Boosters}"
+                                Layout="{StaticResource CreditsLayout}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
