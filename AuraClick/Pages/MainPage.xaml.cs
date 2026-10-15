@@ -135,9 +135,25 @@ public sealed partial class MainPage : Page
         // Register hotkey
         await ApplyHotkeySelectionAsync();
 
+        if (settingsPage.IsStartButtonTeachingTipDismissed)
+        {
+            return;
+        }
+
         // Delay toggle button teaching tooltip until page transition is complete
         await Task.Delay(500);
         StartButtonTeachingTip.IsOpen = true;
+    }
+
+    /// <summary>
+    /// Handles the Closed event of the StartButtonTeachingTip control.
+    /// </summary>
+    private void StartButtonTeachingTip_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
+    {
+        if (args.Reason != TeachingTipCloseReason.Programmatic)
+        {
+            settingsPage.IsStartButtonTeachingTipDismissed = true;
+        }
     }
 
     /// <summary>

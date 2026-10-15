@@ -76,6 +76,15 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!--  Reset tips  -->
+                <controls:SettingsCard x:Uid="SettingsCardResetTips" HeaderIcon="{ui:FontIcon Glyph=&#xE82F;}">
+                    <Button
+                        x:Name="ResetTipsButton"
+                        x:Uid="ButtonResetTips"
+                        Click="ResetTipsButton_Click"
+                        IsEnabled="{x:Bind IsStartButtonTeachingTipDismissed, Mode=OneTime}" />
+                </controls:SettingsCard>
+
                 <TextBlock x:Uid="TextBlockAbout" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
                 <!--  App version  -->

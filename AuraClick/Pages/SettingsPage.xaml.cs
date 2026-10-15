@@ -84,6 +84,15 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
+    /// Gets or sets a value indicating whether the start button teaching tip has been dismissed.
+    /// </summary>
+    public bool IsStartButtonTeachingTipDismissed
+    {
+        get => (bool)(localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] ?? false);
+        set => localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] = value;
+    }
+
+    /// <summary>
     /// Gets the localized application name.
     /// </summary>
     private static string AppName => "AppDisplayName".GetLocalized();
@@ -166,5 +175,14 @@ public sealed partial class SettingsPage : Page
             localSettings.Values[nameof(IsAlwaysOnTop)] = value;
             MainWindow.IsAlwaysOnTop = value;
         }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the ResetTipsButton control.
+    /// </summary>
+    private void ResetTipsButton_Click(object sender, RoutedEventArgs e)
+    {
+        IsStartButtonTeachingTipDismissed = false;
+        ResetTipsButton.IsEnabled = false;
     }
 }
