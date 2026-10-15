@@ -190,7 +190,7 @@ public sealed partial class MainPage : Page
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
         AutoClicker.Start();
 
-        if (settingsPage.AutomaticMinimizeStart)
+        if (settingsPage.AutomaticMinimizeMinimize)
         {
             App.MainWindow.Minimize();
         }
@@ -211,7 +211,7 @@ public sealed partial class MainPage : Page
         AutoClicker.Stop();
 
         // Restore would also un-maximize a maximized window, so only restore when minimized
-        if (settingsPage.AutomaticMinimizeStop && App.MainWindow.WindowState == WindowState.Minimized)
+        if (settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
         {
             App.MainWindow.Restore();
         }

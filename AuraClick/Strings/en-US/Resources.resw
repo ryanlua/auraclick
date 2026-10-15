@@ -337,12 +337,12 @@
     <value>Automatic minimize</value>
     <comment>Title of Automatic minimize expander</comment>
   </data>
-  <data name="CheckBoxAutomaticMinimizeStart.Content" xml:space="preserve">
+  <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
     <value>Minimize on clicking</value>
     <comment>Label for Minimize on clicking start check box on the Behavior panel</comment>
   </data>
-  <data name="CheckBoxAutomaticMinimizeStop.Content" xml:space="preserve">
-    <value>Unminimize on paused</value>
-    <comment>Label for Unminimize on paused check box on the Behavior panel</comment>
+  <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
+    <value>Restore on paused</value>
+    <comment>Label for Restore on paused check box on the Behavior panel</comment>
   </data>
 </root>
