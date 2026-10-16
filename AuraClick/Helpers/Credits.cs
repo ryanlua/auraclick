@@ -48,8 +48,13 @@ public static class Credits
     /// </summary>
     public static CreditPerson[] Boosters { get; } = CreateSample("booster", 4);
 
-    private static CreditPerson Create(string name, string avatarUrl) => new(name, new BitmapImage(new Uri(avatarUrl)));
+    private static CreditPerson Create(string name, string avatarUrl)
+    {
+        return new(name, new BitmapImage(new Uri(avatarUrl)));
+    }
 
-    private static CreditPerson[] CreateSample(string prefix, int count) =>
-        [.. Enumerable.Range(1, count).Select(i => Create($"{prefix}{i}", $"https://github.com/identicons/{prefix}{i}.png"))];
+    private static CreditPerson[] CreateSample(string prefix, int count)
+    {
+        return [.. Enumerable.Range(1, count).Select(i => Create($"{prefix}{i}", $"https://github.com/identicons/{prefix}{i}.png"))];
+    }
 }

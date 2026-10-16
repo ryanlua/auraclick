@@ -190,10 +190,18 @@ public sealed partial class SettingsPage : Page
     /// <summary>
     /// Opens or closes the tool tip of a profile picture without the default hover delay.
     /// </summary>
-    private static void SetToolTipOpen(object sender, bool isOpen) => ((ToolTip)ToolTipService.GetToolTip((UIElement)sender)).IsOpen = isOpen;
+    private static void SetToolTipOpen(object sender, bool isOpen)
+    {
+        ((ToolTip)ToolTipService.GetToolTip((UIElement)sender)).IsOpen = isOpen;
+    }
 
-    private void CreditPersonPicture_PointerEntered(object sender, PointerRoutedEventArgs e) => SetToolTipOpen(sender, true);
+    private void CreditPersonPicture_PointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+        SetToolTipOpen(sender, true);
+    }
 
-    private void CreditPersonPicture_PointerExited(object sender, PointerRoutedEventArgs e) => SetToolTipOpen(sender, false);
-
+    private void CreditPersonPicture_PointerExited(object sender, PointerRoutedEventArgs e)
+    {
+        SetToolTipOpen(sender, false);
+    }
 }

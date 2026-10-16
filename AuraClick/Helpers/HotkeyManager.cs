@@ -31,18 +31,21 @@ internal static class HotkeyManager
     public static bool RegisterHotkey(int hotkeyId, IEnumerable<object> keys)
     {
         (VirtualKeyModifiers modifiers, VirtualKey virtualKey) = GetHotkey(keys);
-        UnregisterHotkey(hotkeyId);
+        _ = UnregisterHotkey(hotkeyId);
         return PInvoke.RegisterHotKey(hWnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
     }
 
-    public static bool UnregisterHotkey(int hotkeyId) => PInvoke.UnregisterHotKey(hWnd, hotkeyId);
+    public static bool UnregisterHotkey(int hotkeyId)
+    {
+        return PInvoke.UnregisterHotKey(hWnd, hotkeyId);
+    }
 
     private static (VirtualKeyModifiers Modifiers, VirtualKey VirtualKey) GetHotkey(IEnumerable<object> keys)
     {
         VirtualKeyModifiers modifiers = VirtualKeyModifiers.None;
         VirtualKey virtualKey = VirtualKey.None;
 
-        foreach (var key in keys)
+        foreach (object key in keys)
         {
             if (key is not KeyVisualInfo { Key: VirtualKey keyCode })
                 continue;
