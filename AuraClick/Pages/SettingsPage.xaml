@@ -27,8 +27,8 @@
         </Style>
         <DataTemplate x:Key="CreditPersonTemplate" x:DataType="helpers:CreditPerson">
             <PersonPicture
-                Width="40"
-                Height="40"
+                Width="48"
+                Height="48"
                 x:DefaultBindMode="OneTime"
                 DisplayName="{x:Bind Name}"
                 PointerEntered="CreditPersonPicture_PointerEntered"
