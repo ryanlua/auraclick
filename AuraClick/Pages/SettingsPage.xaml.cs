@@ -15,12 +15,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
+using System.Globalization;
 using AuraClick.Helpers;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using AppInstance = Microsoft.Windows.AppLifecycle.AppInstance;
 using Windows.ApplicationModel;
+using Windows.Globalization;
 using Windows.Storage;
 using WinUIEx;
 using SystemBackdrop = Microsoft.UI.Xaml.Media.SystemBackdrop;
@@ -41,6 +44,11 @@ public sealed partial class SettingsPage : Page
     private readonly ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
     /// <summary>
+    /// Languages the app is localized into.
+    /// </summary>
+    private static readonly List<string> Languages = [.. ApplicationLanguages.ManifestLanguages];
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="SettingsPage" /> class.
     /// </summary>
     public SettingsPage()
@@ -51,6 +59,11 @@ public sealed partial class SettingsPage : Page
         ThemeSelectedIndex = ThemeSelectedIndex;
         BackdropSelectedIndex = BackdropSelectedIndex;
         IsAlwaysOnTop = IsAlwaysOnTop;
+
+        foreach (string language in Languages)
+        {
+            LanguageComboBox.Items.Add(CultureInfo.GetCultureInfo(language).NativeName);
+        }
 
         // Initialize app name and version
         AppAboutSettingsExpander.Header = AppName;
@@ -182,6 +195,22 @@ public sealed partial class SettingsPage : Page
                     2 => new DesktopAcrylicBackdrop(),
                     _ => new MicaBackdrop()
                 };
+            }
+        }
+    }
+
+    /// <summary>
+    /// Gets or sets the selected language index, where 0 follows the system language.
+    /// </summary>
+    private int LanguageSelectedIndex
+    {
+        get => Languages.FindIndex(language => language.Equals(ApplicationLanguages.PrimaryLanguageOverride, StringComparison.OrdinalIgnoreCase)) + 1;
+        set
+        {
+            if (value >= 0 && value != LanguageSelectedIndex)
+            {
+                ApplicationLanguages.PrimaryLanguageOverride = value == 0 ? string.Empty : Languages[value - 1];
+                AppInstance.Restart(string.Empty);
             }
         }
     }

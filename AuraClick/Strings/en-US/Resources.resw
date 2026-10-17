@@ -353,4 +353,12 @@
     <value>Show status in the progress indicator on the app's taskbar button</value>
     <comment>Description of Progress indicator settings card</comment>
   </data>
+  <data name="SettingsCardLanguage.Header" xml:space="preserve">
+    <value>Language</value>
+    <comment>Title of Language settings card</comment>
+  </data>
+  <data name="SettingsCardLanguage.Description" xml:space="preserve">
+    <value>Select which language to display</value>
+    <comment>Description of Language settings card</comment>
+  </data>
 </root>
