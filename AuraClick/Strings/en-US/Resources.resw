@@ -213,23 +213,23 @@
     <value>Appearance</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
-  <data name="SettingsCardAppTheme.Header" xml:space="preserve">
-    <value>App theme</value>
-    <comment>Title of App theme expander</comment>
+  <data name="SettingsCardTheme.Header" xml:space="preserve">
+    <value>Theme</value>
+    <comment>Title of Theme expander</comment>
   </data>
-  <data name="SettingsCardAppTheme.Description" xml:space="preserve">
+  <data name="SettingsCardTheme.Description" xml:space="preserve">
     <value>Select which app theme to display</value>
-    <comment>Description of App theme expander</comment>
+    <comment>Description of Theme expander</comment>
   </data>
-  <data name="ComboBoxItemAppThemeSystem.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
     <value>Use system setting</value>
     <comment>Label for the app theme option to use system setting</comment>
   </data>
-  <data name="ComboBoxItemAppThemeLight.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeLight.Content" xml:space="preserve">
     <value>Light</value>
     <comment>Label for light theme option</comment>
   </data>
-  <data name="ComboBoxItemAppThemeDark.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeDark.Content" xml:space="preserve">
     <value>Dark</value>
     <comment>Label for dark theme option</comment>
   </data>
@@ -239,7 +239,7 @@
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
     <value>System backdrop material for window background</value>
-    <comment>Description of App theme expander</comment>
+    <comment>Description of Theme expander</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
     <value>Mica</value>
@@ -345,36 +345,32 @@
     <value>Restore on paused</value>
     <comment>Label for Restore on paused check box on the Behavior panel</comment>
   </data>
-  <data name="SettingsExpanderCredits.Header" xml:space="preserve">
-    <value>Credits</value>
-    <comment>Title of Credits expander on the About panel</comment>
+  <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
+    <value>Progress indicator</value>
+    <comment>Title of Progress indicator settings card</comment>
   </data>
-  <data name="SettingsExpanderCredits.Description" xml:space="preserve">
-    <value>Special thanks to our supporters</value>
-    <comment>Description of Credits expander on the About panel</comment>
+  <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
+    <value>Show status in the progress indicator on the app's taskbar button</value>
+    <comment>Description of Progress indicator settings card</comment>
   </data>
-  <data name="SettingsCardCreditsContributors.Header" xml:space="preserve">
-    <value>GitHub Contributors</value>
-    <comment>Header of the list of people who contributed code on GitHub</comment>
+  <data name="SettingsCardLanguage.Header" xml:space="preserve">
+    <value>Language</value>
+    <comment>Title of Language settings card</comment>
   </data>
-  <data name="SettingsCardCreditsContributors.Description" xml:space="preserve">
-    <value>Contributed code to the app</value>
-    <comment>Description of the list of people who contributed code on GitHub</comment>
+  <data name="SettingsCardLanguage.Description" xml:space="preserve">
+    <value>Select which language to display</value>
+    <comment>Description of Language settings card</comment>
   </data>
-  <data name="SettingsCardCreditsTranslators.Header" xml:space="preserve">
-    <value>Crowdin Translators</value>
-    <comment>Header of the list of people who translated the app on Crowdin</comment>
+  <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
+    <value>Use system setting</value>
+    <comment>Label for the language option to use the Windows display language</comment>
   </data>
-  <data name="SettingsCardCreditsTranslators.Description" xml:space="preserve">
-    <value>Helped translate the app</value>
-    <comment>Description of the list of people who translated the app on Crowdin</comment>
+  <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
+    <value>Restart to apply language changes</value>
+    <comment>Title of restart info bar shown after changing the app language</comment>
   </data>
-  <data name="SettingsCardCreditsBoosters.Header" xml:space="preserve">
-    <value>Discord Server Boosters</value>
-    <comment>Header of the list of people who boosted the Discord server</comment>
-  </data>
-  <data name="SettingsCardCreditsBoosters.Description" xml:space="preserve">
-    <value>Boosted the Discord server</value>
-    <comment>Description of the list of people who boosted the Discord server</comment>
+  <data name="ButtonLanguageRestart.Content" xml:space="preserve">
+    <value>Restart</value>
+    <comment>Button that restarts the app to apply a language change</comment>
   </data>
 </root>

@@ -213,23 +213,23 @@
     <value>Išvaizda</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
-  <data name="SettingsCardAppTheme.Header" xml:space="preserve">
+  <data name="SettingsCardTheme.Header" xml:space="preserve">
     <value>Programėlės tema</value>
-    <comment>Title of App theme expander</comment>
+    <comment>Title of Theme expander</comment>
   </data>
-  <data name="SettingsCardAppTheme.Description" xml:space="preserve">
+  <data name="SettingsCardTheme.Description" xml:space="preserve">
     <value>Pasirinkite, kurią programėlės temą rodyti</value>
-    <comment>Description of App theme expander</comment>
+    <comment>Description of Theme expander</comment>
   </data>
-  <data name="ComboBoxItemAppThemeSystem.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
     <value>Naudoti sistemos nustatymus</value>
     <comment>Label for the app theme option to use system setting</comment>
   </data>
-  <data name="ComboBoxItemAppThemeLight.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeLight.Content" xml:space="preserve">
     <value>Šviesi</value>
     <comment>Label for light theme option</comment>
   </data>
-  <data name="ComboBoxItemAppThemeDark.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeDark.Content" xml:space="preserve">
     <value>Tamsi</value>
     <comment>Label for dark theme option</comment>
   </data>
@@ -239,7 +239,7 @@
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
     <value>Sistemos lango fono medžiaga</value>
-    <comment>Description of App theme expander</comment>
+    <comment>Description of Theme expander</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
     <value>Mica</value>

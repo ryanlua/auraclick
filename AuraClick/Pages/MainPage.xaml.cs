@@ -23,6 +23,8 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
 using Windows.System;
 using Windows.Win32;
+using Windows.Win32.Foundation;
+using WinRT.Interop;
 using WinUIEx;
 using WindowMessageEventArgs = WinUIEx.Messaging.WindowMessageEventArgs;
 using WindowMessageMonitor = WinUIEx.Messaging.WindowMessageMonitor;
@@ -114,7 +116,7 @@ public sealed partial class MainPage : Page
     private async void MainPage_Loaded(object sender, RoutedEventArgs e)
     {
         // Set badge notification
-        SetNotificationBadge(BadgeNotificationGlyph.Paused);
+        RefreshNotificationBadge();
 
         // Set up window message monitor
         if (monitor is null)
@@ -156,21 +158,13 @@ public sealed partial class MainPage : Page
     /// </summary>
     public static void RefreshNotificationBadge()
     {
-        SetNotificationBadge(AutoClicker.IsRunning ? BadgeNotificationGlyph.Playing : BadgeNotificationGlyph.Paused);
-    }
-
-    /// <summary>
-    /// Sets the notification badge.
-    /// </summary>
-    private static void SetNotificationBadge(BadgeNotificationGlyph glyph)
-    {
-        if (glyph == BadgeNotificationGlyph.Paused && settingsPage.NotificationBadgePaused)
+        if (AutoClicker.IsRunning && settingsPage.NotificationBadgePlaying)
         {
-            BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
+            BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Playing);
         }
-        else if (glyph == BadgeNotificationGlyph.Playing && settingsPage.NotificationBadgePlaying)
+        else if (!AutoClicker.IsRunning && settingsPage.NotificationBadgePaused)
         {
-            BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
+            BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Paused);
         }
         else
         {
@@ -179,6 +173,22 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
+    /// Refreshes the taskbar progress indicator using the current application state and settings.
+    /// </summary>
+    public static void RefreshProgressIndicator()
+    {
+        HWND hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
+
+        if (AutoClicker.IsRunning && settingsPage.ProgressIndicator)
+        {
+            TaskbarHelper.SetProgressState(hwnd, TaskbarStates.Indeterminate);
+        }
+        else
+        {
+            TaskbarHelper.SetProgressState(hwnd, TaskbarStates.NoProgress);
+        }
+    }
+    /// <summary>
     /// Handles the Checked event of the ToggleButtonStart control.
     /// </summary>
     private async void ToggleButtonStart_OnChecked(object sender, RoutedEventArgs e)
@@ -186,9 +196,10 @@ public sealed partial class MainPage : Page
         ToggleButtonStart.IsEnabled = false;
 
         FontIconStart.Glyph = "\uEDB4";
-        SetNotificationBadge(BadgeNotificationGlyph.Playing);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
         AutoClicker.Start();
+        RefreshNotificationBadge();
+        RefreshProgressIndicator();
 
         if (settingsPage.AutomaticMinimizeMinimize)
         {
@@ -206,9 +217,10 @@ public sealed partial class MainPage : Page
     {
         ToggleButtonStart.IsEnabled = true;
         FontIconStart.Glyph = "\uEE4A";
-        SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
         AutoClicker.Stop();
+        RefreshNotificationBadge();
+        RefreshProgressIndicator();
 
         // Restore would also un-maximize a maximized window, so only restore when minimized
         if (settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
