@@ -50,6 +50,9 @@
                     x:Uid="InfoBarLanguageRestart"
                     IsClosable="False"
                     Severity="Informational">
+                    <InfoBar.Resources>
+                        <ResourceDictionary Source="ms-appx:///DevWinUI/Themes/InfoBarInformationalColor.xaml" />
+                    </InfoBar.Resources>
                     <InfoBar.ActionButton>
                         <Button x:Uid="ButtonLanguageRestart" Click="LanguageRestartButton_Click" />
                     </InfoBar.ActionButton>
