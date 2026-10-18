@@ -369,4 +369,16 @@
     <value>Aura Click</value>
     <comment>Title text of app title bar</comment>
   </data>
+  <data name="ContentDialogHotkeyFailedTitle" xml:space="preserve">
+    <value>Invalid hotkey</value>
+    <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailedContent" xml:space="preserve">
+    <value>Failed to register hotkey. Change the hotkey to another key.</value>
+    <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailedCloseButtonText" xml:space="preserve">
+    <value>Close</value>
+    <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
+  </data>
 </root>

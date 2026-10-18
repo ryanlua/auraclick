@@ -83,9 +83,9 @@ public sealed partial class MainPage : Page
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             XamlRoot = XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "Invalid hotkey",
-            Content = "Failed to register hotkey. Change the hotkey to another key.",
-            CloseButtonText = "Close",
+            Title = "ContentDialogHotkeyFailedTitle".GetLocalized(),
+            Content = "ContentDialogHotkeyFailedContent".GetLocalized(),
+            CloseButtonText = "ContentDialogHotkeyFailedCloseButtonText".GetLocalized(),
             DefaultButton = ContentDialogButton.Close
         };
 
@@ -94,12 +94,30 @@ public sealed partial class MainPage : Page
 
     private async Task ApplyHotkeySelectionAsync()
     {
-        if (HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys))
+        bool registered = HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
+        SetShortcutError(!registered);
+
+        if (registered)
         {
             return;
         }
 
         await ShowHotkeyRegistrationFailedAsync();
+    }
+
+    /// <summary>
+    /// Shows or clears the error state on the hotkey's key visuals.
+    /// </summary>
+    private void SetShortcutError(bool isError)
+    {
+        // Shortcut doesn't expose an error state, and its key visuals are regenerated whenever its keys change.
+        ToggleShortcut.UpdateLayout();
+        foreach (KeyVisual keyVisual in ToggleShortcut.FindDescendants().OfType<KeyVisual>())
+        {
+            keyVisual.IsError = isError;
+        }
+
+        ToolTipService.SetToolTip(ToggleShortcut, isError ? "ContentDialogHotkeyFailedContent".GetLocalized() : null);
     }
 
     /// <summary>
