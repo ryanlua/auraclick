@@ -20,9 +20,12 @@ using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using System.Globalization;
 using Windows.ApplicationModel;
+using Windows.Globalization;
 using Windows.Storage;
 using WinUIEx;
+using AppInstance = Microsoft.Windows.AppLifecycle.AppInstance;
 using SystemBackdrop = Microsoft.UI.Xaml.Media.SystemBackdrop;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -41,6 +44,16 @@ public sealed partial class SettingsPage : Page
     private readonly ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
     /// <summary>
+    /// Languages the app is localized into.
+    /// </summary>
+    private static readonly List<string> Languages = [.. ApplicationLanguages.ManifestLanguages];
+
+    /// <summary>
+    /// Language override the app was started with; resources only reload on restart.
+    /// </summary>
+    private static readonly string StartupLanguageOverride = ApplicationLanguages.PrimaryLanguageOverride;
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="SettingsPage" /> class.
     /// </summary>
     public SettingsPage()
@@ -51,6 +64,12 @@ public sealed partial class SettingsPage : Page
         ThemeSelectedIndex = ThemeSelectedIndex;
         BackdropSelectedIndex = BackdropSelectedIndex;
         IsAlwaysOnTop = IsAlwaysOnTop;
+        LanguageSelectedIndex = LanguageSelectedIndex;
+
+        foreach (string language in Languages)
+        {
+            LanguageComboBox.Items.Add(CultureInfo.GetCultureInfo(language).NativeName);
+        }
 
         // Initialize app name and version
         AppAboutSettingsExpander.Header = AppName;
@@ -185,6 +204,27 @@ public sealed partial class SettingsPage : Page
             }
         }
     }
+
+    /// <summary>
+    /// Gets or sets the selected language index, where 0 follows the system language.
+    /// </summary>
+    private int LanguageSelectedIndex
+    {
+        get => Languages.FindIndex(language => language.Equals(ApplicationLanguages.PrimaryLanguageOverride, StringComparison.OrdinalIgnoreCase)) + 1;
+        set
+        {
+            if (value >= 0)
+            {
+                ApplicationLanguages.PrimaryLanguageOverride = value == 0 ? string.Empty : Languages[value - 1];
+                LanguageRestartInfoBar.IsOpen = ApplicationLanguages.PrimaryLanguageOverride != StartupLanguageOverride;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the language restart button.
+    /// </summary>
+    private void LanguageRestartButton_Click(object sender, RoutedEventArgs e) => AppInstance.Restart(string.Empty);
 
     /// <summary>
     /// Gets or sets a value indicating whether the application window is always on top.
