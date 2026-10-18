@@ -39,6 +39,22 @@
 
                 <TextBlock x:Uid="AppearanceSettingsSectionHeaderTextBlock" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
+                <!--  Language  -->
+                <controls:SettingsCard x:Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
+                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}">
+                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeSystem" />
+                    </ComboBox>
+                </controls:SettingsCard>
+                <InfoBar
+                    x:Name="LanguageRestartInfoBar"
+                    x:Uid="InfoBarLanguageRestart"
+                    IsClosable="False"
+                    Severity="Informational">
+                    <InfoBar.ActionButton>
+                        <Button x:Uid="ButtonLanguageRestart" Click="LanguageRestartButton_Click" />
+                    </InfoBar.ActionButton>
+                </InfoBar>
+
                 <!--  App theme  -->
                 <controls:SettingsCard x:Uid="SettingsCardAppTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ComboBox SelectedIndex="{x:Bind ThemeSelectedIndex}">
@@ -54,13 +70,6 @@
                         <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialMica" />
                         <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialMicaAlt" />
                         <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialAcrylic" />
-                    </ComboBox>
-                </controls:SettingsCard>
-
-                <!--  Language  -->
-                <controls:SettingsCard x:Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
-                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeSystem" />
                     </ComboBox>
                 </controls:SettingsCard>
 

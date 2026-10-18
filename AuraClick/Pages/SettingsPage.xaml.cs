@@ -15,17 +15,17 @@
 // You should have received a copy of the GNU General Public License
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
-using System.Globalization;
 using AuraClick.Helpers;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using AppInstance = Microsoft.Windows.AppLifecycle.AppInstance;
+using System.Globalization;
 using Windows.ApplicationModel;
 using Windows.Globalization;
 using Windows.Storage;
 using WinUIEx;
+using AppInstance = Microsoft.Windows.AppLifecycle.AppInstance;
 using SystemBackdrop = Microsoft.UI.Xaml.Media.SystemBackdrop;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -49,6 +49,11 @@ public sealed partial class SettingsPage : Page
     private static readonly List<string> Languages = [.. ApplicationLanguages.ManifestLanguages];
 
     /// <summary>
+    /// Language override the app was started with; resources only reload on restart.
+    /// </summary>
+    private static readonly string StartupLanguageOverride = ApplicationLanguages.PrimaryLanguageOverride;
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="SettingsPage" /> class.
     /// </summary>
     public SettingsPage()
@@ -64,6 +69,8 @@ public sealed partial class SettingsPage : Page
         {
             LanguageComboBox.Items.Add(CultureInfo.GetCultureInfo(language).NativeName);
         }
+
+        LanguageRestartInfoBar.IsOpen = IsRestartRequired;
 
         // Initialize app name and version
         AppAboutSettingsExpander.Header = AppName;
@@ -210,9 +217,23 @@ public sealed partial class SettingsPage : Page
             if (value >= 0 && value != LanguageSelectedIndex)
             {
                 ApplicationLanguages.PrimaryLanguageOverride = value == 0 ? string.Empty : Languages[value - 1];
-                AppInstance.Restart(string.Empty);
+                LanguageRestartInfoBar.IsOpen = IsRestartRequired;
             }
         }
+    }
+
+    /// <summary>
+    /// Gets a value indicating whether the selected language differs from the one the app started with.
+    /// </summary>
+    private static bool IsRestartRequired =>
+        !ApplicationLanguages.PrimaryLanguageOverride.Equals(StartupLanguageOverride, StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Handles the Click event of the language restart button.
+    /// </summary>
+    private void LanguageRestartButton_Click(object sender, RoutedEventArgs e)
+    {
+        _ = AppInstance.Restart(string.Empty);
     }
 
     /// <summary>

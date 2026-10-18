@@ -361,4 +361,12 @@
     <value>Select which language to display</value>
     <comment>Description of Language settings card</comment>
   </data>
+  <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
+    <value>Restart to apply language changes</value>
+    <comment>Title of restart info bar shown after changing the app language</comment>
+  </data>
+  <data name="ButtonLanguageRestart.Content" xml:space="preserve">
+    <value>Restart</value>
+    <comment>Button that restarts the app to apply a language change</comment>
+  </data>
 </root>
