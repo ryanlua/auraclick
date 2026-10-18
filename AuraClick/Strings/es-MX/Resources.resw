@@ -121,10 +121,6 @@
     <value>Un auto clicker moderno y de alto rendimiento para Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Aura Click (Preview)</value>
-    <comment>This is the title of the application.</comment>
-  </data>
   <data name="ComboBoxItemLeft.Content" xml:space="preserve">
     <value>Izquierdo</value>
     <comment>Label for left mouse button option</comment>
@@ -160,10 +156,6 @@
   <data name="NumberBoxSeconds.Description" xml:space="preserve">
     <value>segundos</value>
     <comment>Description text of seconds click interval number box</comment>
-  </data>
-  <data name="RadioButtonUntilStopped.Content" xml:space="preserve">
-    <value>Hasta detenerse</value>
-    <comment>Label for click repeat until stopped option</comment>
   </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
     <value>Intervalo de clic</value>
@@ -241,18 +233,6 @@
     <value>Material de fondo del sistema para el fondo de la ventana</value>
     <comment>Description of Theme expander</comment>
   </data>
-  <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
-    <value>Mica</value>
-    <comment>Label for mica material option</comment>
-  </data>
-  <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
-    <value>Mica Alt</value>
-    <comment>Label for mica alt material option</comment>
-  </data>
-  <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
-    <value>Acrílico</value>
-    <comment>Label for acrylic material option</comment>
-  </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
     <value>Siempre visible</value>
     <comment>Title of Always on top settings card</comment>
@@ -268,10 +248,6 @@
   <data name="AppTitleBar.Subtitle" xml:space="preserve">
     <value>Preview</value>
     <comment>Subtitle text of app title bar</comment>
-  </data>
-  <data name="AppTitleBar.Title" xml:space="preserve">
-    <value>Aura Click</value>
-    <comment>Title text of app title bar</comment>
   </data>
   <data name="HyperlinkButtonPrivacyPolicy.Content" xml:space="preserve">
     <value>Política de privacidad</value>
@@ -328,5 +304,25 @@
   <data name="ShortcutToggle.PrimaryButtonText" xml:space="preserve">
     <value>Save</value>
     <comment>Displayed on the button to save the shortcut content dialog</comment>
+  </data>
+  <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
+    <value>Mica</value>
+    <comment>Label for mica material option</comment>
+  </data>
+  <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
+    <value>Mica Alt</value>
+    <comment>Label for mica alt material option</comment>
+  </data>
+  <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
+    <value>Acrílico</value>
+    <comment>Label for acrylic material option</comment>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Aura Click (Preview)</value>
+    <comment>This is the title of the application.</comment>
+  </data>
+  <data name="AppTitleBar.Title" xml:space="preserve">
+    <value>Aura Click</value>
+    <comment>Title text of app title bar</comment>
   </data>
 </root>
