@@ -124,7 +124,18 @@
                 OpenedContentDialog="ToggleShortcut_OpenedContentDialog"
                 PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
                 SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick"
-                WarningTitle="" />
+                WarningTitle="">
+                <dev:Shortcut.Footer>
+                    <StackPanel
+                        Margin="0,12,0,0"
+                        Orientation="Horizontal"
+                        Spacing="4">
+                        <TextBlock x:Uid="TextBlockStopKeyPress" VerticalAlignment="Center" />
+                        <dev:KeyVisual2 AutomationProperties.AccessibilityView="Content" Content="End" />
+                        <TextBlock x:Uid="TextBlockStopKeyDialog" VerticalAlignment="Center" />
+                    </StackPanel>
+                </dev:Shortcut.Footer>
+            </dev:Shortcut>
         </StackPanel>
 
         <!--  Click Repeat  -->
