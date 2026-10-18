@@ -38,7 +38,7 @@ public sealed partial class MainWindow : WinUIEx.WindowEx
         AppWindow.SetIcon("Assets/AppIcon.ico");
 
         // Navigate the root frame to the main page on startup.
-        NavFrame.Navigate(typeof(MainPage));
+        _ = NavFrame.Navigate(typeof(MainPage));
     }
 
     private void TitleBar_BackRequested(TitleBar sender, object args)

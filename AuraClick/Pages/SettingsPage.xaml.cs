@@ -224,7 +224,10 @@ public sealed partial class SettingsPage : Page
     /// <summary>
     /// Handles the Click event of the language restart button.
     /// </summary>
-    private void LanguageRestartButton_Click(object sender, RoutedEventArgs e) => AppInstance.Restart(string.Empty);
+    private void LanguageRestartButton_Click(object sender, RoutedEventArgs e)
+    {
+        _ = AppInstance.Restart(string.Empty);
+    }
 
     /// <summary>
     /// Gets or sets a value indicating whether the application window is always on top.

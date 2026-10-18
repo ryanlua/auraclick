@@ -27,10 +27,10 @@ public partial class Program : SingleInstanceApp
     private static int Main(string[] args)
     {
         // Optional XAML performance changes
-        XamlOptionalChanges.EnableChange(XamlChangeId.IconNoGridOptimization);
-        XamlOptionalChanges.EnableChange(XamlChangeId.OptimizeApplyStyles);
-        XamlOptionalChanges.EnableChange(XamlChangeId.DefaultStyleOptimizations);
-        XamlOptionalChanges.EnableChange(XamlChangeId.DeferContextFlyoutInit);
+        _ = XamlOptionalChanges.EnableChange(XamlChangeId.IconNoGridOptimization);
+        _ = XamlOptionalChanges.EnableChange(XamlChangeId.OptimizeApplyStyles);
+        _ = XamlOptionalChanges.EnableChange(XamlChangeId.DefaultStyleOptimizations);
+        _ = XamlOptionalChanges.EnableChange(XamlChangeId.DeferContextFlyoutInit);
 
         // Make app single-instanced
         return Run(args, "AuraClickApp", () => new Program(), () => new App());
