@@ -41,7 +41,9 @@
 
                 <!--  Language  -->
                 <controls:SettingsCard x:Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
-                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}" />
+                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}">
+                        <ComboBoxItem x:Uid="ComboBoxItemLanguageSystem" />
+                    </ComboBox>
                 </controls:SettingsCard>
                 <InfoBar
                     x:Name="LanguageRestartInfoBar"

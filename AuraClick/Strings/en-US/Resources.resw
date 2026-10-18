@@ -361,6 +361,10 @@
     <value>Select which language to display</value>
     <comment>Description of Language settings card</comment>
   </data>
+  <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
+    <value>Use system setting</value>
+    <comment>Label for the language option to use the Windows display language</comment>
+  </data>
   <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
     <value>Restart to apply language changes</value>
     <comment>Title of restart info bar shown after changing the app language</comment>
