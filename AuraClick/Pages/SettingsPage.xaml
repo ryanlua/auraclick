@@ -41,9 +41,7 @@
 
                 <!--  Language  -->
                 <controls:SettingsCard x:Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
-                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeSystem" />
-                    </ComboBox>
+                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}" />
                 </controls:SettingsCard>
                 <InfoBar
                     x:Name="LanguageRestartInfoBar"
@@ -55,12 +53,12 @@
                     </InfoBar.ActionButton>
                 </InfoBar>
 
-                <!--  App theme  -->
-                <controls:SettingsCard x:Uid="SettingsCardAppTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <!--  Theme  -->
+                <controls:SettingsCard x:Uid="SettingsCardTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ComboBox SelectedIndex="{x:Bind ThemeSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeSystem" />
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeLight" />
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeDark" />
+                        <ComboBoxItem x:Uid="ComboBoxItemThemeSystem" />
+                        <ComboBoxItem x:Uid="ComboBoxItemThemeLight" />
+                        <ComboBoxItem x:Uid="ComboBoxItemThemeDark" />
                     </ComboBox>
                 </controls:SettingsCard>
 
