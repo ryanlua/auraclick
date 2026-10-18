@@ -8,11 +8,11 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="RyanLuu.AuraClick"
+    Name="RyanLuu.35188CB935F49"
     Publisher="CN=F928CF5C-7038-45EB-A55F-2CDFC6B12328"
-    Version="0.1.0.0" />
+    Version="0.0.1.0" />
 
-  <mp:PhoneIdentity PhoneProductId="2532d4fd-42fb-4b02-a922-9be41e17cb00" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="1af52403-3fb1-46e8-90f8-fd84f5dd65b6" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ms-resource:AppDisplayName</DisplayName>
@@ -38,6 +38,7 @@
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile/>
       </uap:VisualElements>
     </Application>
   </Applications>
