@@ -64,13 +64,12 @@ public sealed partial class SettingsPage : Page
         ThemeSelectedIndex = ThemeSelectedIndex;
         BackdropSelectedIndex = BackdropSelectedIndex;
         IsAlwaysOnTop = IsAlwaysOnTop;
+        LanguageSelectedIndex = LanguageSelectedIndex;
 
         foreach (string language in Languages)
         {
             LanguageComboBox.Items.Add(CultureInfo.GetCultureInfo(language).NativeName);
         }
-
-        LanguageRestartInfoBar.IsOpen = IsRestartRequired;
 
         // Initialize app name and version
         AppAboutSettingsExpander.Header = AppName;
@@ -214,27 +213,18 @@ public sealed partial class SettingsPage : Page
         get => Languages.FindIndex(language => language.Equals(ApplicationLanguages.PrimaryLanguageOverride, StringComparison.OrdinalIgnoreCase)) + 1;
         set
         {
-            if (value >= 0 && value != LanguageSelectedIndex)
+            if (value >= 0)
             {
                 ApplicationLanguages.PrimaryLanguageOverride = value == 0 ? string.Empty : Languages[value - 1];
-                LanguageRestartInfoBar.IsOpen = IsRestartRequired;
+                LanguageRestartInfoBar.IsOpen = ApplicationLanguages.PrimaryLanguageOverride != StartupLanguageOverride;
             }
         }
     }
 
     /// <summary>
-    /// Gets a value indicating whether the selected language differs from the one the app started with.
-    /// </summary>
-    private static bool IsRestartRequired =>
-        !ApplicationLanguages.PrimaryLanguageOverride.Equals(StartupLanguageOverride, StringComparison.OrdinalIgnoreCase);
-
-    /// <summary>
     /// Handles the Click event of the language restart button.
     /// </summary>
-    private void LanguageRestartButton_Click(object sender, RoutedEventArgs e)
-    {
-        _ = AppInstance.Restart(string.Empty);
-    }
+    private void LanguageRestartButton_Click(object sender, RoutedEventArgs e) => AppInstance.Restart(string.Empty);
 
     /// <summary>
     /// Gets or sets a value indicating whether the application window is always on top.
