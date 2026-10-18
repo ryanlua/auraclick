@@ -26,26 +26,31 @@ namespace AuraClick.Helpers;
 
 internal static class HotkeyManager
 {
-    private static readonly HWND hWnd = new(WindowNative.GetWindowHandle(App.MainWindow));
+    private static readonly HWND hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
 
     public static bool RegisterHotkey(int hotkeyId, IEnumerable<object> keys)
     {
         (VirtualKeyModifiers modifiers, VirtualKey virtualKey) = GetHotkey(keys);
-        UnregisterHotkey(hotkeyId);
-        return PInvoke.RegisterHotKey(hWnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
+        _ = UnregisterHotkey(hotkeyId);
+        return PInvoke.RegisterHotKey(hwnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
     }
 
-    public static bool UnregisterHotkey(int hotkeyId) => PInvoke.UnregisterHotKey(hWnd, hotkeyId);
+    public static bool UnregisterHotkey(int hotkeyId)
+    {
+        return PInvoke.UnregisterHotKey(hwnd, hotkeyId);
+    }
 
     private static (VirtualKeyModifiers Modifiers, VirtualKey VirtualKey) GetHotkey(IEnumerable<object> keys)
     {
         VirtualKeyModifiers modifiers = VirtualKeyModifiers.None;
         VirtualKey virtualKey = VirtualKey.None;
 
-        foreach (var key in keys)
+        foreach (object key in keys)
         {
             if (key is not KeyVisualInfo { Key: VirtualKey keyCode })
+            {
                 continue;
+            }
 
             switch (keyCode)
             {
@@ -75,13 +80,24 @@ internal static class HotkeyManager
         HOT_KEY_MODIFIERS result = HOT_KEY_MODIFIERS.MOD_NOREPEAT;
 
         if (modifiers.HasFlag(VirtualKeyModifiers.Control))
+        {
             result |= HOT_KEY_MODIFIERS.MOD_CONTROL;
+        }
+
         if (modifiers.HasFlag(VirtualKeyModifiers.Menu))
+        {
             result |= HOT_KEY_MODIFIERS.MOD_ALT;
+        }
+
         if (modifiers.HasFlag(VirtualKeyModifiers.Shift))
+        {
             result |= HOT_KEY_MODIFIERS.MOD_SHIFT;
+        }
+
         if (modifiers.HasFlag(VirtualKeyModifiers.Windows))
+        {
             result |= HOT_KEY_MODIFIERS.MOD_WIN;
+        }
 
         return result;
     }

@@ -14,7 +14,6 @@
 
     <Page.Resources>
         <x:Double x:Key="SettingsCardSpacing">4</x:Double>
-        <Thickness x:Key="HyperlinkButtonNegativeMargin">-12,0,0,0</Thickness>
         <Style
             x:Key="SettingsSectionHeaderTextBlockStyle"
             BasedOn="{StaticResource BodyTextBlockStyle}"
@@ -39,12 +38,31 @@
 
                 <TextBlock x:Uid="AppearanceSettingsSectionHeaderTextBlock" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
-                <!--  App theme  -->
-                <controls:SettingsCard x:Uid="SettingsCardAppTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <!--  Language  -->
+                <controls:SettingsCard x:Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
+                    <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}">
+                        <ComboBoxItem x:Uid="ComboBoxItemLanguageSystem" />
+                    </ComboBox>
+                </controls:SettingsCard>
+                <InfoBar
+                    x:Name="LanguageRestartInfoBar"
+                    x:Uid="InfoBarLanguageRestart"
+                    IsClosable="False"
+                    Severity="Informational">
+                    <InfoBar.Resources>
+                        <ResourceDictionary Source="ms-appx:///DevWinUI/Themes/InfoBarInformationalColor.xaml" />
+                    </InfoBar.Resources>
+                    <InfoBar.ActionButton>
+                        <Button x:Uid="ButtonLanguageRestart" Click="LanguageRestartButton_Click" />
+                    </InfoBar.ActionButton>
+                </InfoBar>
+
+                <!--  Theme  -->
+                <controls:SettingsCard x:Uid="SettingsCardTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ComboBox SelectedIndex="{x:Bind ThemeSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeSystem" />
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeLight" />
-                        <ComboBoxItem x:Uid="ComboBoxItemAppThemeDark" />
+                        <ComboBoxItem x:Uid="ComboBoxItemThemeSystem" />
+                        <ComboBoxItem x:Uid="ComboBoxItemThemeLight" />
+                        <ComboBoxItem x:Uid="ComboBoxItemThemeDark" />
                     </ComboBox>
                 </controls:SettingsCard>
 
@@ -63,6 +81,23 @@
                 <controls:SettingsCard x:Uid="SettingsCardAlwaysOnTop" HeaderIcon="{ui:FontIcon Glyph=&#xE7C4;}">
                     <ToggleSwitch IsOn="{x:Bind IsAlwaysOnTop}" />
                 </controls:SettingsCard>
+
+                <!--  Progress indicator  -->
+                <controls:SettingsCard x:Uid="SettingsCardProgressIndicator" HeaderIcon="{ui:FontIcon Glyph=&#xE75B;}">
+                    <ToggleSwitch IsOn="{x:Bind ProgressIndicator}" />
+                </controls:SettingsCard>
+
+                <!--  Automatic minimize  -->
+                <controls:SettingsExpander x:Uid="SettingsExpanderAutomaticMinimize" HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeMinimize" IsChecked="{x:Bind AutomaticMinimizeMinimize}" />
+                        </controls:SettingsCard>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeRestore" IsChecked="{x:Bind AutomaticMinimizeRestore}" />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
 
                 <!--  Notification badge  -->
                 <controls:SettingsExpander x:Uid="SettingsExpanderNotificationBadge" HeaderIcon="{ui:FontIcon Glyph=&#xEDAD;}">
@@ -92,6 +127,9 @@
                     x:Name="AppAboutSettingsExpander"
                     Description="Copyright © 2026 Ryan Luu"
                     HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/StoreLogo.png}">
+                    <controls:SettingsExpander.Resources>
+                        <Thickness x:Key="HyperlinkButtonNegativeMargin">-12,0,0,0</Thickness>
+                    </controls:SettingsExpander.Resources>
                     <TextBlock
                         x:Name="AppVersionTextBlock"
                         win:IsTextSelectionEnabled="True"

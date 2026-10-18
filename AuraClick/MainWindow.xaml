@@ -11,6 +11,7 @@
     Height="360"
     MinWidth="400"
     MinHeight="360"
+    IsMaximizable="False"
     mc:Ignorable="d">
 
     <Grid>

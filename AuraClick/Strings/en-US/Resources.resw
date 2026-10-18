@@ -121,10 +121,6 @@
     <value>A high-performance modern auto clicker for Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Aura Click (Preview)</value>
-    <comment>This is the title of the application.</comment>
-  </data>
   <data name="ComboBoxItemLeft.Content" xml:space="preserve">
     <value>Left</value>
     <comment>Label for left mouse button option</comment>
@@ -161,10 +157,6 @@
     <value>seconds</value>
     <comment>Description text of seconds click interval number box</comment>
   </data>
-  <data name="RadioButtonUntilStopped.Content" xml:space="preserve">
-    <value>Until stopped</value>
-    <comment>Label for click repeat until stopped option</comment>
-  </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
     <value>Click interval</value>
     <comment>Header text of Click interval number boxes</comment>
@@ -194,7 +186,7 @@
     <comment>Header text of Click repeat check box</comment>
   </data>
   <data name="ClickRepeatCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop clicking after a certain amount or until stopped</value>
+    <value>Stop after a certain amount of clicks</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="ClickOffsetCheckBox.Content" xml:space="preserve">
@@ -213,23 +205,23 @@
     <value>Appearance</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
-  <data name="SettingsCardAppTheme.Header" xml:space="preserve">
-    <value>App theme</value>
-    <comment>Title of App theme expander</comment>
+  <data name="SettingsCardTheme.Header" xml:space="preserve">
+    <value>Theme</value>
+    <comment>Title of Theme expander</comment>
   </data>
-  <data name="SettingsCardAppTheme.Description" xml:space="preserve">
+  <data name="SettingsCardTheme.Description" xml:space="preserve">
     <value>Select which app theme to display</value>
-    <comment>Description of App theme expander</comment>
+    <comment>Description of Theme expander</comment>
   </data>
-  <data name="ComboBoxItemAppThemeSystem.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
     <value>Use system setting</value>
     <comment>Label for the app theme option to use system setting</comment>
   </data>
-  <data name="ComboBoxItemAppThemeLight.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeLight.Content" xml:space="preserve">
     <value>Light</value>
     <comment>Label for light theme option</comment>
   </data>
-  <data name="ComboBoxItemAppThemeDark.Content" xml:space="preserve">
+  <data name="ComboBoxItemThemeDark.Content" xml:space="preserve">
     <value>Dark</value>
     <comment>Label for dark theme option</comment>
   </data>
@@ -239,19 +231,7 @@
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
     <value>System backdrop material for window background</value>
-    <comment>Description of App theme expander</comment>
-  </data>
-  <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
-    <value>Mica</value>
-    <comment>Label for mica material option</comment>
-  </data>
-  <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
-    <value>Mica Alt</value>
-    <comment>Label for mica alt material option</comment>
-  </data>
-  <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
-    <value>Acrylic</value>
-    <comment>Label for acrylic material option</comment>
+    <comment>Description of Theme expander</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
     <value>Always on top</value>
@@ -268,10 +248,6 @@
   <data name="AppTitleBar.Subtitle" xml:space="preserve">
     <value>Preview</value>
     <comment>Subtitle text of app title bar</comment>
-  </data>
-  <data name="AppTitleBar.Title" xml:space="preserve">
-    <value>Aura Click</value>
-    <comment>Title text of app title bar</comment>
   </data>
   <data name="HyperlinkButtonPrivacyPolicy.Content" xml:space="preserve">
     <value>Privacy policy</value>
@@ -356,5 +332,81 @@
   <data name="TextBlockStopKeyDialog.Text" xml:space="preserve">
     <value>to stop the auto clicker at any time</value>
     <comment>Text shown after the End key visual in the Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
+    <value>Minimize the window when auto clicking</value>
+    <comment>Description of Automatic minimize expander</comment>
+  </data>
+  <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
+    <value>Automatic minimize</value>
+    <comment>Title of Automatic minimize expander</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
+    <value>Minimize on clicking</value>
+    <comment>Label for Minimize on clicking start check box on the Behavior panel</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
+    <value>Restore on paused</value>
+    <comment>Label for Restore on paused check box on the Behavior panel</comment>
+  </data>
+  <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
+    <value>Progress indicator</value>
+    <comment>Title of Progress indicator settings card</comment>
+  </data>
+  <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
+    <value>Show status in the progress indicator on the app's taskbar button</value>
+    <comment>Description of Progress indicator settings card</comment>
+  </data>
+  <data name="SettingsCardLanguage.Header" xml:space="preserve">
+    <value>Language</value>
+    <comment>Title of Language settings card</comment>
+  </data>
+  <data name="SettingsCardLanguage.Description" xml:space="preserve">
+    <value>Select which language to display</value>
+    <comment>Description of Language settings card</comment>
+  </data>
+  <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
+    <value>Use system setting</value>
+    <comment>Label for the language option to use the Windows display language</comment>
+  </data>
+  <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
+    <value>Restart to apply language changes</value>
+    <comment>Title of restart info bar shown after changing the app language</comment>
+  </data>
+  <data name="ButtonLanguageRestart.Content" xml:space="preserve">
+    <value>Restart</value>
+    <comment>Button that restarts the app to apply a language change</comment>
+  </data>
+  <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
+    <value>Mica</value>
+    <comment>Label for mica material option</comment>
+  </data>
+  <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
+    <value>Mica Alt</value>
+    <comment>Label for mica alt material option</comment>
+  </data>
+  <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
+    <value>Acrylic</value>
+    <comment>Label for acrylic material option</comment>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Aura Click (Preview)</value>
+    <comment>This is the title of the application.</comment>
+  </data>
+  <data name="AppTitleBar.Title" xml:space="preserve">
+    <value>Aura Click</value>
+    <comment>Title text of app title bar</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailedTitle" xml:space="preserve">
+    <value>Invalid hotkey</value>
+    <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailedContent" xml:space="preserve">
+    <value>Failed to register hotkey. Change the hotkey to another key.</value>
+    <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailedCloseButtonText" xml:space="preserve">
+    <value>Close</value>
+    <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>
 </root>

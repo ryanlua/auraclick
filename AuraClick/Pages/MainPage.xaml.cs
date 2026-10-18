@@ -23,8 +23,12 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.BadgeNotifications;
 using Windows.System;
 using Windows.Win32;
+using Windows.Win32.Foundation;
+using WinRT.Interop;
+using WinUIEx;
 using WindowMessageEventArgs = WinUIEx.Messaging.WindowMessageEventArgs;
 using WindowMessageMonitor = WinUIEx.Messaging.WindowMessageMonitor;
+using WindowState = WinUIEx.WindowState;
 
 namespace AuraClick;
 
@@ -89,9 +93,9 @@ public sealed partial class MainPage : Page
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             XamlRoot = XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "Invalid hotkey",
-            Content = "Failed to register hotkey. Change the hotkey to another key.",
-            CloseButtonText = "Close",
+            Title = "ContentDialogHotkeyFailedTitle".GetLocalized(),
+            Content = "ContentDialogHotkeyFailedContent".GetLocalized(),
+            CloseButtonText = "ContentDialogHotkeyFailedCloseButtonText".GetLocalized(),
             DefaultButton = ContentDialogButton.Close
         };
 
@@ -100,12 +104,30 @@ public sealed partial class MainPage : Page
 
     private async Task ApplyHotkeySelectionAsync()
     {
-        if (HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys))
+        bool registered = HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
+        SetShortcutError(!registered);
+
+        if (registered)
         {
             return;
         }
 
         await ShowHotkeyRegistrationFailedAsync();
+    }
+
+    /// <summary>
+    /// Shows or clears the error state on the hotkey's key visuals.
+    /// </summary>
+    private void SetShortcutError(bool isError)
+    {
+        // Shortcut doesn't expose an error state, and its key visuals are regenerated whenever its keys change.
+        ToggleShortcut.UpdateLayout();
+        foreach (KeyVisual keyVisual in ToggleShortcut.FindDescendants().OfType<KeyVisual>())
+        {
+            keyVisual.IsError = isError;
+        }
+
+        ToolTipService.SetToolTip(ToggleShortcut, isError ? "ContentDialogHotkeyFailedContent".GetLocalized() : null);
     }
 
     /// <summary>
@@ -122,7 +144,7 @@ public sealed partial class MainPage : Page
     private async void MainPage_Loaded(object sender, RoutedEventArgs e)
     {
         // Set badge notification
-        SetNotificationBadge(BadgeNotificationGlyph.Paused);
+        RefreshNotificationBadge();
 
         // Set up window message monitor
         if (monitor is null)
@@ -192,21 +214,13 @@ public sealed partial class MainPage : Page
     /// </summary>
     public static void RefreshNotificationBadge()
     {
-        SetNotificationBadge(AutoClicker.IsRunning ? BadgeNotificationGlyph.Playing : BadgeNotificationGlyph.Paused);
-    }
-
-    /// <summary>
-    /// Sets the notification badge.
-    /// </summary>
-    private static void SetNotificationBadge(BadgeNotificationGlyph glyph)
-    {
-        if (glyph == BadgeNotificationGlyph.Paused && settingsPage.NotificationBadgePaused)
+        if (AutoClicker.IsRunning && settingsPage.NotificationBadgePlaying)
         {
-            BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
+            BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Playing);
         }
-        else if (glyph == BadgeNotificationGlyph.Playing && settingsPage.NotificationBadgePlaying)
+        else if (!AutoClicker.IsRunning && settingsPage.NotificationBadgePaused)
         {
-            BadgeNotificationManager.Current.SetBadgeAsGlyph(glyph);
+            BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Paused);
         }
         else
         {
@@ -215,6 +229,22 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
+    /// Refreshes the taskbar progress indicator using the current application state and settings.
+    /// </summary>
+    public static void RefreshProgressIndicator()
+    {
+        HWND hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
+
+        if (AutoClicker.IsRunning && settingsPage.ProgressIndicator)
+        {
+            TaskbarHelper.SetProgressState(hwnd, TaskbarStates.Indeterminate);
+        }
+        else
+        {
+            TaskbarHelper.SetProgressState(hwnd, TaskbarStates.NoProgress);
+        }
+    }
+    /// <summary>
     /// Handles the Checked event of the ToggleButtonStart control.
     /// </summary>
     private async void ToggleButtonStart_OnChecked(object sender, RoutedEventArgs e)
@@ -222,10 +252,16 @@ public sealed partial class MainPage : Page
         ToggleButtonStart.IsEnabled = false;
 
         FontIconStart.Glyph = "\uEDB4";
-        SetNotificationBadge(BadgeNotificationGlyph.Playing);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
         _ = HotkeyManager.RegisterHotkey(StopHotkeyId, StopShortcut);
         AutoClicker.Start();
+        RefreshNotificationBadge();
+        RefreshProgressIndicator();
+
+        if (settingsPage.AutomaticMinimizeMinimize)
+        {
+            App.MainWindow.Minimize();
+        }
 
         await Task.Delay(1000);
         ToggleButtonStart.IsEnabled = true;
@@ -238,10 +274,17 @@ public sealed partial class MainPage : Page
     {
         ToggleButtonStart.IsEnabled = true;
         FontIconStart.Glyph = "\uEE4A";
-        SetNotificationBadge(BadgeNotificationGlyph.Paused);
         ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
         AutoClicker.Stop();
         _ = HotkeyManager.UnregisterHotkey(StopHotkeyId);
+        RefreshNotificationBadge();
+        RefreshProgressIndicator();
+
+        // Restore would also un-maximize a maximized window, so only restore when minimized
+        if (settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
+        {
+            App.MainWindow.Restore();
+        }
     }
 
     /// <summary>
