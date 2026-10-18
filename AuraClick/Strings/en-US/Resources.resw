@@ -186,7 +186,7 @@
     <comment>Header text of Click repeat check box</comment>
   </data>
   <data name="ClickRepeatCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop clicking after a certain amount or until stopped</value>
+    <value>Stop after a certain amount of clicks</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="ClickOffsetCheckBox.Content" xml:space="preserve">
