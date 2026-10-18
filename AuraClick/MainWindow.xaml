@@ -9,8 +9,9 @@
     xmlns:windowex="using:WinUIEx"
     Width="380"
     Height="360"
+    MinWidth="380"
+    MinHeight="360"
     IsMaximizable="False"
-    IsResizable="False"
     mc:Ignorable="d">
 
     <Grid>
