@@ -65,10 +65,9 @@ public sealed partial class MainPage : Page
     {
         InitializeComponent();
         Loaded += MainPage_Loaded;
-        AutoClicker.ClickLimitReached += (_, _) => DispatcherQueue.TryEnqueue(() => ToggleButtonStart.IsChecked = AutoClicker.IsRunning);
+        AutoClicker.ClickLimitReached += (_, _) => DispatcherQueue.TryEnqueue(() => StartToggleButton.IsChecked = AutoClicker.IsRunning);
 
         ToggleShortcut.Keys = CreateDefaultShortcut();
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
     }
 
     private static List<object> CreateDefaultShortcut()
@@ -83,9 +82,9 @@ public sealed partial class MainPage : Page
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             XamlRoot = XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "ContentDialogHotkeyFailedTitle".GetLocalized(),
-            Content = "ContentDialogHotkeyFailedContent".GetLocalized(),
-            CloseButtonText = "ContentDialogHotkeyFailedCloseButtonText".GetLocalized(),
+            Title = "ContentDialogHotkeyFailed/Title".GetLocalized(),
+            Content = "ContentDialogHotkeyFailed/Content".GetLocalized(),
+            CloseButtonText = "ContentDialogHotkeyFailed/CloseButtonText".GetLocalized(),
             DefaultButton = ContentDialogButton.Close
         };
 
@@ -117,7 +116,7 @@ public sealed partial class MainPage : Page
             keyVisual.IsError = isError;
         }
 
-        ToolTipService.SetToolTip(ToggleShortcut, isError ? "ContentDialogHotkeyFailedContent".GetLocalized() : null);
+        ToolTipService.SetToolTip(ToggleShortcut, isError ? "ContentDialogHotkeyFailed/Content".GetLocalized() : null);
     }
 
     /// <summary>
@@ -167,7 +166,7 @@ public sealed partial class MainPage : Page
 
         if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == ToggleHotkeyId)
         {
-            ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
+            StartToggleButton.IsChecked = !StartToggleButton.IsChecked;
         }
     }
 
@@ -207,14 +206,14 @@ public sealed partial class MainPage : Page
         }
     }
     /// <summary>
-    /// Handles the Checked event of the ToggleButtonStart control.
+    /// Handles the Checked event of the StartToggleButton control.
     /// </summary>
-    private async void ToggleButtonStart_OnChecked(object sender, RoutedEventArgs e)
+    private async void StartToggleButton_OnChecked(object sender, RoutedEventArgs e)
     {
-        ToggleButtonStart.IsEnabled = false;
+        StartToggleButton.IsEnabled = false;
 
-        FontIconStart.Glyph = "\uEDB4";
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
+        StartFontIcon.Glyph = "\uEDB4";
+        ToolTipService.SetToolTip(StartToggleButton, "ToggleButtonPause/ToolTipService/ToolTip".GetLocalized());
         AutoClicker.Start();
         RefreshNotificationBadge();
         RefreshProgressIndicator();
@@ -225,17 +224,17 @@ public sealed partial class MainPage : Page
         }
 
         await Task.Delay(1000);
-        ToggleButtonStart.IsEnabled = true;
+        StartToggleButton.IsEnabled = true;
     }
 
     /// <summary>
-    /// Handles the Unchecked event of the ToggleButtonStart control.
+    /// Handles the Unchecked event of the StartToggleButton control.
     /// </summary>
-    private void ToggleButtonStart_OnUnchecked(object sender, RoutedEventArgs e)
+    private void StartToggleButton_OnUnchecked(object sender, RoutedEventArgs e)
     {
-        ToggleButtonStart.IsEnabled = true;
-        FontIconStart.Glyph = "\uEE4A";
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
+        StartToggleButton.IsEnabled = true;
+        StartFontIcon.Glyph = "\uEE4A";
+        ToolTipService.SetToolTip(StartToggleButton, "ToggleButtonStart/ToolTipService/ToolTip".GetLocalized());
         AutoClicker.Stop();
         RefreshNotificationBadge();
         RefreshProgressIndicator();

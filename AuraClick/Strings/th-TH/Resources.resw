@@ -177,31 +177,31 @@
     <value>การตั้งค่า</value>
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
-  <data name="ToggleButtonStartTooltipStart" xml:space="preserve">
+  <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
     <value>เริ่ม</value>
     <comment>This is the tool tip automation name for the Start button.</comment>
   </data>
-  <data name="ClickRepeatCheckBox.Content" xml:space="preserve">
+  <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
     <value>คลิกซ้ำ</value>
     <comment>Header text of Click repeat check box</comment>
   </data>
-  <data name="ClickRepeatCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
     <value>หยุดการคลิกหลังจำนวนหนึ่งหรือจนกว่าจะหยุดเอง</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
-  <data name="ClickOffsetCheckBox.Content" xml:space="preserve">
+  <data name="CheckBoxClickOffset.Content" xml:space="preserve">
     <value>สุ่มระยะห่าง</value>
     <comment>Header text of Click offset check box</comment>
   </data>
-  <data name="ClickOffsetCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
     <value>สุ่มระยะเวลาระหว่างการคลิก</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
-  <data name="SettingsSubtitleTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockSettings.Text" xml:space="preserve">
     <value>การตั้งค่า</value>
     <comment>Header text of Settings page</comment>
   </data>
-  <data name="AppearanceSettingsSectionHeaderTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockAppearance.Text" xml:space="preserve">
     <value>รูปลักษณ์</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
@@ -245,7 +245,7 @@
     <value>พฤติกรรม</value>
     <comment>Subtitle of behavior setting on Settings page</comment>
   </data>
-  <data name="AppTitleBar.Subtitle" xml:space="preserve">
+  <data name="TitleBarApp.Subtitle" xml:space="preserve">
     <value>Preview</value>
     <comment>Subtitle text of app title bar</comment>
   </data>
@@ -273,7 +273,7 @@
     <value>แสดงไอคอนขณะหยุดชั่วคราว</value>
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
-  <data name="ToggleButtonStartTooltipStop" xml:space="preserve">
+  <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
     <value>หยุดชั่วคราว</value>
     <comment>This is the tool tip automation name for the Stop button.</comment>
   </data>
@@ -321,7 +321,7 @@
     <value>Aura Click (Preview)</value>
     <comment>This is the title of the application.</comment>
   </data>
-  <data name="AppTitleBar.Title" xml:space="preserve">
+  <data name="TitleBarApp.Title" xml:space="preserve">
     <value>Aura Click</value>
     <comment>Title text of app title bar</comment>
   </data>

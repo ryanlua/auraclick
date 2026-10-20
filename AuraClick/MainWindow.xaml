@@ -22,7 +22,7 @@
 
         <TitleBar
             x:Name="AppTitleBar"
-            x:Uid="AppTitleBar"
+            x:Uid="TitleBarApp"
             BackRequested="TitleBar_BackRequested"
             IsBackButtonVisible="{x:Bind NavFrame.CanGoBack, Mode=OneWay}">
             <TitleBar.IconSource>
