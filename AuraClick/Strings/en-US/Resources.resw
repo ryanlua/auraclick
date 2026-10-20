@@ -170,7 +170,7 @@
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Which button to start the auto clicker</value>
+    <value>Key that starts and stops the auto clicker</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
@@ -186,7 +186,7 @@
     <comment>Header text of Click repeat check box</comment>
   </data>
   <data name="ClickRepeatCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop after a certain amount of clicks</value>
+    <value>Stop after a certain number of clicks</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="ClickOffsetCheckBox.Content" xml:space="preserve">
@@ -318,8 +318,8 @@
     <comment>Label for Minimize on clicking start check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
-    <value>Restore on paused</value>
-    <comment>Label for Restore on paused check box on the Behavior panel</comment>
+    <value>Restore when paused</value>
+    <comment>Label for Restore when paused check box on the Behavior panel</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
     <value>Progress indicator</value>
