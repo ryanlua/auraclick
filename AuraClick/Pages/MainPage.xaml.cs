@@ -120,14 +120,6 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
-    /// Determines whether a control should be enabled based on a checkbox state and a running-state toggle.
-    /// </summary>
-    private bool IsControlEnabled(bool? isChecked, bool? isRunning)
-    {
-        return (isChecked ?? false) && !(isRunning ?? false);
-    }
-
-    /// <summary>
     /// Handles the Loaded event of the MainPage control.
     /// </summary>
     private async void MainPage_Loaded(object sender, RoutedEventArgs e)
