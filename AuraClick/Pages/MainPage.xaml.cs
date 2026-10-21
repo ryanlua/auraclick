@@ -96,12 +96,10 @@ public sealed partial class MainPage : Page
         bool registered = HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
         SetShortcutError(!registered);
 
-        if (registered)
+        if (!registered)
         {
-            return;
+            await ShowHotkeyRegistrationFailedAsync();
         }
-
-        await ShowHotkeyRegistrationFailedAsync();
     }
 
     /// <summary>
