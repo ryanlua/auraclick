@@ -208,7 +208,7 @@ public sealed partial class MainPage : Page
     /// <summary>
     /// Handles the Checked event of the StartToggleButton control.
     /// </summary>
-    private async void StartToggleButton_OnChecked(object sender, RoutedEventArgs e)
+    private async void StartToggleButton_Checked(object sender, RoutedEventArgs e)
     {
         StartToggleButton.IsEnabled = false;
 
@@ -230,7 +230,7 @@ public sealed partial class MainPage : Page
     /// <summary>
     /// Handles the Unchecked event of the StartToggleButton control.
     /// </summary>
-    private void StartToggleButton_OnUnchecked(object sender, RoutedEventArgs e)
+    private void StartToggleButton_Unchecked(object sender, RoutedEventArgs e)
     {
         StartToggleButton.IsEnabled = true;
         StartFontIcon.Glyph = "\uEE4A";

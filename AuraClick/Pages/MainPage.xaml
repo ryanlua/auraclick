@@ -44,7 +44,6 @@
         <!--  Click Interval  -->
         <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource StackPanelSpacing}">
             <dev:IsEnabledTextBlock
-                x:Name="ClickIntervalTextBlock"
                 x:Uid="TextBlockClickInterval"
                 IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <Grid ColumnSpacing="{StaticResource NumberBoxColumnSpacing}">
@@ -112,7 +111,6 @@
             Grid.Column="0"
             Spacing="{StaticResource StackPanelSpacing}">
             <dev:IsEnabledTextBlock
-                x:Name="HotkeyTextBlock"
                 x:Uid="TextBlockHotkey"
                 IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
             <dev:Shortcut
@@ -180,8 +178,8 @@
                 x:Uid="ToggleButtonStart"
                 Height="32"
                 HorizontalAlignment="Stretch"
-                Checked="StartToggleButton_OnChecked"
-                Unchecked="StartToggleButton_OnUnchecked">
+                Checked="StartToggleButton_Checked"
+                Unchecked="StartToggleButton_Unchecked">
                 <FontIcon x:Name="StartFontIcon" Glyph="&#xEE4A;" />
             </ToggleButton>
 

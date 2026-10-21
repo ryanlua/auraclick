@@ -179,11 +179,11 @@
   </data>
   <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
     <value>Start</value>
-    <comment>This is the tool tip automation name for the Start button.</comment>
+    <comment>Tool tip of the Start button while the auto clicker is stopped</comment>
   </data>
   <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
     <value>Click repeat</value>
-    <comment>Header text of Click repeat check box</comment>
+    <comment>Label for Click repeat check box</comment>
   </data>
   <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
     <value>Stop after a certain number of clicks</value>
@@ -191,7 +191,7 @@
   </data>
   <data name="CheckBoxClickOffset.Content" xml:space="preserve">
     <value>Random offset</value>
-    <comment>Header text of Click offset check box</comment>
+    <comment>Label for Random offset check box</comment>
   </data>
   <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
     <value>Random interval offset between clicks</value>
@@ -207,11 +207,11 @@
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
     <value>Theme</value>
-    <comment>Title of Theme expander</comment>
+    <comment>Title of Theme settings card</comment>
   </data>
   <data name="SettingsCardTheme.Description" xml:space="preserve">
     <value>Select which app theme to display</value>
-    <comment>Description of Theme expander</comment>
+    <comment>Description of Theme settings card</comment>
   </data>
   <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
     <value>Use system setting</value>
@@ -227,11 +227,11 @@
   </data>
   <data name="SettingsCardBackdropMaterial.Header" xml:space="preserve">
     <value>Backdrop material</value>
-    <comment>Title of Backdrop material expander</comment>
+    <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
     <value>System backdrop material for window background</value>
-    <comment>Description of Theme expander</comment>
+    <comment>Description of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
     <value>Always on top</value>
@@ -275,7 +275,7 @@
   </data>
   <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
     <value>Pause</value>
-    <comment>This is the tool tip automation name for the Stop button.</comment>
+    <comment>Tool tip of the Start button while the auto clicker is running</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
     <value>Related links</value>
