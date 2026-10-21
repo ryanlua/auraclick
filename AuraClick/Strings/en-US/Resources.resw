@@ -159,11 +159,11 @@
   </data>
   <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
     <value>clicks</value>
-    <comment>Unit text to the right of the click repeat number box</comment>
+    <comment>Unit text of Click repeat number box</comment>
   </data>
   <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
     <value>milliseconds</value>
-    <comment>Unit text to the right of the random offset number box</comment>
+    <comment>Unit text of Random offset number box</comment>
   </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
     <value>Click interval</value>
@@ -187,7 +187,7 @@
   </data>
   <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
     <value>Start</value>
-    <comment>Tool tip of the Start button while the auto clicker is stopped</comment>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
   <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
     <value>Click repeat</value>
@@ -283,7 +283,7 @@
   </data>
   <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
     <value>Pause</value>
-    <comment>Tool tip of the Start button while the auto clicker is running</comment>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
     <value>Related links</value>
@@ -291,7 +291,7 @@
   </data>
   <data name="TextBlockAbout.Text" xml:space="preserve">
     <value>About</value>
-    <comment>Subtitle of about message on Settings page</comment>
+    <comment>Subtitle of about setting on Settings page</comment>
   </data>
   <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
     <value>Change toggle hotkey</value>
@@ -323,7 +323,7 @@
   </data>
   <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
     <value>Minimize when clicking starts</value>
-    <comment>Label for Minimize on clicking start check box on the Behavior panel</comment>
+    <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
     <value>Restore when paused</value>
@@ -355,7 +355,7 @@
   </data>
   <data name="ButtonLanguageRestart.Content" xml:space="preserve">
     <value>Restart</value>
-    <comment>Button that restarts the app to apply a language change</comment>
+    <comment>Displayed on the button that restarts the app to apply a language change</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
     <value>Mica</value>
