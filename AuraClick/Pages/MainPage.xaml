@@ -128,14 +128,19 @@
                         x:Name="ClickRepeatCheckBox"
                         x:Uid="CheckBoxClickRepeat"
                         IsChecked="{x:Bind helpers:AutoClicker.ClickAmountEnabled, Mode=TwoWay}" />
-                    <NumberBox
-                        x:Name="ClickRepeatNumberBox"
-                        HorizontalAlignment="Left"
-                        IsEnabled="{x:Bind (x:Boolean)ClickRepeatCheckBox.IsChecked}"
-                        LargeChange="10"
-                        Minimum="1"
-                        SpinButtonPlacementMode="Compact"
-                        Value="{x:Bind helpers:AutoClicker.ClickAmount, Mode=TwoWay}" />
+                    <StackPanel Orientation="Horizontal" Spacing="{StaticResource StackPanelSpacing}">
+                        <NumberBox
+                            x:Name="ClickRepeatNumberBox"
+                            IsEnabled="{x:Bind (x:Boolean)ClickRepeatCheckBox.IsChecked}"
+                            LargeChange="10"
+                            Minimum="1"
+                            SpinButtonPlacementMode="Compact"
+                            Value="{x:Bind helpers:AutoClicker.ClickAmount, Mode=TwoWay}" />
+                        <dev:IsEnabledTextBlock
+                            x:Uid="TextBlockClickRepeatUnit"
+                            VerticalAlignment="Center"
+                            IsEnabled="{x:Bind (x:Boolean)ClickRepeatCheckBox.IsChecked}" />
+                    </StackPanel>
                 </StackPanel>
 
                 <!--  Click Offset  -->
@@ -144,16 +149,21 @@
                         x:Name="ClickOffsetCheckBox"
                         x:Uid="CheckBoxClickOffset"
                         IsChecked="{x:Bind helpers:AutoClicker.ClickDelayOffsetEnabled, Mode=TwoWay}" />
-                    <NumberBox
-                        x:Name="ClickOffsetNumberBox"
-                        HorizontalAlignment="Left"
-                        AcceptsExpression="True"
-                        IsEnabled="{x:Bind (x:Boolean)ClickOffsetCheckBox.IsChecked}"
-                        LargeChange="25"
-                        Minimum="1"
-                        SmallChange="5"
-                        SpinButtonPlacementMode="Compact"
-                        Value="{x:Bind helpers:AutoClicker.ClickDelayOffset, Mode=TwoWay}" />
+                    <StackPanel Orientation="Horizontal" Spacing="{StaticResource StackPanelSpacing}">
+                        <NumberBox
+                            x:Name="ClickOffsetNumberBox"
+                            AcceptsExpression="True"
+                            IsEnabled="{x:Bind (x:Boolean)ClickOffsetCheckBox.IsChecked}"
+                            LargeChange="25"
+                            Minimum="1"
+                            SmallChange="5"
+                            SpinButtonPlacementMode="Compact"
+                            Value="{x:Bind helpers:AutoClicker.ClickDelayOffset, Mode=TwoWay}" />
+                        <dev:IsEnabledTextBlock
+                            x:Uid="TextBlockClickOffsetUnit"
+                            VerticalAlignment="Center"
+                            IsEnabled="{x:Bind (x:Boolean)ClickOffsetCheckBox.IsChecked}" />
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </ContentControl>
