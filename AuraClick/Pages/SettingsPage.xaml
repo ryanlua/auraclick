@@ -25,7 +25,7 @@
         </Style>
     </Page.Resources>
 
-    <ScrollViewer x:Name="SettingsScrollViewer">
+    <ScrollViewer>
         <Grid Margin="{StaticResource ContentMargin}">
             <StackPanel Spacing="{StaticResource SettingsCardSpacing}">
 

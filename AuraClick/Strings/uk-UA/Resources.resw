@@ -121,15 +121,15 @@
     <value>Сучасний автоклікер для Windows із високою продуктивністю.</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="ComboBoxItemLeft.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
     <value>Ліва</value>
     <comment>Label for left mouse button option</comment>
   </data>
-  <data name="ComboBoxItemMiddle.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
     <value>Середня</value>
     <comment>Label for middle mouse button option</comment>
   </data>
-  <data name="ComboBoxItemRight.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
     <value>Права</value>
     <comment>Label for right mouse button option</comment>
   </data>

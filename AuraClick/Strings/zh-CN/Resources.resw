@@ -121,15 +121,15 @@
     <value>一款高性能的现代 Windows 自动点击器。</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="ComboBoxItemLeft.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
     <value>左键</value>
     <comment>Label for left mouse button option</comment>
   </data>
-  <data name="ComboBoxItemMiddle.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
     <value>中键</value>
     <comment>Label for middle mouse button option</comment>
   </data>
-  <data name="ComboBoxItemRight.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
     <value>右键</value>
     <comment>Label for right mouse button option</comment>
   </data>

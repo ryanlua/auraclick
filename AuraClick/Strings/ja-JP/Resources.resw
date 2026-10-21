@@ -121,15 +121,15 @@
     <value>Windows 用の高性能で最新のオートクリッカーです。</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="ComboBoxItemLeft.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
     <value>左ボタン</value>
     <comment>Label for left mouse button option</comment>
   </data>
-  <data name="ComboBoxItemMiddle.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
     <value>中ボタン</value>
     <comment>Label for middle mouse button option</comment>
   </data>
-  <data name="ComboBoxItemRight.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
     <value>右ボタン</value>
     <comment>Label for right mouse button option</comment>
   </data>

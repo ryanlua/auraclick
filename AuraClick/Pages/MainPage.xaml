@@ -95,15 +95,15 @@
 
         <!--  Mouse Button  -->
         <ComboBox
-            x:Name="MouseButtonTypeComboBox"
+            x:Name="MouseButtonComboBox"
             x:Uid="ComboBoxMouseButton"
             Grid.Row="1"
             Grid.Column="0"
             IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}"
             SelectedIndex="{x:Bind helpers:AutoClicker.MouseButton, Mode=TwoWay}">
-            <ComboBoxItem x:Name="LeftComboBoxItem" x:Uid="ComboBoxItemLeft" />
-            <ComboBoxItem x:Name="MiddleComboBoxItem" x:Uid="ComboBoxItemMiddle" />
-            <ComboBoxItem x:Name="RightComboBoxItem" x:Uid="ComboBoxItemRight" />
+            <ComboBoxItem x:Name="LeftMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonLeft" />
+            <ComboBoxItem x:Name="MiddleMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonMiddle" />
+            <ComboBoxItem x:Name="RightMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonRight" />
         </ComboBox>
 
         <!--  Hotkey  -->
