@@ -27,148 +27,139 @@
     <Grid Margin="{StaticResource ContentMargin}" RowSpacing="{StaticResource GridRowSpacing}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
         <win:Grid.ChildrenTransitions>
             <win:EntranceThemeTransition FromVerticalOffset="50" />
             <win:RepositionThemeTransition IsStaggeringEnabled="False" />
         </win:Grid.ChildrenTransitions>
 
-        <!--  Click Interval  -->
-        <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource StackPanelSpacing}">
-            <dev:IsEnabledTextBlock x:Uid="TextBlockClickInterval" IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
-            <Grid ColumnSpacing="{StaticResource NumberBoxColumnSpacing}">
+        <!--  Auto click settings  -->
+        <ContentControl HorizontalContentAlignment="Stretch" IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}">
+            <Grid RowSpacing="{StaticResource GridRowSpacing}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <NumberBox
-                    x:Name="HoursNumberBox"
-                    x:Uid="NumberBoxHours"
-                    IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}"
-                    Maximum="24"
-                    Minimum="0"
-                    PlaceholderText="24"
-                    Value="{x:Bind helpers:AutoClicker.HoursDelay, Mode=TwoWay}" />
-                <NumberBox
-                    x:Name="MinutesNumberBox"
-                    x:Uid="NumberBoxMinutes"
-                    Grid.Column="1"
-                    IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}"
-                    Maximum="60"
-                    Minimum="0"
-                    PlaceholderText="60"
-                    Value="{x:Bind helpers:AutoClicker.MinutesDelay, Mode=TwoWay}" />
-                <NumberBox
-                    x:Name="SecondsNumberBox"
-                    x:Uid="NumberBoxSeconds"
-                    Grid.Column="2"
-                    IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}"
-                    Maximum="60"
-                    Minimum="0"
-                    PlaceholderText="60"
-                    Value="{x:Bind helpers:AutoClicker.SecondsDelay, Mode=TwoWay}" />
-                <NumberBox
-                    x:Name="MillisecondsNumberBox"
-                    x:Uid="NumberBoxMilliseconds"
-                    Grid.Column="3"
-                    IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}"
-                    Maximum="1000"
-                    Minimum="0"
-                    PlaceholderText="1000"
-                    SmallChange="10"
-                    Value="{x:Bind helpers:AutoClicker.MillisecondsDelay, Mode=TwoWay}" />
+
+                <!--  Click Interval  -->
+                <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource StackPanelSpacing}">
+                    <dev:IsEnabledTextBlock x:Uid="TextBlockClickInterval" />
+                    <Grid ColumnSpacing="{StaticResource NumberBoxColumnSpacing}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <NumberBox
+                            x:Name="HoursNumberBox"
+                            x:Uid="NumberBoxHours"
+                            Maximum="24"
+                            Minimum="0"
+                            PlaceholderText="24"
+                            Value="{x:Bind helpers:AutoClicker.HoursDelay, Mode=TwoWay}" />
+                        <NumberBox
+                            x:Name="MinutesNumberBox"
+                            x:Uid="NumberBoxMinutes"
+                            Grid.Column="1"
+                            Maximum="60"
+                            Minimum="0"
+                            PlaceholderText="60"
+                            Value="{x:Bind helpers:AutoClicker.MinutesDelay, Mode=TwoWay}" />
+                        <NumberBox
+                            x:Name="SecondsNumberBox"
+                            x:Uid="NumberBoxSeconds"
+                            Grid.Column="2"
+                            Maximum="60"
+                            Minimum="0"
+                            PlaceholderText="60"
+                            Value="{x:Bind helpers:AutoClicker.SecondsDelay, Mode=TwoWay}" />
+                        <NumberBox
+                            x:Name="MillisecondsNumberBox"
+                            x:Uid="NumberBoxMilliseconds"
+                            Grid.Column="3"
+                            Maximum="1000"
+                            Minimum="0"
+                            PlaceholderText="1000"
+                            SmallChange="10"
+                            Value="{x:Bind helpers:AutoClicker.MillisecondsDelay, Mode=TwoWay}" />
+                    </Grid>
+                </StackPanel>
+
+                <!--  Mouse Button  -->
+                <ComboBox
+                    x:Name="MouseButtonComboBox"
+                    x:Uid="ComboBoxMouseButton"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    SelectedIndex="{x:Bind helpers:AutoClicker.MouseButton, Mode=TwoWay}">
+                    <ComboBoxItem x:Name="LeftMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonLeft" />
+                    <ComboBoxItem x:Name="MiddleMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonMiddle" />
+                    <ComboBoxItem x:Name="RightMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonRight" />
+                </ComboBox>
+
+                <!--  Hotkey  -->
+                <StackPanel
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Spacing="{StaticResource StackPanelSpacing}">
+                    <dev:IsEnabledTextBlock x:Uid="TextBlockHotkey" />
+                    <dev:Shortcut
+                        x:Name="ToggleShortcut"
+                        x:Uid="ShortcutToggle"
+                        ClosedContentDialog="ToggleShortcut_ClosedContentDialog"
+                        InfoTitle=""
+                        OpenedContentDialog="ToggleShortcut_OpenedContentDialog"
+                        PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
+                        SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick"
+                        WarningTitle="" />
+                </StackPanel>
+
+                <!--  Click Repeat  -->
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <CheckBox
+                        x:Name="ClickRepeatCheckBox"
+                        x:Uid="CheckBoxClickRepeat"
+                        IsChecked="{x:Bind helpers:AutoClicker.ClickAmountEnabled, Mode=TwoWay}" />
+                    <NumberBox
+                        x:Name="ClickRepeatNumberBox"
+                        HorizontalAlignment="Left"
+                        IsEnabled="{x:Bind (x:Boolean)ClickRepeatCheckBox.IsChecked}"
+                        LargeChange="10"
+                        Minimum="1"
+                        SpinButtonPlacementMode="Compact"
+                        Value="{x:Bind helpers:AutoClicker.ClickAmount, Mode=TwoWay}" />
+                </StackPanel>
+
+                <!--  Click Offset  -->
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <CheckBox
+                        x:Name="ClickOffsetCheckBox"
+                        x:Uid="CheckBoxClickOffset"
+                        IsChecked="{x:Bind helpers:AutoClicker.ClickDelayOffsetEnabled, Mode=TwoWay}" />
+                    <NumberBox
+                        x:Name="ClickOffsetNumberBox"
+                        HorizontalAlignment="Left"
+                        AcceptsExpression="True"
+                        IsEnabled="{x:Bind (x:Boolean)ClickOffsetCheckBox.IsChecked}"
+                        LargeChange="25"
+                        Minimum="1"
+                        SmallChange="5"
+                        SpinButtonPlacementMode="Compact"
+                        Value="{x:Bind helpers:AutoClicker.ClickDelayOffset, Mode=TwoWay}" />
+                </StackPanel>
             </Grid>
-        </StackPanel>
-
-        <!--  Mouse Button  -->
-        <ComboBox
-            x:Name="MouseButtonComboBox"
-            x:Uid="ComboBoxMouseButton"
-            Grid.Row="1"
-            Grid.Column="0"
-            IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}"
-            SelectedIndex="{x:Bind helpers:AutoClicker.MouseButton, Mode=TwoWay}">
-            <ComboBoxItem x:Name="LeftMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonLeft" />
-            <ComboBoxItem x:Name="MiddleMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonMiddle" />
-            <ComboBoxItem x:Name="RightMouseButtonComboBoxItem" x:Uid="ComboBoxItemMouseButtonRight" />
-        </ComboBox>
-
-        <!--  Hotkey  -->
-        <StackPanel
-            Grid.Row="2"
-            Grid.Column="0"
-            Spacing="{StaticResource StackPanelSpacing}">
-            <dev:IsEnabledTextBlock x:Uid="TextBlockHotkey" IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}" />
-            <dev:Shortcut
-                x:Name="ToggleShortcut"
-                x:Uid="ShortcutToggle"
-                ClosedContentDialog="ToggleShortcut_ClosedContentDialog"
-                InfoTitle=""
-                IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}"
-                OpenedContentDialog="ToggleShortcut_OpenedContentDialog"
-                PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
-                SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick"
-                WarningTitle="" />
-        </StackPanel>
-
-        <!--  Click Repeat  -->
-        <ContentControl
-            Grid.Row="1"
-            Grid.Column="1"
-            IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}">
-            <StackPanel>
-                <CheckBox
-                    x:Name="ClickRepeatCheckBox"
-                    x:Uid="CheckBoxClickRepeat"
-                    IsChecked="{x:Bind helpers:AutoClicker.ClickAmountEnabled, Mode=TwoWay}" />
-                <NumberBox
-                    x:Name="ClickRepeatNumberBox"
-                    HorizontalAlignment="Left"
-                    IsEnabled="{x:Bind (x:Boolean)ClickRepeatCheckBox.IsChecked}"
-                    LargeChange="10"
-                    Minimum="1"
-                    SpinButtonPlacementMode="Compact"
-                    Value="{x:Bind helpers:AutoClicker.ClickAmount, Mode=TwoWay}" />
-            </StackPanel>
-        </ContentControl>
-
-        <!--  Click Offset  -->
-        <ContentControl
-            Grid.Row="2"
-            Grid.Column="1"
-            IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}">
-            <StackPanel>
-                <CheckBox
-                    x:Name="ClickOffsetCheckBox"
-                    x:Uid="CheckBoxClickOffset"
-                    IsChecked="{x:Bind helpers:AutoClicker.ClickDelayOffsetEnabled, Mode=TwoWay}" />
-                <NumberBox
-                    x:Name="ClickOffsetNumberBox"
-                    HorizontalAlignment="Left"
-                    AcceptsExpression="True"
-                    IsEnabled="{x:Bind (x:Boolean)ClickOffsetCheckBox.IsChecked}"
-                    LargeChange="25"
-                    Minimum="1"
-                    SmallChange="5"
-                    SpinButtonPlacementMode="Compact"
-                    Value="{x:Bind helpers:AutoClicker.ClickDelayOffset, Mode=TwoWay}" />
-            </StackPanel>
         </ContentControl>
 
         <Grid
-            Grid.Row="3"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
+            Grid.Row="1"
             VerticalAlignment="Bottom"
             ColumnSpacing="{StaticResource ButtonColumnSpacing}">
 
