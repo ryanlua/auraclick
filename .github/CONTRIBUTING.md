@@ -32,7 +32,7 @@ You can build the project with Visual Studio. Before building the project, ensur
 
 To debug the project, press <kbd>F5</kbd> or choose **Debug** > **Start Debugging**.
 
-For more information, learn how to [build and clean projects and solutions in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/install/import-export-installation-configurations).
+For more information, learn how to [build and clean projects and solutions in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/ide/building-and-cleaning-projects-and-solutions-in-visual-studio).
 
 ## Helpful resources
 
