@@ -41,17 +41,17 @@ public sealed partial class SettingsPage : Page
     /// <summary>
     /// Application settings container in the local app data store.
     /// </summary>
-    private readonly ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+    private readonly ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
 
     /// <summary>
     /// Languages the app is localized into.
     /// </summary>
-    private static readonly List<string> Languages = [.. ApplicationLanguages.ManifestLanguages];
+    private static readonly List<string> s_languages = [.. ApplicationLanguages.ManifestLanguages];
 
     /// <summary>
     /// Language override the app was started with; resources only reload on restart.
     /// </summary>
-    private static readonly string StartupLanguageOverride = ApplicationLanguages.PrimaryLanguageOverride;
+    private static readonly string s_startupLanguageOverride = ApplicationLanguages.PrimaryLanguageOverride;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingsPage" /> class.
@@ -66,7 +66,7 @@ public sealed partial class SettingsPage : Page
         IsAlwaysOnTop = IsAlwaysOnTop;
         LanguageSelectedIndex = LanguageSelectedIndex;
 
-        foreach (string language in Languages)
+        foreach (string language in s_languages)
         {
             LanguageComboBox.Items.Add(CultureInfo.GetCultureInfo(language).NativeName);
         }
@@ -81,10 +81,10 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool NotificationBadgePlaying
     {
-        get => (bool)(localSettings.Values[nameof(NotificationBadgePlaying)] ?? true);
+        get => (bool)(_localSettings.Values[nameof(NotificationBadgePlaying)] ?? true);
         set
         {
-            localSettings.Values[nameof(NotificationBadgePlaying)] = value;
+            _localSettings.Values[nameof(NotificationBadgePlaying)] = value;
             MainPage.RefreshNotificationBadge();
         }
     }
@@ -94,10 +94,10 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool NotificationBadgePaused
     {
-        get => (bool)(localSettings.Values[nameof(NotificationBadgePaused)] ?? true);
+        get => (bool)(_localSettings.Values[nameof(NotificationBadgePaused)] ?? true);
         set
         {
-            localSettings.Values[nameof(NotificationBadgePaused)] = value;
+            _localSettings.Values[nameof(NotificationBadgePaused)] = value;
             MainPage.RefreshNotificationBadge();
         }
     }
@@ -107,10 +107,10 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool ProgressIndicator
     {
-        get => (bool)(localSettings.Values[nameof(ProgressIndicator)] ?? true);
+        get => (bool)(_localSettings.Values[nameof(ProgressIndicator)] ?? true);
         set
         {
-            localSettings.Values[nameof(ProgressIndicator)] = value;
+            _localSettings.Values[nameof(ProgressIndicator)] = value;
             MainPage.RefreshProgressIndicator();
         }
     }
@@ -120,8 +120,8 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool AutomaticMinimizeMinimize
     {
-        get => (bool)(localSettings.Values[nameof(AutomaticMinimizeMinimize)] ?? false);
-        set => localSettings.Values[nameof(AutomaticMinimizeMinimize)] = value;
+        get => (bool)(_localSettings.Values[nameof(AutomaticMinimizeMinimize)] ?? false);
+        set => _localSettings.Values[nameof(AutomaticMinimizeMinimize)] = value;
     }
 
     /// <summary>
@@ -129,8 +129,8 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool AutomaticMinimizeRestore
     {
-        get => (bool)(localSettings.Values[nameof(AutomaticMinimizeRestore)] ?? false);
-        set => localSettings.Values[nameof(AutomaticMinimizeRestore)] = value;
+        get => (bool)(_localSettings.Values[nameof(AutomaticMinimizeRestore)] ?? false);
+        set => _localSettings.Values[nameof(AutomaticMinimizeRestore)] = value;
     }
 
     /// <summary>
@@ -160,10 +160,10 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     private int ThemeSelectedIndex
     {
-        get => (int)(localSettings.Values[nameof(ThemeSelectedIndex)] ?? 0);
+        get => (int)(_localSettings.Values[nameof(ThemeSelectedIndex)] ?? 0);
         set
         {
-            localSettings.Values[nameof(ThemeSelectedIndex)] = value;
+            _localSettings.Values[nameof(ThemeSelectedIndex)] = value;
             ((FrameworkElement)MainWindow.Content).RequestedTheme = value switch
             {
                 1 => ElementTheme.Light,
@@ -178,10 +178,10 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     private int BackdropSelectedIndex
     {
-        get => (int)(localSettings.Values[nameof(BackdropSelectedIndex)] ?? 0);
+        get => (int)(_localSettings.Values[nameof(BackdropSelectedIndex)] ?? 0);
         set
         {
-            localSettings.Values[nameof(BackdropSelectedIndex)] = value;
+            _localSettings.Values[nameof(BackdropSelectedIndex)] = value;
 
             // HACK: Prevent changing the backdrop so it doesn't flash between pages
             SystemBackdrop currentBackdrop = MainWindow.SystemBackdrop;
@@ -209,13 +209,13 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     private int LanguageSelectedIndex
     {
-        get => Languages.FindIndex(language => language.Equals(ApplicationLanguages.PrimaryLanguageOverride, StringComparison.OrdinalIgnoreCase)) + 1;
+        get => s_languages.FindIndex(language => language.Equals(ApplicationLanguages.PrimaryLanguageOverride, StringComparison.OrdinalIgnoreCase)) + 1;
         set
         {
             if (value >= 0)
             {
-                ApplicationLanguages.PrimaryLanguageOverride = value == 0 ? string.Empty : Languages[value - 1];
-                LanguageRestartInfoBar.IsOpen = ApplicationLanguages.PrimaryLanguageOverride != StartupLanguageOverride;
+                ApplicationLanguages.PrimaryLanguageOverride = value == 0 ? string.Empty : s_languages[value - 1];
+                LanguageRestartInfoBar.IsOpen = ApplicationLanguages.PrimaryLanguageOverride != s_startupLanguageOverride;
             }
         }
     }
@@ -233,10 +233,10 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     private bool IsAlwaysOnTop
     {
-        get => (bool)(localSettings.Values[nameof(IsAlwaysOnTop)] ?? true);
+        get => (bool)(_localSettings.Values[nameof(IsAlwaysOnTop)] ?? true);
         set
         {
-            localSettings.Values[nameof(IsAlwaysOnTop)] = value;
+            _localSettings.Values[nameof(IsAlwaysOnTop)] = value;
             MainWindow.IsAlwaysOnTop = value;
         }
     }

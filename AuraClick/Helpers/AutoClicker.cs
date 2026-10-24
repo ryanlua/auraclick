@@ -26,7 +26,7 @@ namespace AuraClick.Helpers;
 /// </summary>
 public static class AutoClicker
 {
-    private static CancellationTokenSource? _cts;
+    private static CancellationTokenSource? s_cts;
 
     /// <summary>
     /// Raised on a background thread when the click limit is reached.
@@ -54,7 +54,7 @@ public static class AutoClicker
     /// <summary>
     /// Gets a value indicating whether the auto clicker is currently running.
     /// </summary>
-    public static bool IsRunning => _cts is { IsCancellationRequested: false };
+    public static bool IsRunning => s_cts is { IsCancellationRequested: false };
 
     /// <summary>
     /// Starts clicking with a snapshot of the current settings, stopping any previous run.
@@ -62,7 +62,7 @@ public static class AutoClicker
     public static void Start()
     {
         Stop();
-        CancellationTokenSource cts = _cts = new();
+        CancellationTokenSource cts = s_cts = new();
 
         INPUT[] click = CreateClickInputs(MouseButton);
         long clickLimit = ClickAmountEnabled ? ClickAmount : long.MaxValue;
@@ -92,7 +92,7 @@ public static class AutoClicker
     /// </summary>
     public static void Stop()
     {
-        _cts?.Cancel();
+        s_cts?.Cancel();
     }
 
     /// <summary>

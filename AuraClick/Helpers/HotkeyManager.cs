@@ -26,18 +26,18 @@ namespace AuraClick.Helpers;
 
 internal static class HotkeyManager
 {
-    private static readonly HWND hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
+    private static readonly HWND s_hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
 
     public static bool RegisterHotkey(int hotkeyId, IEnumerable<object> keys)
     {
         (VirtualKeyModifiers modifiers, VirtualKey virtualKey) = GetHotkey(keys);
         _ = UnregisterHotkey(hotkeyId);
-        return PInvoke.RegisterHotKey(hwnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
+        return PInvoke.RegisterHotKey(s_hwnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
     }
 
     public static bool UnregisterHotkey(int hotkeyId)
     {
-        return PInvoke.UnregisterHotKey(hwnd, hotkeyId);
+        return PInvoke.UnregisterHotKey(s_hwnd, hotkeyId);
     }
 
     private static (VirtualKeyModifiers Modifiers, VirtualKey VirtualKey) GetHotkey(IEnumerable<object> keys)

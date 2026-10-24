@@ -41,12 +41,12 @@ public sealed partial class MainPage : Page
     /// <summary>
     /// The settings page instance.
     /// </summary>
-    private static readonly SettingsPage settingsPage = new();
+    private static readonly SettingsPage s_settingsPage = new();
 
     /// <summary>
     /// Window message monitor for hotkey handling.
     /// </summary>
-    private WindowMessageMonitor? monitor;
+    private WindowMessageMonitor? _monitor;
 
     /// <summary>
     /// Hotkey ID for the toggle shortcut.
@@ -56,7 +56,7 @@ public sealed partial class MainPage : Page
     /// <summary>
     /// Flag to track if the ToggleShortcut dialog is open.
     /// </summary>
-    private bool shortcutDialogOpen;
+    private bool _shortcutDialogOpen;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainPage" /> class.
@@ -126,11 +126,11 @@ public sealed partial class MainPage : Page
         RefreshNotificationBadge();
 
         // Set up window message monitor
-        if (monitor is null)
+        if (_monitor is null)
         {
             MainWindow window = App.MainWindow;
-            monitor = new(window);
-            monitor.WindowMessageReceived += OnWindowMessageReceived;
+            _monitor = new(window);
+            _monitor.WindowMessageReceived += OnWindowMessageReceived;
         }
 
         // Register hotkey
@@ -149,7 +149,7 @@ public sealed partial class MainPage : Page
         }
 
         // Disable hotkey when ToggleShortcut dialog is open
-        if (shortcutDialogOpen)
+        if (_shortcutDialogOpen)
         {
             return;
         }
@@ -165,11 +165,11 @@ public sealed partial class MainPage : Page
     /// </summary>
     public static void RefreshNotificationBadge()
     {
-        if (AutoClicker.IsRunning && settingsPage.NotificationBadgePlaying)
+        if (AutoClicker.IsRunning && s_settingsPage.NotificationBadgePlaying)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Playing);
         }
-        else if (!AutoClicker.IsRunning && settingsPage.NotificationBadgePaused)
+        else if (!AutoClicker.IsRunning && s_settingsPage.NotificationBadgePaused)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Paused);
         }
@@ -186,7 +186,7 @@ public sealed partial class MainPage : Page
     {
         HWND hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
 
-        if (AutoClicker.IsRunning && settingsPage.ProgressIndicator)
+        if (AutoClicker.IsRunning && s_settingsPage.ProgressIndicator)
         {
             TaskbarHelper.SetProgressState(hwnd, TaskbarStates.Indeterminate);
         }
@@ -209,7 +209,7 @@ public sealed partial class MainPage : Page
         RefreshNotificationBadge();
         RefreshProgressIndicator();
 
-        if (settingsPage.AutomaticMinimizeMinimize)
+        if (s_settingsPage.AutomaticMinimizeMinimize)
         {
             App.MainWindow.Minimize();
         }
@@ -231,7 +231,7 @@ public sealed partial class MainPage : Page
         RefreshProgressIndicator();
 
         // Restore would also un-maximize a maximized window, so only restore when minimized
-        if (settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
+        if (s_settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
         {
             App.MainWindow.Restore();
         }
@@ -268,11 +268,11 @@ public sealed partial class MainPage : Page
 
     private void ToggleShortcut_OpenedContentDialog(object sender, ContentDialogOpenedEventArgs e)
     {
-        shortcutDialogOpen = true;
+        _shortcutDialogOpen = true;
     }
 
     private void ToggleShortcut_ClosedContentDialog(object sender, ContentDialogClosedEventArgs e)
     {
-        shortcutDialogOpen = false;
+        _shortcutDialogOpen = false;
     }
 }
