@@ -138,7 +138,7 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
-    /// Handles the WindowMessageReceived event of the WindowMessageMonitor control.
+    /// Handles the WindowMessageReceived event of the window message monitor.
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
@@ -195,6 +195,7 @@ public sealed partial class MainPage : Page
             TaskbarHelper.SetProgressState(hwnd, TaskbarStates.NoProgress);
         }
     }
+
     /// <summary>
     /// Handles the Checked event of the StartToggleButton control.
     /// </summary>
@@ -245,7 +246,7 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
-    /// Handles the PrimaryButtonClick event of the Shortcut control.
+    /// Handles the PrimaryButtonClick event of the ToggleShortcut control.
     /// </summary>
     private async void ToggleShortcut_PrimaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
@@ -255,7 +256,7 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
-    /// Handles the SecondaryButtonClick event of the Shortcut control.
+    /// Handles the SecondaryButtonClick event of the ToggleShortcut control.
     /// </summary>
     private async void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {

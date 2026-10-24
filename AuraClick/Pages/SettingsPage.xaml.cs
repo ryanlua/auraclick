@@ -77,7 +77,7 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
-    /// Gets or sets the if the playing notification badge is enabled.
+    /// Gets or sets a value indicating whether the taskbar button shows a badge while clicking.
     /// </summary>
     public bool NotificationBadgePlaying
     {
@@ -90,7 +90,7 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
-    /// Gets or sets the if the paused notification badge is enabled.
+    /// Gets or sets a value indicating whether the taskbar button shows a badge while paused.
     /// </summary>
     public bool NotificationBadgePaused
     {
@@ -125,7 +125,7 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the window is unminimized when clicking stops.
+    /// Gets or sets a value indicating whether the window is restored when clicking pauses.
     /// </summary>
     public bool AutomaticMinimizeRestore
     {
@@ -189,8 +189,7 @@ public sealed partial class SettingsPage : Page
             {
                 1 => currentBackdrop is not MicaBackdrop { Kind: MicaKind.BaseAlt },
                 2 => currentBackdrop is not DesktopAcrylicBackdrop,
-                _ => currentBackdrop is not MicaBackdrop ||
-                     (currentBackdrop is MicaBackdrop mica && mica.Kind != MicaKind.Base)
+                _ => currentBackdrop is not MicaBackdrop { Kind: MicaKind.Base }
             };
 
             if (needsChange)

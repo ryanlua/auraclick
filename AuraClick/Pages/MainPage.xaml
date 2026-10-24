@@ -21,7 +21,7 @@
         <x:Double x:Key="NumberBoxColumnSpacing">4</x:Double>
         <x:Double x:Key="ButtonColumnSpacing">8</x:Double>
         <x:Double x:Key="GridRowSpacing">8</x:Double>
-        <x:Double x:Key="StackPanelSpacing">8</x:Double>
+        <x:Double x:Key="ControlSpacing">8</x:Double>
     </Page.Resources>
 
     <Grid Margin="{StaticResource ContentMargin}" RowSpacing="{StaticResource GridRowSpacing}">
@@ -48,8 +48,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <!--  Click Interval  -->
-                <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource StackPanelSpacing}">
+                <!--  Click interval  -->
+                <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource ControlSpacing}">
                     <dev:IsEnabledTextBlock x:Uid="TextBlockClickInterval" />
                     <Grid ColumnSpacing="{StaticResource NumberBoxColumnSpacing}">
                         <Grid.ColumnDefinitions>
@@ -93,7 +93,7 @@
                     </Grid>
                 </StackPanel>
 
-                <!--  Mouse Button  -->
+                <!--  Mouse button  -->
                 <ComboBox
                     x:Name="MouseButtonComboBox"
                     x:Uid="ComboBoxMouseButton"
@@ -109,7 +109,7 @@
                 <StackPanel
                     Grid.Row="2"
                     Grid.Column="0"
-                    Spacing="{StaticResource StackPanelSpacing}">
+                    Spacing="{StaticResource ControlSpacing}">
                     <dev:IsEnabledTextBlock x:Uid="TextBlockHotkey" />
                     <dev:Shortcut
                         x:Name="ToggleShortcut"
@@ -122,13 +122,13 @@
                         WarningTitle="" />
                 </StackPanel>
 
-                <!--  Click Repeat  -->
+                <!--  Click repeat  -->
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <CheckBox
                         x:Name="ClickRepeatCheckBox"
                         x:Uid="CheckBoxClickRepeat"
                         IsChecked="{x:Bind helpers:AutoClicker.ClickAmountEnabled, Mode=TwoWay}" />
-                    <Grid HorizontalAlignment="Left" ColumnSpacing="{StaticResource StackPanelSpacing}">
+                    <Grid HorizontalAlignment="Left" ColumnSpacing="{StaticResource ControlSpacing}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -147,13 +147,13 @@
                     </Grid>
                 </StackPanel>
 
-                <!--  Click Offset  -->
+                <!--  Click offset  -->
                 <StackPanel Grid.Row="2" Grid.Column="1">
                     <CheckBox
                         x:Name="ClickOffsetCheckBox"
                         x:Uid="CheckBoxClickOffset"
                         IsChecked="{x:Bind helpers:AutoClicker.ClickDelayOffsetEnabled, Mode=TwoWay}" />
-                    <Grid HorizontalAlignment="Left" ColumnSpacing="{StaticResource StackPanelSpacing}">
+                    <Grid HorizontalAlignment="Left" ColumnSpacing="{StaticResource ControlSpacing}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
@@ -180,12 +180,12 @@
             Grid.Row="1"
             VerticalAlignment="Bottom"
             ColumnSpacing="{StaticResource ButtonColumnSpacing}">
-
-            <!--  Start Auto Clicker  -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
+
+            <!--  Start auto clicker  -->
             <ToggleButton
                 x:Name="StartToggleButton"
                 x:Uid="ToggleButtonStart"
@@ -196,7 +196,7 @@
                 <FontIcon x:Name="StartFontIcon" Glyph="&#xEE4A;" />
             </ToggleButton>
 
-            <!--  Open Settings  -->
+            <!--  Open settings  -->
             <Button
                 x:Name="SettingsButton"
                 x:Uid="ButtonSettings"
