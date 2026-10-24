@@ -52,4 +52,4 @@ Resources to help you contribute to this project and learn more about Windows ap
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](.github/CONTRIBUTING.md).
+By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](COPYING.md).
