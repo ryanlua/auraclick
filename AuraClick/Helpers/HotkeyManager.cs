@@ -24,10 +24,22 @@ using WinRT.Interop;
 
 namespace AuraClick.Helpers;
 
+/// <summary>
+/// Registers global hotkeys for the main window.
+/// </summary>
 internal static class HotkeyManager
 {
+    /// <summary>
+    /// Handle of the main window that receives hotkey messages.
+    /// </summary>
     private static readonly HWND s_hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
 
+    /// <summary>
+    /// Registers a hotkey, replacing any hotkey previously registered with the same ID.
+    /// </summary>
+    /// <param name="hotkeyId">The ID of the hotkey.</param>
+    /// <param name="keys">The keys of the hotkey, as <see cref="KeyVisualInfo" /> objects.</param>
+    /// <returns><see langword="true" /> if the hotkey was registered; otherwise, <see langword="false" />.</returns>
     public static bool RegisterHotkey(int hotkeyId, IEnumerable<object> keys)
     {
         (VirtualKeyModifiers modifiers, VirtualKey virtualKey) = GetHotkey(keys);
@@ -35,11 +47,19 @@ internal static class HotkeyManager
         return PInvoke.RegisterHotKey(s_hwnd, hotkeyId, HotKeyModifiers(modifiers), (uint)virtualKey);
     }
 
+    /// <summary>
+    /// Unregisters a hotkey.
+    /// </summary>
+    /// <param name="hotkeyId">The ID of the hotkey.</param>
+    /// <returns><see langword="true" /> if the hotkey was unregistered; otherwise, <see langword="false" />.</returns>
     public static bool UnregisterHotkey(int hotkeyId)
     {
         return PInvoke.UnregisterHotKey(s_hwnd, hotkeyId);
     }
 
+    /// <summary>
+    /// Splits the hotkey keys into modifier keys and the main key.
+    /// </summary>
     private static (VirtualKeyModifiers Modifiers, VirtualKey VirtualKey) GetHotkey(IEnumerable<object> keys)
     {
         VirtualKeyModifiers modifiers = VirtualKeyModifiers.None;
@@ -75,6 +95,9 @@ internal static class HotkeyManager
         return (modifiers, virtualKey);
     }
 
+    /// <summary>
+    /// Converts modifier keys to RegisterHotKey modifiers, without key repeat.
+    /// </summary>
     private static HOT_KEY_MODIFIERS HotKeyModifiers(VirtualKeyModifiers modifiers)
     {
         HOT_KEY_MODIFIERS result = HOT_KEY_MODIFIERS.MOD_NOREPEAT;

@@ -70,11 +70,17 @@ public sealed partial class MainPage : Page
         ToggleShortcut.Keys = CreateDefaultShortcut();
     }
 
+    /// <summary>
+    /// Creates the default hotkey keys.
+    /// </summary>
     private static List<object> CreateDefaultShortcut()
     {
         return [new KeyVisualInfo { Key = VirtualKey.F6, KeyName = "F6" }];
     }
 
+    /// <summary>
+    /// Shows a dialog explaining that the hotkey couldn't be registered.
+    /// </summary>
     private async Task ShowHotkeyRegistrationFailedAsync()
     {
         ContentDialog dialog = new()
@@ -91,6 +97,9 @@ public sealed partial class MainPage : Page
         _ = await dialog.ShowAsync();
     }
 
+    /// <summary>
+    /// Registers the selected hotkey and shows an error if registration fails.
+    /// </summary>
     private async Task ApplyHotkeySelectionAsync()
     {
         bool registered = HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
@@ -266,11 +275,17 @@ public sealed partial class MainPage : Page
         await ApplyHotkeySelectionAsync();
     }
 
+    /// <summary>
+    /// Handles the OpenedContentDialog event of the ToggleShortcut control.
+    /// </summary>
     private void ToggleShortcut_OpenedContentDialog(object sender, ContentDialogOpenedEventArgs e)
     {
         _shortcutDialogOpen = true;
     }
 
+    /// <summary>
+    /// Handles the ClosedContentDialog event of the ToggleShortcut control.
+    /// </summary>
     private void ToggleShortcut_ClosedContentDialog(object sender, ContentDialogClosedEventArgs e)
     {
         _shortcutDialogOpen = false;

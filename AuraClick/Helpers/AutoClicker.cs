@@ -33,22 +33,49 @@ public static class AutoClicker
     /// </summary>
     public static event EventHandler? ClickLimitReached;
 
+    /// <summary>
+    /// Gets or sets the hours part of the click interval.
+    /// </summary>
     public static int HoursDelay { get; set; }
 
+    /// <summary>
+    /// Gets or sets the minutes part of the click interval.
+    /// </summary>
     public static int MinutesDelay { get; set; }
 
+    /// <summary>
+    /// Gets or sets the seconds part of the click interval.
+    /// </summary>
     public static int SecondsDelay { get; set; }
 
+    /// <summary>
+    /// Gets or sets the milliseconds part of the click interval.
+    /// </summary>
     public static int MillisecondsDelay { get; set; } = 100;
 
+    /// <summary>
+    /// Gets or sets the mouse button to click: 0 for left, 1 for middle, 2 for right.
+    /// </summary>
     public static int MouseButton { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether clicking stops after <see cref="ClickAmount" /> clicks.
+    /// </summary>
     public static bool ClickAmountEnabled { get; set; }
 
+    /// <summary>
+    /// Gets or sets the number of clicks before clicking stops.
+    /// </summary>
     public static int ClickAmount { get; set; } = 100;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether a random offset is added to the click interval.
+    /// </summary>
     public static bool ClickDelayOffsetEnabled { get; set; }
 
+    /// <summary>
+    /// Gets or sets the maximum random offset, in milliseconds, added to the click interval.
+    /// </summary>
     public static int ClickDelayOffset { get; set; } = 10;
 
     /// <summary>
@@ -110,6 +137,9 @@ public static class AutoClicker
         return [MouseInput(down), MouseInput(up)];
     }
 
+    /// <summary>
+    /// Creates a mouse input with the given event flags.
+    /// </summary>
     private static INPUT MouseInput(MOUSE_EVENT_FLAGS flags)
     {
         return new() { type = INPUT_TYPE.INPUT_MOUSE, Anonymous = new() { mi = new() { dwFlags = flags } } };
