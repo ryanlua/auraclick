@@ -267,4 +267,3 @@ TextRecognizer, ImageScaler, etc.) -- see
    the old capability set.
 
 
-
