@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>A modern, high-performance auto clicker for Windows.</value>
+    <value>Un autoclicador modern i d'alt rendiment per a Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
   <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
-    <value>Left</value>
+    <value>Esquerre</value>
     <comment>Label for left mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
-    <value>Middle</value>
+    <value>Central</value>
     <comment>Label for middle mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
-    <value>Right</value>
+    <value>Dret</value>
     <comment>Label for right mouse button option</comment>
   </data>
   <data name="ComboBoxMouseButton.Header" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>Header text of Mouse button combo box</comment>
   </data>
   <data name="ComboBoxMouseButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Mouse button to click</value>
+    <value>Botó del ratolí per fer clic</value>
     <comment>This is the tool tip automation name for the Mouse button combo box.</comment>
   </data>
   <data name="NumberBoxHours.Description" xml:space="preserve">
@@ -158,27 +158,27 @@
     <comment>Description text of seconds click interval number box</comment>
   </data>
   <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
-    <value>clicks</value>
+    <value>clics</value>
     <comment>Unit text of Click repeat number box</comment>
   </data>
   <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
-    <value>milliseconds</value>
+    <value>mil·lisegons</value>
     <comment>Unit text of Random offset number box</comment>
   </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
-    <value>Interval de clics</value>
+    <value>Interval de clic</value>
     <comment>Header text of Click interval number boxes</comment>
   </data>
   <data name="TextBlockClickInterval.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Time between clicks</value>
+    <value>Temps entre clics</value>
     <comment>This is the tool tip automation name for the Click interval number boxes.</comment>
   </data>
   <data name="TextBlockHotkey.Text" xml:space="preserve">
-    <value>Drecera de teclat</value>
+    <value>Tecla de drecera</value>
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Key that starts and stops clicking</value>
+    <value>Tecla que inicia i atura els clics</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
@@ -186,31 +186,31 @@
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
   <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Start</value>
+    <value>Inicia</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
   <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
-    <value>Click repeat</value>
+    <value>Repetició de clic</value>
     <comment>Label for Click repeat check box</comment>
   </data>
   <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop after this many clicks</value>
+    <value>Atura després d'aquest nombre de clics</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="CheckBoxClickOffset.Content" xml:space="preserve">
-    <value>Random offset</value>
+    <value>Desplaçament aleatori</value>
     <comment>Label for Random offset check box</comment>
   </data>
   <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Add a random offset to the interval</value>
+    <value>Afegeix un desplaçament aleatori a l'interval</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
   <data name="TextBlockSettings.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Configuració</value>
     <comment>Header text of Settings page</comment>
   </data>
   <data name="TextBlockAppearance.Text" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Aparença</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>Title of Theme settings card</comment>
   </data>
   <data name="SettingsCardTheme.Description" xml:space="preserve">
-    <value>Seleccioneu el tema de l'aplicació que es mostrarà</value>
+    <value>Selecciona el tema de l'aplicació que vols mostrar</value>
     <comment>Description of Theme settings card</comment>
   </data>
   <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
@@ -238,15 +238,15 @@
     <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
-    <value>Select which material to use for the app window background</value>
+    <value>Selecciona el material per al fons de la finestra de l'aplicació</value>
     <comment>Description of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
-    <value>Sempre al damunt</value>
+    <value>Sempre visible</value>
     <comment>Title of Always on top settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
-    <value>Keep the app window on top of other windows</value>
+    <value>Mantén la finestra de l'aplicació per sobre de les altres finestres</value>
     <comment>Description of Always on top settings card</comment>
   </data>
   <data name="TextBlockBehavior.Text" xml:space="preserve">
@@ -270,19 +270,19 @@
     <comment>Title of Notification badge expander</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
-    <value>Show a status badge on the app's taskbar button</value>
+    <value>Mostra una insígnia d'estat al botó de l'aplicació a la barra de tasques</value>
     <comment>Description of Notification badge expander</comment>
   </data>
   <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
-    <value>Mostra la insígnia mentre fa clics</value>
+    <value>Mostra la insígnia durant els clics</value>
     <comment>Label for Show badge while clicking check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxNotificationBadgePaused.Content" xml:space="preserve">
-    <value>Mostra la insígnia mentre està en pausa</value>
+    <value>Mostra la insígnia en pausa</value>
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
   <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Pause</value>
+    <value>Pausa</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
@@ -294,11 +294,11 @@
     <comment>Subtitle of about setting on Settings page</comment>
   </data>
   <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
-    <value>Change toggle hotkey</value>
+    <value>Canvia la drecera d'alternança</value>
     <comment>Title of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.Title" xml:space="preserve">
-    <value>Hotkey that starts and stops clicking</value>
+    <value>Drecera que inicia i atura els clics</value>
     <comment>Text block of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
@@ -314,7 +314,7 @@
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
-    <value>Minimize the app window while clicking</value>
+    <value>Minimitza la finestra de l'aplicació durant els clics</value>
     <comment>Description of Automatic minimize expander</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
@@ -322,11 +322,11 @@
     <comment>Title of Automatic minimize expander</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
-    <value>Minimize when clicking starts</value>
+    <value>Minimitza en iniciar els clics</value>
     <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
-    <value>Restore when paused</value>
+    <value>Restaura en pausar</value>
     <comment>Label for Restore when paused check box on the Behavior panel</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
@@ -342,7 +342,7 @@
     <comment>Title of Language settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Description" xml:space="preserve">
-    <value>Select which app language to display</value>
+    <value>Selecciona l'idioma de l'aplicació que vols mostrar</value>
     <comment>Description of Language settings card</comment>
   </data>
   <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
@@ -350,7 +350,7 @@
     <comment>Label for the language option to use the Windows display language</comment>
   </data>
   <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
-    <value>Reinicieu per aplicar els canvis d'idioma</value>
+    <value>Reinicia per aplicar els canvis d'idioma</value>
     <comment>Title of restart info bar shown after changing the app language</comment>
   </data>
   <data name="ButtonLanguageRestart.Content" xml:space="preserve">
@@ -378,15 +378,15 @@
     <comment>Title text of app title bar</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Title" xml:space="preserve">
-    <value>Hotkey unavailable</value>
+    <value>Drecera no disponible</value>
     <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Content" xml:space="preserve">
-    <value>Another app might be using this hotkey. Choose a different key.</value>
+    <value>És possible que una altra aplicació estigui utilitzant aquesta drecera. Tria una tecla diferent.</value>
     <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.CloseButtonText" xml:space="preserve">
-    <value>Close</value>
+    <value>Tanca</value>
     <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>
 </root>

@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>A modern, high-performance auto clicker for Windows.</value>
+    <value>Moderns, augstas veiktspējas automātiskais klikšķinātājs operētājsistēmai Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
   <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
-    <value>Left</value>
+    <value>Kreisā</value>
     <comment>Label for left mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
-    <value>Middle</value>
+    <value>Vidējā</value>
     <comment>Label for middle mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
-    <value>Right</value>
+    <value>Labā</value>
     <comment>Label for right mouse button option</comment>
   </data>
   <data name="ComboBoxMouseButton.Header" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>Header text of Mouse button combo box</comment>
   </data>
   <data name="ComboBoxMouseButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Mouse button to click</value>
+    <value>Peles poga klikšķināšanai</value>
     <comment>This is the tool tip automation name for the Mouse button combo box.</comment>
   </data>
   <data name="NumberBoxHours.Description" xml:space="preserve">
@@ -158,11 +158,11 @@
     <comment>Description text of seconds click interval number box</comment>
   </data>
   <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
-    <value>clicks</value>
+    <value>klikšķi</value>
     <comment>Unit text of Click repeat number box</comment>
   </data>
   <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
-    <value>milliseconds</value>
+    <value>milisekundes</value>
     <comment>Unit text of Random offset number box</comment>
   </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>Header text of Click interval number boxes</comment>
   </data>
   <data name="TextBlockClickInterval.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Time between clicks</value>
+    <value>Laiks starp klikšķiem</value>
     <comment>This is the tool tip automation name for the Click interval number boxes.</comment>
   </data>
   <data name="TextBlockHotkey.Text" xml:space="preserve">
@@ -178,7 +178,7 @@
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Key that starts and stops clicking</value>
+    <value>Taustiņš, kas sāk un aptur klikšķināšanu</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
@@ -186,31 +186,31 @@
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
   <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Start</value>
+    <value>Sākt</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
   <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
-    <value>Click repeat</value>
+    <value>Klikšķu atkārtošana</value>
     <comment>Label for Click repeat check box</comment>
   </data>
   <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop after this many clicks</value>
+    <value>Apturēt pēc šāda klikšķu skaita</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="CheckBoxClickOffset.Content" xml:space="preserve">
-    <value>Random offset</value>
+    <value>Nejauša nobīde</value>
     <comment>Label for Random offset check box</comment>
   </data>
   <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Add a random offset to the interval</value>
+    <value>Pievienot intervālam nejaušu nobīdi</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
   <data name="TextBlockSettings.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Iestatījumi</value>
     <comment>Header text of Settings page</comment>
   </data>
   <data name="TextBlockAppearance.Text" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Izskats</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
@@ -218,7 +218,7 @@
     <comment>Title of Theme settings card</comment>
   </data>
   <data name="SettingsCardTheme.Description" xml:space="preserve">
-    <value>Atlasiet attēlojamo lietotnes motīvu</value>
+    <value>Izvēlieties lietotnes motīvu, ko rādīt</value>
     <comment>Description of Theme settings card</comment>
   </data>
   <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
@@ -226,11 +226,11 @@
     <comment>Label for the app theme option to use system setting</comment>
   </data>
   <data name="ComboBoxItemThemeLight.Content" xml:space="preserve">
-    <value>Gaišs</value>
+    <value>Gaišais</value>
     <comment>Label for light theme option</comment>
   </data>
   <data name="ComboBoxItemThemeDark.Content" xml:space="preserve">
-    <value>Tumšs</value>
+    <value>Tumšais</value>
     <comment>Label for dark theme option</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Header" xml:space="preserve">
@@ -238,15 +238,15 @@
     <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
-    <value>Select which material to use for the app window background</value>
+    <value>Izvēlieties materiālu lietotnes loga fonam</value>
     <comment>Description of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
-    <value>Vienmēr virspusē</value>
+    <value>Vienmēr virsotnē</value>
     <comment>Title of Always on top settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
-    <value>Keep the app window on top of other windows</value>
+    <value>Turēt lietotnes logu virs citiem logiem</value>
     <comment>Description of Always on top settings card</comment>
   </data>
   <data name="TextBlockBehavior.Text" xml:space="preserve">
@@ -270,7 +270,7 @@
     <comment>Title of Notification badge expander</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
-    <value>Show a status badge on the app's taskbar button</value>
+    <value>Rādīt statusa emblēmu lietotnes uzdevumjoslas pogā</value>
     <comment>Description of Notification badge expander</comment>
   </data>
   <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
@@ -282,7 +282,7 @@
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
   <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Pause</value>
+    <value>Pauzēt</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
@@ -294,11 +294,11 @@
     <comment>Subtitle of about setting on Settings page</comment>
   </data>
   <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
-    <value>Change toggle hotkey</value>
+    <value>Mainīt pārslēgšanas karsto taustiņu</value>
     <comment>Title of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.Title" xml:space="preserve">
-    <value>Hotkey that starts and stops clicking</value>
+    <value>Karstais taustiņš, kas sāk un aptur klikšķināšanu</value>
     <comment>Text block of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
@@ -314,7 +314,7 @@
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
-    <value>Minimize the app window while clicking</value>
+    <value>Minimizēt lietotnes logu klikšķināšanas laikā</value>
     <comment>Description of Automatic minimize expander</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
@@ -322,11 +322,11 @@
     <comment>Title of Automatic minimize expander</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
-    <value>Minimize when clicking starts</value>
+    <value>Minimizēt, kad sākas klikšķināšana</value>
     <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
-    <value>Restore when paused</value>
+    <value>Atjaunot pauzes laikā</value>
     <comment>Label for Restore when paused check box on the Behavior panel</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
@@ -334,7 +334,7 @@
     <comment>Title of Progress indicator settings card</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
-    <value>Rādīt statusu progresa indikatorā uz lietotnes uzdevumjoslas pogas</value>
+    <value>Rādīt statusu progresa indikatorā lietotnes uzdevumjoslas pogā</value>
     <comment>Description of Progress indicator settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Header" xml:space="preserve">
@@ -342,7 +342,7 @@
     <comment>Title of Language settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Description" xml:space="preserve">
-    <value>Select which app language to display</value>
+    <value>Izvēlieties lietotnes valodu</value>
     <comment>Description of Language settings card</comment>
   </data>
   <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
@@ -350,7 +350,7 @@
     <comment>Label for the language option to use the Windows display language</comment>
   </data>
   <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
-    <value>Restartējiet, lai lietotu valodas izmaiņas</value>
+    <value>Restartējiet, lai piemērotu valodas izmaiņas</value>
     <comment>Title of restart info bar shown after changing the app language</comment>
   </data>
   <data name="ButtonLanguageRestart.Content" xml:space="preserve">
@@ -358,11 +358,11 @@
     <comment>Displayed on the button that restarts the app to apply a language change</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
-    <value>Vizla</value>
+    <value>Mica</value>
     <comment>Label for mica material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
-    <value>Vizla (alternatīvā)</value>
+    <value>Mica Alt</value>
     <comment>Label for mica alt material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
@@ -378,15 +378,15 @@
     <comment>Title text of app title bar</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Title" xml:space="preserve">
-    <value>Hotkey unavailable</value>
+    <value>Karstais taustiņš nav pieejams</value>
     <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Content" xml:space="preserve">
-    <value>Another app might be using this hotkey. Choose a different key.</value>
+    <value>Iespējams, šo karsto taustiņu izmanto cita lietotne. Izvēlieties citu taustiņu.</value>
     <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.CloseButtonText" xml:space="preserve">
-    <value>Close</value>
+    <value>Aizvērt</value>
     <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>
 </root>

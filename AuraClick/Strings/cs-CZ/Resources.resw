@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>A modern, high-performance auto clicker for Windows.</value>
+    <value>Moderní a výkonný automatický klikač pro Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
   <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
-    <value>Left</value>
+    <value>Levé</value>
     <comment>Label for left mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
-    <value>Middle</value>
+    <value>Prostřední</value>
     <comment>Label for middle mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
-    <value>Right</value>
+    <value>Pravé</value>
     <comment>Label for right mouse button option</comment>
   </data>
   <data name="ComboBoxMouseButton.Header" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>Header text of Mouse button combo box</comment>
   </data>
   <data name="ComboBoxMouseButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Mouse button to click</value>
+    <value>Tlačítko myši pro klikání</value>
     <comment>This is the tool tip automation name for the Mouse button combo box.</comment>
   </data>
   <data name="NumberBoxHours.Description" xml:space="preserve">
@@ -158,19 +158,19 @@
     <comment>Description text of seconds click interval number box</comment>
   </data>
   <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
-    <value>clicks</value>
+    <value>kliknutí</value>
     <comment>Unit text of Click repeat number box</comment>
   </data>
   <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
-    <value>milliseconds</value>
+    <value>milisekundy</value>
     <comment>Unit text of Random offset number box</comment>
   </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
-    <value>Interval klikání</value>
+    <value>Interval kliknutí</value>
     <comment>Header text of Click interval number boxes</comment>
   </data>
   <data name="TextBlockClickInterval.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Time between clicks</value>
+    <value>Čas mezi kliknutími</value>
     <comment>This is the tool tip automation name for the Click interval number boxes.</comment>
   </data>
   <data name="TextBlockHotkey.Text" xml:space="preserve">
@@ -178,7 +178,7 @@
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Key that starts and stops clicking</value>
+    <value>Klávesa pro spuštění a zastavení klikání</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
@@ -186,31 +186,31 @@
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
   <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Start</value>
+    <value>Spustit</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
   <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
-    <value>Click repeat</value>
+    <value>Opakování kliknutí</value>
     <comment>Label for Click repeat check box</comment>
   </data>
   <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop after this many clicks</value>
+    <value>Zastavit po tomto počtu kliknutí</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="CheckBoxClickOffset.Content" xml:space="preserve">
-    <value>Random offset</value>
+    <value>Náhodný posun</value>
     <comment>Label for Random offset check box</comment>
   </data>
   <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Add a random offset to the interval</value>
+    <value>Přidat k intervalu náhodný posun</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
   <data name="TextBlockSettings.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Nastavení</value>
     <comment>Header text of Settings page</comment>
   </data>
   <data name="TextBlockAppearance.Text" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Vzhled</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
@@ -238,15 +238,15 @@
     <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
-    <value>Select which material to use for the app window background</value>
+    <value>Vyberte materiál pozadí okna aplikace</value>
     <comment>Description of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
-    <value>Vždy navrchu</value>
+    <value>Vždy nahoře</value>
     <comment>Title of Always on top settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
-    <value>Keep the app window on top of other windows</value>
+    <value>Udržovat okno aplikace nad ostatními okny</value>
     <comment>Description of Always on top settings card</comment>
   </data>
   <data name="TextBlockBehavior.Text" xml:space="preserve">
@@ -266,23 +266,23 @@
     <comment>Displayed on a link to the app open source license on the About panel</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Header" xml:space="preserve">
-    <value>Oznamovací odznak</value>
+    <value>Odznak oznámení</value>
     <comment>Title of Notification badge expander</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
-    <value>Show a status badge on the app's taskbar button</value>
+    <value>Zobrazit odznak stavu na tlačítku aplikace na hlavním panelu</value>
     <comment>Description of Notification badge expander</comment>
   </data>
   <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
-    <value>Zobrazovat odznak při klikání</value>
+    <value>Zobrazit odznak při klikání</value>
     <comment>Label for Show badge while clicking check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxNotificationBadgePaused.Content" xml:space="preserve">
-    <value>Zobrazovat odznak při pozastavení</value>
+    <value>Zobrazit odznak při pozastavení</value>
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
   <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Pause</value>
+    <value>Pozastavit</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
@@ -294,15 +294,15 @@
     <comment>Subtitle of about setting on Settings page</comment>
   </data>
   <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
-    <value>Change toggle hotkey</value>
+    <value>Změnit klávesovou zkratku pro přepínání</value>
     <comment>Title of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.Title" xml:space="preserve">
-    <value>Hotkey that starts and stops clicking</value>
+    <value>Klávesová zkratka pro spuštění a zastavení klikání</value>
     <comment>Text block of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
-    <value>Obnovit výchozí</value>
+    <value>Obnovit</value>
     <comment>Displayed on the button to reset the shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.CloseButtonText" xml:space="preserve">
@@ -314,19 +314,19 @@
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
-    <value>Minimize the app window while clicking</value>
+    <value>Minimalizovat okno aplikace při klikání</value>
     <comment>Description of Automatic minimize expander</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
-    <value>Automatická minimalizace</value>
+    <value>Automatické minimalizování</value>
     <comment>Title of Automatic minimize expander</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
-    <value>Minimize when clicking starts</value>
+    <value>Minimalizovat při spuštění klikání</value>
     <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
-    <value>Restore when paused</value>
+    <value>Obnovit při pozastavení</value>
     <comment>Label for Restore when paused check box on the Behavior panel</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
@@ -334,7 +334,7 @@
     <comment>Title of Progress indicator settings card</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
-    <value>Zobrazovat stav v indikátoru průběhu na tlačítku aplikace na hlavním panelu</value>
+    <value>Zobrazit stav v indikátoru průběhu na tlačítku aplikace na hlavním panelu</value>
     <comment>Description of Progress indicator settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Header" xml:space="preserve">
@@ -342,7 +342,7 @@
     <comment>Title of Language settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Description" xml:space="preserve">
-    <value>Select which app language to display</value>
+    <value>Vyberte jazyk aplikace</value>
     <comment>Description of Language settings card</comment>
   </data>
   <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
@@ -350,7 +350,7 @@
     <comment>Label for the language option to use the Windows display language</comment>
   </data>
   <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
-    <value>Pro použití změny jazyka restartujte aplikaci</value>
+    <value>Pro použití změn jazyka restartujte aplikaci</value>
     <comment>Title of restart info bar shown after changing the app language</comment>
   </data>
   <data name="ButtonLanguageRestart.Content" xml:space="preserve">
@@ -358,11 +358,11 @@
     <comment>Displayed on the button that restarts the app to apply a language change</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
-    <value>Slída</value>
+    <value>Mica</value>
     <comment>Label for mica material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
-    <value>Slída (alternativní)</value>
+    <value>Mica Alt</value>
     <comment>Label for mica alt material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
@@ -378,15 +378,15 @@
     <comment>Title text of app title bar</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Title" xml:space="preserve">
-    <value>Hotkey unavailable</value>
+    <value>Klávesová zkratka není dostupná</value>
     <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Content" xml:space="preserve">
-    <value>Another app might be using this hotkey. Choose a different key.</value>
+    <value>Tuto klávesovou zkratku možná používá jiná aplikace. Zvolte jinou klávesu.</value>
     <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.CloseButtonText" xml:space="preserve">
-    <value>Close</value>
+    <value>Zavřít</value>
     <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>
 </root>

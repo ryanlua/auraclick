@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>A modern, high-performance auto clicker for Windows.</value>
+    <value>Trình nhấp chuột tự động hiện đại, hiệu suất cao dành cho Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
   <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
-    <value>Left</value>
+    <value>Trái</value>
     <comment>Label for left mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
-    <value>Middle</value>
+    <value>Giữa</value>
     <comment>Label for middle mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
-    <value>Right</value>
+    <value>Phải</value>
     <comment>Label for right mouse button option</comment>
   </data>
   <data name="ComboBoxMouseButton.Header" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>Header text of Mouse button combo box</comment>
   </data>
   <data name="ComboBoxMouseButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Mouse button to click</value>
+    <value>Nút chuột để nhấp</value>
     <comment>This is the tool tip automation name for the Mouse button combo box.</comment>
   </data>
   <data name="NumberBoxHours.Description" xml:space="preserve">
@@ -158,11 +158,11 @@
     <comment>Description text of seconds click interval number box</comment>
   </data>
   <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
-    <value>clicks</value>
+    <value>lần nhấp</value>
     <comment>Unit text of Click repeat number box</comment>
   </data>
   <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
-    <value>milliseconds</value>
+    <value>mili giây</value>
     <comment>Unit text of Random offset number box</comment>
   </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
@@ -170,7 +170,7 @@
     <comment>Header text of Click interval number boxes</comment>
   </data>
   <data name="TextBlockClickInterval.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Time between clicks</value>
+    <value>Thời gian giữa các lần nhấp</value>
     <comment>This is the tool tip automation name for the Click interval number boxes.</comment>
   </data>
   <data name="TextBlockHotkey.Text" xml:space="preserve">
@@ -178,7 +178,7 @@
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Key that starts and stops clicking</value>
+    <value>Phím bắt đầu và dừng nhấp</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
@@ -186,43 +186,43 @@
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
   <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Start</value>
+    <value>Bắt đầu</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
   <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
-    <value>Click repeat</value>
+    <value>Lặp lại nhấp</value>
     <comment>Label for Click repeat check box</comment>
   </data>
   <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop after this many clicks</value>
+    <value>Dừng sau số lần nhấp này</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="CheckBoxClickOffset.Content" xml:space="preserve">
-    <value>Random offset</value>
+    <value>Độ lệch ngẫu nhiên</value>
     <comment>Label for Random offset check box</comment>
   </data>
   <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Add a random offset to the interval</value>
+    <value>Thêm độ lệch ngẫu nhiên vào khoảng thời gian</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
   <data name="TextBlockSettings.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Cài đặt</value>
     <comment>Header text of Settings page</comment>
   </data>
   <data name="TextBlockAppearance.Text" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Giao diện hiển thị</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
-    <value>Chủ đề</value>
+    <value>Giao diện</value>
     <comment>Title of Theme settings card</comment>
   </data>
   <data name="SettingsCardTheme.Description" xml:space="preserve">
-    <value>Chọn chủ đề ứng dụng để hiển thị</value>
+    <value>Chọn giao diện ứng dụng để hiển thị</value>
     <comment>Description of Theme settings card</comment>
   </data>
   <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
-    <value>Sử dụng cài đặt hệ thống</value>
+    <value>Theo cài đặt hệ thống</value>
     <comment>Label for the app theme option to use system setting</comment>
   </data>
   <data name="ComboBoxItemThemeLight.Content" xml:space="preserve">
@@ -238,7 +238,7 @@
     <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
-    <value>Select which material to use for the app window background</value>
+    <value>Chọn chất liệu dùng cho nền cửa sổ ứng dụng</value>
     <comment>Description of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
@@ -246,7 +246,7 @@
     <comment>Title of Always on top settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
-    <value>Keep the app window on top of other windows</value>
+    <value>Giữ cửa sổ ứng dụng ở trên các cửa sổ khác</value>
     <comment>Description of Always on top settings card</comment>
   </data>
   <data name="TextBlockBehavior.Text" xml:space="preserve">
@@ -270,7 +270,7 @@
     <comment>Title of Notification badge expander</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
-    <value>Show a status badge on the app's taskbar button</value>
+    <value>Hiển thị huy hiệu trạng thái trên nút ứng dụng trên thanh tác vụ</value>
     <comment>Description of Notification badge expander</comment>
   </data>
   <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
@@ -282,7 +282,7 @@
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
   <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Pause</value>
+    <value>Tạm dừng</value>
     <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
@@ -294,11 +294,11 @@
     <comment>Subtitle of about setting on Settings page</comment>
   </data>
   <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
-    <value>Change toggle hotkey</value>
+    <value>Đổi phím tắt bật/tắt</value>
     <comment>Title of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.Title" xml:space="preserve">
-    <value>Hotkey that starts and stops clicking</value>
+    <value>Phím tắt bắt đầu và dừng nhấp</value>
     <comment>Text block of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
@@ -314,7 +314,7 @@
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
-    <value>Minimize the app window while clicking</value>
+    <value>Thu nhỏ cửa sổ ứng dụng khi đang nhấp</value>
     <comment>Description of Automatic minimize expander</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
@@ -322,11 +322,11 @@
     <comment>Title of Automatic minimize expander</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
-    <value>Minimize when clicking starts</value>
+    <value>Thu nhỏ khi bắt đầu nhấp</value>
     <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
-    <value>Restore when paused</value>
+    <value>Khôi phục khi tạm dừng</value>
     <comment>Label for Restore when paused check box on the Behavior panel</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
@@ -334,7 +334,7 @@
     <comment>Title of Progress indicator settings card</comment>
   </data>
   <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
-    <value>Hiển thị trạng thái trong chỉ báo tiến trình trên nút thanh tác vụ của ứng dụng</value>
+    <value>Hiển thị trạng thái trên chỉ báo tiến trình của nút ứng dụng trên thanh tác vụ</value>
     <comment>Description of Progress indicator settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Header" xml:space="preserve">
@@ -342,11 +342,11 @@
     <comment>Title of Language settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Description" xml:space="preserve">
-    <value>Select which app language to display</value>
+    <value>Chọn ngôn ngữ ứng dụng để hiển thị</value>
     <comment>Description of Language settings card</comment>
   </data>
   <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
-    <value>Sử dụng cài đặt hệ thống</value>
+    <value>Theo cài đặt hệ thống</value>
     <comment>Label for the language option to use the Windows display language</comment>
   </data>
   <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
@@ -358,15 +358,15 @@
     <comment>Displayed on the button that restarts the app to apply a language change</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
-    <value>Hiệu ứng Mica</value>
+    <value>Lớp Mica</value>
     <comment>Label for mica material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
-    <value>Hiệu ứng Mica Alt</value>
+    <value>Lớp Mica Alt</value>
     <comment>Label for mica alt material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
-    <value>Hiệu ứng Acrylic</value>
+    <value>Lớp Acrylic</value>
     <comment>Label for acrylic material option</comment>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
@@ -378,15 +378,15 @@
     <comment>Title text of app title bar</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Title" xml:space="preserve">
-    <value>Hotkey unavailable</value>
+    <value>Phím tắt không khả dụng</value>
     <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.Content" xml:space="preserve">
-    <value>Another app might be using this hotkey. Choose a different key.</value>
+    <value>Có thể ứng dụng khác đang dùng phím tắt này. Hãy chọn phím khác.</value>
     <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
   </data>
   <data name="ContentDialogHotkeyFailed.CloseButtonText" xml:space="preserve">
-    <value>Close</value>
+    <value>Đóng</value>
     <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>
 </root>
