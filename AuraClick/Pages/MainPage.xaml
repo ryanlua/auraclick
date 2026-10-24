@@ -18,13 +18,15 @@
 
     <Page.Resources>
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
-        <x:Double x:Key="NumberBoxColumnSpacing">4</x:Double>
-        <x:Double x:Key="ButtonColumnSpacing">8</x:Double>
-        <x:Double x:Key="GridRowSpacing">8</x:Double>
-        <x:Double x:Key="ControlSpacing">8</x:Double>
+        <x:Double x:Key="GridSpacing">8</x:Double>
+        <x:Double x:Key="HeaderSpacing">8</x:Double>
+        <x:Double x:Key="NumberBoxSpacing">4</x:Double>
+        <x:Double x:Key="CheckBoxHeaderSpacing">4</x:Double>
+        <x:Double x:Key="ControlSpacing">4</x:Double>
+        <x:Double x:Key="ButtonSpacing">8</x:Double>
     </Page.Resources>
 
-    <Grid Margin="{StaticResource ContentMargin}" RowSpacing="{StaticResource GridRowSpacing}">
+    <Grid Margin="{StaticResource ContentMargin}" RowSpacing="{StaticResource GridSpacing}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -37,7 +39,7 @@
 
         <!--  Auto click settings  -->
         <ContentControl HorizontalContentAlignment="Stretch" IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}">
-            <Grid RowSpacing="{StaticResource GridRowSpacing}">
+            <Grid RowSpacing="{StaticResource GridSpacing}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -49,9 +51,9 @@
                 </Grid.ColumnDefinitions>
 
                 <!--  Click interval  -->
-                <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource ControlSpacing}">
+                <StackPanel Grid.ColumnSpan="2" Spacing="{StaticResource HeaderSpacing}">
                     <dev:IsEnabledTextBlock x:Uid="TextBlockClickInterval" />
-                    <Grid ColumnSpacing="{StaticResource NumberBoxColumnSpacing}">
+                    <Grid ColumnSpacing="{StaticResource NumberBoxSpacing}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -109,7 +111,7 @@
                 <StackPanel
                     Grid.Row="2"
                     Grid.Column="0"
-                    Spacing="{StaticResource ControlSpacing}">
+                    Spacing="{StaticResource HeaderSpacing}">
                     <dev:IsEnabledTextBlock x:Uid="TextBlockHotkey" />
                     <dev:Shortcut
                         x:Name="ToggleShortcut"
@@ -123,7 +125,10 @@
                 </StackPanel>
 
                 <!--  Click repeat  -->
-                <StackPanel Grid.Row="1" Grid.Column="1">
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Spacing="{StaticResource CheckBoxHeaderSpacing}">
                     <CheckBox
                         x:Name="ClickRepeatCheckBox"
                         x:Uid="CheckBoxClickRepeat"
@@ -148,7 +153,10 @@
                 </StackPanel>
 
                 <!--  Click offset  -->
-                <StackPanel Grid.Row="2" Grid.Column="1">
+                <StackPanel
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Spacing="{StaticResource CheckBoxHeaderSpacing}">
                     <CheckBox
                         x:Name="ClickOffsetCheckBox"
                         x:Uid="CheckBoxClickOffset"
@@ -179,7 +187,7 @@
         <Grid
             Grid.Row="1"
             VerticalAlignment="Bottom"
-            ColumnSpacing="{StaticResource ButtonColumnSpacing}">
+            ColumnSpacing="{StaticResource ButtonSpacing}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
