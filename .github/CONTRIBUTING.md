@@ -32,7 +32,7 @@ You can build the project with Visual Studio. Before building the project, ensur
 
 To debug the project, press <kbd>F5</kbd> or choose **Debug** > **Start Debugging**.
 
-For more information, learn how to [build and clean projects and solutions in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/install/import-export-installation-configurations).
+For more information, learn how to [build and clean projects and solutions in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/ide/building-and-cleaning-projects-and-solutions-in-visual-studio).
 
 ## Helpful resources
 
@@ -52,4 +52,4 @@ Resources to help you contribute to this project and learn more about Windows ap
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](https://github.com/ryanlua/auraclick?tab=AGPL-3.0-1-ov-file#readme).
+By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](COPYING.md).
