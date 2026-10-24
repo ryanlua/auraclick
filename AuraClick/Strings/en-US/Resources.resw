@@ -121,15 +121,15 @@
     <value>A high-performance modern auto clicker for Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="ComboBoxItemLeft.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
     <value>Left</value>
     <comment>Label for left mouse button option</comment>
   </data>
-  <data name="ComboBoxItemMiddle.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
     <value>Middle</value>
     <comment>Label for middle mouse button option</comment>
   </data>
-  <data name="ComboBoxItemRight.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
     <value>Right</value>
     <comment>Label for right mouse button option</comment>
   </data>
@@ -138,7 +138,7 @@
     <comment>Header text of Mouse button combo box</comment>
   </data>
   <data name="ComboBoxMouseButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Which mouse button to automatically click</value>
+    <value>Mouse button to click</value>
     <comment>This is the tool tip automation name for the Mouse button combo box.</comment>
   </data>
   <data name="NumberBoxHours.Description" xml:space="preserve">
@@ -157,12 +157,20 @@
     <value>seconds</value>
     <comment>Description text of seconds click interval number box</comment>
   </data>
+  <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
+    <value>clicks</value>
+    <comment>Unit text of Click repeat number box</comment>
+  </data>
+  <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
+    <value>milliseconds</value>
+    <comment>Unit text of Random offset number box</comment>
+  </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
     <value>Click interval</value>
     <comment>Header text of Click interval number boxes</comment>
   </data>
   <data name="TextBlockClickInterval.ToolTipService.ToolTip" xml:space="preserve">
-    <value>How long between clicks</value>
+    <value>Time between clicks</value>
     <comment>This is the tool tip automation name for the Click interval number boxes.</comment>
   </data>
   <data name="TextBlockHotkey.Text" xml:space="preserve">
@@ -170,48 +178,48 @@
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Key that starts and stops the auto clicker</value>
+    <value>Key that starts and stops clicking</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
     <value>Settings</value>
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
-  <data name="ToggleButtonStartTooltipStart" xml:space="preserve">
+  <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
     <value>Start</value>
-    <comment>This is the tool tip automation name for the Start button.</comment>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
-  <data name="ClickRepeatCheckBox.Content" xml:space="preserve">
+  <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
     <value>Click repeat</value>
-    <comment>Header text of Click repeat check box</comment>
+    <comment>Label for Click repeat check box</comment>
   </data>
-  <data name="ClickRepeatCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Stop after a certain number of clicks</value>
+  <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Stop after this many clicks</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
-  <data name="ClickOffsetCheckBox.Content" xml:space="preserve">
+  <data name="CheckBoxClickOffset.Content" xml:space="preserve">
     <value>Random offset</value>
-    <comment>Header text of Click offset check box</comment>
+    <comment>Label for Random offset check box</comment>
   </data>
-  <data name="ClickOffsetCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Random interval offset between clicks</value>
+  <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Add a random offset to the interval</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
-  <data name="SettingsSubtitleTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockSettings.Text" xml:space="preserve">
     <value>Settings</value>
     <comment>Header text of Settings page</comment>
   </data>
-  <data name="AppearanceSettingsSectionHeaderTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockAppearance.Text" xml:space="preserve">
     <value>Appearance</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
     <value>Theme</value>
-    <comment>Title of Theme expander</comment>
+    <comment>Title of Theme settings card</comment>
   </data>
   <data name="SettingsCardTheme.Description" xml:space="preserve">
     <value>Select which app theme to display</value>
-    <comment>Description of Theme expander</comment>
+    <comment>Description of Theme settings card</comment>
   </data>
   <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
     <value>Use system setting</value>
@@ -227,25 +235,25 @@
   </data>
   <data name="SettingsCardBackdropMaterial.Header" xml:space="preserve">
     <value>Backdrop material</value>
-    <comment>Title of Backdrop material expander</comment>
+    <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
-    <value>System backdrop material for window background</value>
-    <comment>Description of Theme expander</comment>
+    <value>Select which material to use for the app window background</value>
+    <comment>Description of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
     <value>Always on top</value>
     <comment>Title of Always on top settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
-    <value>Always show the app's window on top of others</value>
+    <value>Keep the app window on top of other windows</value>
     <comment>Description of Always on top settings card</comment>
   </data>
   <data name="TextBlockBehavior.Text" xml:space="preserve">
     <value>Behavior</value>
     <comment>Subtitle of behavior setting on Settings page</comment>
   </data>
-  <data name="AppTitleBar.Subtitle" xml:space="preserve">
+  <data name="TitleBarApp.Subtitle" xml:space="preserve">
     <value>Preview</value>
     <comment>Subtitle text of app title bar</comment>
   </data>
@@ -262,7 +270,7 @@
     <comment>Title of Notification badge expander</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
-    <value>Show the status notification badge on the app's taskbar icon</value>
+    <value>Show a status badge on the app's taskbar button</value>
     <comment>Description of Notification badge expander</comment>
   </data>
   <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
@@ -273,9 +281,9 @@
     <value>Show badge while paused</value>
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
-  <data name="ToggleButtonStartTooltipStop" xml:space="preserve">
+  <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
     <value>Pause</value>
-    <comment>This is the tool tip automation name for the Stop button.</comment>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
     <value>Related links</value>
@@ -283,14 +291,14 @@
   </data>
   <data name="TextBlockAbout.Text" xml:space="preserve">
     <value>About</value>
-    <comment>Subtitle of about message on Settings page</comment>
+    <comment>Subtitle of about setting on Settings page</comment>
   </data>
   <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
-    <value>Toggle hotkey</value>
+    <value>Change toggle hotkey</value>
     <comment>Title of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.Title" xml:space="preserve">
-    <value>Hotkey for starting and stopping the auto clicker</value>
+    <value>Hotkey that starts and stops clicking</value>
     <comment>Text block of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
@@ -306,7 +314,7 @@
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
-    <value>Minimize the window when auto clicking</value>
+    <value>Minimize the app window while clicking</value>
     <comment>Description of Automatic minimize expander</comment>
   </data>
   <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
@@ -314,8 +322,8 @@
     <comment>Title of Automatic minimize expander</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
-    <value>Minimize on clicking</value>
-    <comment>Label for Minimize on clicking start check box on the Behavior panel</comment>
+    <value>Minimize when clicking starts</value>
+    <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
     <value>Restore when paused</value>
@@ -334,7 +342,7 @@
     <comment>Title of Language settings card</comment>
   </data>
   <data name="SettingsCardLanguage.Description" xml:space="preserve">
-    <value>Select which language to display</value>
+    <value>Select which app language to display</value>
     <comment>Description of Language settings card</comment>
   </data>
   <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
@@ -347,7 +355,7 @@
   </data>
   <data name="ButtonLanguageRestart.Content" xml:space="preserve">
     <value>Restart</value>
-    <comment>Button that restarts the app to apply a language change</comment>
+    <comment>Displayed on the button that restarts the app to apply a language change</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
     <value>Mica</value>
@@ -365,19 +373,19 @@
     <value>Aura Click (Preview)</value>
     <comment>This is the title of the application.</comment>
   </data>
-  <data name="AppTitleBar.Title" xml:space="preserve">
+  <data name="TitleBarApp.Title" xml:space="preserve">
     <value>Aura Click</value>
     <comment>Title text of app title bar</comment>
   </data>
-  <data name="ContentDialogHotkeyFailedTitle" xml:space="preserve">
-    <value>Invalid hotkey</value>
+  <data name="ContentDialogHotkeyFailed.Title" xml:space="preserve">
+    <value>Hotkey unavailable</value>
     <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
   </data>
-  <data name="ContentDialogHotkeyFailedContent" xml:space="preserve">
-    <value>Failed to register hotkey. Change the hotkey to another key.</value>
+  <data name="ContentDialogHotkeyFailed.Content" xml:space="preserve">
+    <value>Another app might be using this hotkey. Choose a different key.</value>
     <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
   </data>
-  <data name="ContentDialogHotkeyFailedCloseButtonText" xml:space="preserve">
+  <data name="ContentDialogHotkeyFailed.CloseButtonText" xml:space="preserve">
     <value>Close</value>
     <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>

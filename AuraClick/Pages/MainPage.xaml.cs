@@ -8,7 +8,7 @@
 // (at your option) any later version.
 //
 // Aura Click is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY without even the implied warranty of
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
@@ -41,12 +41,12 @@ public sealed partial class MainPage : Page
     /// <summary>
     /// The settings page instance.
     /// </summary>
-    private static readonly SettingsPage settingsPage = new();
+    private static readonly SettingsPage s_settingsPage = new();
 
     /// <summary>
     /// Window message monitor for hotkey handling.
     /// </summary>
-    private WindowMessageMonitor? monitor;
+    private WindowMessageMonitor? _monitor;
 
     /// <summary>
     /// Hotkey ID for the toggle shortcut.
@@ -56,7 +56,7 @@ public sealed partial class MainPage : Page
     /// <summary>
     /// Flag to track if the ToggleShortcut dialog is open.
     /// </summary>
-    private bool shortcutDialogOpen;
+    private bool _shortcutDialogOpen;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainPage" /> class.
@@ -65,17 +65,22 @@ public sealed partial class MainPage : Page
     {
         InitializeComponent();
         Loaded += MainPage_Loaded;
-        AutoClicker.ClickLimitReached += (_, _) => DispatcherQueue.TryEnqueue(() => ToggleButtonStart.IsChecked = AutoClicker.IsRunning);
+        AutoClicker.ClickLimitReached += (_, _) => DispatcherQueue.TryEnqueue(() => StartToggleButton.IsChecked = AutoClicker.IsRunning);
 
         ToggleShortcut.Keys = CreateDefaultShortcut();
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
     }
 
+    /// <summary>
+    /// Creates the default hotkey keys.
+    /// </summary>
     private static List<object> CreateDefaultShortcut()
     {
         return [new KeyVisualInfo { Key = VirtualKey.F6, KeyName = "F6" }];
     }
 
+    /// <summary>
+    /// Shows a dialog explaining that the hotkey couldn't be registered.
+    /// </summary>
     private async Task ShowHotkeyRegistrationFailedAsync()
     {
         ContentDialog dialog = new()
@@ -83,26 +88,27 @@ public sealed partial class MainPage : Page
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             XamlRoot = XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "ContentDialogHotkeyFailedTitle".GetLocalized(),
-            Content = "ContentDialogHotkeyFailedContent".GetLocalized(),
-            CloseButtonText = "ContentDialogHotkeyFailedCloseButtonText".GetLocalized(),
+            Title = "ContentDialogHotkeyFailed/Title".GetLocalized(),
+            Content = "ContentDialogHotkeyFailed/Content".GetLocalized(),
+            CloseButtonText = "ContentDialogHotkeyFailed/CloseButtonText".GetLocalized(),
             DefaultButton = ContentDialogButton.Close
         };
 
         _ = await dialog.ShowAsync();
     }
 
+    /// <summary>
+    /// Registers the selected hotkey and shows an error if registration fails.
+    /// </summary>
     private async Task ApplyHotkeySelectionAsync()
     {
         bool registered = HotkeyManager.RegisterHotkey(ToggleHotkeyId, ToggleShortcut.Keys);
         SetShortcutError(!registered);
 
-        if (registered)
+        if (!registered)
         {
-            return;
+            await ShowHotkeyRegistrationFailedAsync();
         }
-
-        await ShowHotkeyRegistrationFailedAsync();
     }
 
     /// <summary>
@@ -117,15 +123,7 @@ public sealed partial class MainPage : Page
             keyVisual.IsError = isError;
         }
 
-        ToolTipService.SetToolTip(ToggleShortcut, isError ? "ContentDialogHotkeyFailedContent".GetLocalized() : null);
-    }
-
-    /// <summary>
-    /// Determines whether a control should be enabled based on a checkbox state and a running-state toggle.
-    /// </summary>
-    private bool IsControlEnabled(bool? isChecked, bool? isRunning)
-    {
-        return (isChecked ?? false) && !(isRunning ?? false);
+        ToolTipService.SetToolTip(ToggleShortcut, isError ? "ContentDialogHotkeyFailed/Content".GetLocalized() : null);
     }
 
     /// <summary>
@@ -137,11 +135,11 @@ public sealed partial class MainPage : Page
         RefreshNotificationBadge();
 
         // Set up window message monitor
-        if (monitor is null)
+        if (_monitor is null)
         {
             MainWindow window = App.MainWindow;
-            monitor = new(window);
-            monitor.WindowMessageReceived += OnWindowMessageReceived;
+            _monitor = new(window);
+            _monitor.WindowMessageReceived += OnWindowMessageReceived;
         }
 
         // Register hotkey
@@ -149,7 +147,7 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
-    /// Handles the WindowMessageReceived event of the WindowMessageMonitor control.
+    /// Handles the WindowMessageReceived event of the window message monitor.
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
@@ -160,14 +158,14 @@ public sealed partial class MainPage : Page
         }
 
         // Disable hotkey when ToggleShortcut dialog is open
-        if (shortcutDialogOpen)
+        if (_shortcutDialogOpen)
         {
             return;
         }
 
         if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == ToggleHotkeyId)
         {
-            ToggleButtonStart.IsChecked = !ToggleButtonStart.IsChecked;
+            StartToggleButton.IsChecked = !StartToggleButton.IsChecked;
         }
     }
 
@@ -176,11 +174,11 @@ public sealed partial class MainPage : Page
     /// </summary>
     public static void RefreshNotificationBadge()
     {
-        if (AutoClicker.IsRunning && settingsPage.NotificationBadgePlaying)
+        if (AutoClicker.IsRunning && s_settingsPage.NotificationBadgePlaying)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Playing);
         }
-        else if (!AutoClicker.IsRunning && settingsPage.NotificationBadgePaused)
+        else if (!AutoClicker.IsRunning && s_settingsPage.NotificationBadgePaused)
         {
             BadgeNotificationManager.Current.SetBadgeAsGlyph(BadgeNotificationGlyph.Paused);
         }
@@ -197,7 +195,7 @@ public sealed partial class MainPage : Page
     {
         HWND hwnd = new(WindowNative.GetWindowHandle(App.MainWindow));
 
-        if (AutoClicker.IsRunning && settingsPage.ProgressIndicator)
+        if (AutoClicker.IsRunning && s_settingsPage.ProgressIndicator)
         {
             TaskbarHelper.SetProgressState(hwnd, TaskbarStates.Indeterminate);
         }
@@ -206,42 +204,43 @@ public sealed partial class MainPage : Page
             TaskbarHelper.SetProgressState(hwnd, TaskbarStates.NoProgress);
         }
     }
-    /// <summary>
-    /// Handles the Checked event of the ToggleButtonStart control.
-    /// </summary>
-    private async void ToggleButtonStart_OnChecked(object sender, RoutedEventArgs e)
-    {
-        ToggleButtonStart.IsEnabled = false;
 
-        FontIconStart.Glyph = "\uEDB4";
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStop".GetLocalized());
+    /// <summary>
+    /// Handles the Checked event of the StartToggleButton control.
+    /// </summary>
+    private async void StartToggleButton_Checked(object sender, RoutedEventArgs e)
+    {
+        StartToggleButton.IsEnabled = false;
+
+        StartFontIcon.Glyph = "\uEDB4";
+        ToolTipService.SetToolTip(StartToggleButton, "ToggleButtonPause/ToolTipService/ToolTip".GetLocalized());
         AutoClicker.Start();
         RefreshNotificationBadge();
         RefreshProgressIndicator();
 
-        if (settingsPage.AutomaticMinimizeMinimize)
+        if (s_settingsPage.AutomaticMinimizeMinimize)
         {
             App.MainWindow.Minimize();
         }
 
         await Task.Delay(1000);
-        ToggleButtonStart.IsEnabled = true;
+        StartToggleButton.IsEnabled = true;
     }
 
     /// <summary>
-    /// Handles the Unchecked event of the ToggleButtonStart control.
+    /// Handles the Unchecked event of the StartToggleButton control.
     /// </summary>
-    private void ToggleButtonStart_OnUnchecked(object sender, RoutedEventArgs e)
+    private void StartToggleButton_Unchecked(object sender, RoutedEventArgs e)
     {
-        ToggleButtonStart.IsEnabled = true;
-        FontIconStart.Glyph = "\uEE4A";
-        ToolTipService.SetToolTip(ToggleButtonStart, "ToggleButtonStartTooltipStart".GetLocalized());
+        StartToggleButton.IsEnabled = true;
+        StartFontIcon.Glyph = "\uEE4A";
+        ToolTipService.SetToolTip(StartToggleButton, "ToggleButtonStart/ToolTipService/ToolTip".GetLocalized());
         AutoClicker.Stop();
         RefreshNotificationBadge();
         RefreshProgressIndicator();
 
         // Restore would also un-maximize a maximized window, so only restore when minimized
-        if (settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
+        if (s_settingsPage.AutomaticMinimizeRestore && App.MainWindow.WindowState == WindowState.Minimized)
         {
             App.MainWindow.Restore();
         }
@@ -256,7 +255,7 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
-    /// Handles the PrimaryButtonClick event of the Shortcut control.
+    /// Handles the PrimaryButtonClick event of the ToggleShortcut control.
     /// </summary>
     private async void ToggleShortcut_PrimaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
@@ -266,7 +265,7 @@ public sealed partial class MainPage : Page
     }
 
     /// <summary>
-    /// Handles the SecondaryButtonClick event of the Shortcut control.
+    /// Handles the SecondaryButtonClick event of the ToggleShortcut control.
     /// </summary>
     private async void ToggleShortcut_SecondaryButtonClick(object sender, ContentDialogButtonClickEventArgs e)
     {
@@ -276,13 +275,19 @@ public sealed partial class MainPage : Page
         await ApplyHotkeySelectionAsync();
     }
 
+    /// <summary>
+    /// Handles the OpenedContentDialog event of the ToggleShortcut control.
+    /// </summary>
     private void ToggleShortcut_OpenedContentDialog(object sender, ContentDialogOpenedEventArgs e)
     {
-        shortcutDialogOpen = true;
+        _shortcutDialogOpen = true;
     }
 
+    /// <summary>
+    /// Handles the ClosedContentDialog event of the ToggleShortcut control.
+    /// </summary>
     private void ToggleShortcut_ClosedContentDialog(object sender, ContentDialogClosedEventArgs e)
     {
-        shortcutDialogOpen = false;
+        _shortcutDialogOpen = false;
     }
 }

@@ -121,15 +121,15 @@
     <value>一款高性能的现代 Windows 自动点击器。</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="ComboBoxItemLeft.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
     <value>左键</value>
     <comment>Label for left mouse button option</comment>
   </data>
-  <data name="ComboBoxItemMiddle.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
     <value>中键</value>
     <comment>Label for middle mouse button option</comment>
   </data>
-  <data name="ComboBoxItemRight.Content" xml:space="preserve">
+  <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
     <value>右键</value>
     <comment>Label for right mouse button option</comment>
   </data>
@@ -177,31 +177,31 @@
     <value>设置</value>
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
-  <data name="ToggleButtonStartTooltipStart" xml:space="preserve">
+  <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
     <value>开始</value>
     <comment>This is the tool tip automation name for the Start button.</comment>
   </data>
-  <data name="ClickRepeatCheckBox.Content" xml:space="preserve">
+  <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
     <value>重复点击</value>
     <comment>Header text of Click repeat check box</comment>
   </data>
-  <data name="ClickRepeatCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
     <value>在达到指定次数或直到停止后停止点击</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
-  <data name="ClickOffsetCheckBox.Content" xml:space="preserve">
+  <data name="CheckBoxClickOffset.Content" xml:space="preserve">
     <value>随机偏移</value>
     <comment>Header text of Click offset check box</comment>
   </data>
-  <data name="ClickOffsetCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+  <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
     <value>两次点击的随机间隔偏移量</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
-  <data name="SettingsSubtitleTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockSettings.Text" xml:space="preserve">
     <value>设置</value>
     <comment>Header text of Settings page</comment>
   </data>
-  <data name="AppearanceSettingsSectionHeaderTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockAppearance.Text" xml:space="preserve">
     <value>外观</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
@@ -245,7 +245,7 @@
     <value>行为</value>
     <comment>Subtitle of behavior setting on Settings page</comment>
   </data>
-  <data name="AppTitleBar.Subtitle" xml:space="preserve">
+  <data name="TitleBarApp.Subtitle" xml:space="preserve">
     <value>Preview</value>
     <comment>Subtitle text of app title bar</comment>
   </data>
@@ -273,7 +273,7 @@
     <value>暂停时显示徽章</value>
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
-  <data name="ToggleButtonStartTooltipStop" xml:space="preserve">
+  <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
     <value>暂停</value>
     <comment>This is the tool tip automation name for the Stop button.</comment>
   </data>
@@ -321,7 +321,7 @@
     <value>Aura Click (Preview)</value>
     <comment>This is the title of the application.</comment>
   </data>
-  <data name="AppTitleBar.Title" xml:space="preserve">
+  <data name="TitleBarApp.Title" xml:space="preserve">
     <value>Aura Click</value>
     <comment>Title text of app title bar</comment>
   </data>
