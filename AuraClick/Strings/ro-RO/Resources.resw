@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,23 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>Un auto clicker modern de înaltă performanță pentru Windows.</value>
+    <value>Un autoclicker modern și de înaltă performanță pentru Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Aura Click (Preview)</value>
-    <comment>This is the title of the application.</comment>
-  </data>
-  <data name="ComboBoxItemLeft.Content" xml:space="preserve">
-    <value>Stâng</value>
+  <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
+    <value>Stânga</value>
     <comment>Label for left mouse button option</comment>
   </data>
-  <data name="ComboBoxItemMiddle.Content" xml:space="preserve">
-    <value>Mijlociu</value>
+  <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
+    <value>Mijloc</value>
     <comment>Label for middle mouse button option</comment>
   </data>
-  <data name="ComboBoxItemRight.Content" xml:space="preserve">
-    <value>Drept</value>
+  <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
+    <value>Dreapta</value>
     <comment>Label for right mouse button option</comment>
   </data>
   <data name="ComboBoxMouseButton.Header" xml:space="preserve">
@@ -142,7 +138,7 @@
     <comment>Header text of Mouse button combo box</comment>
   </data>
   <data name="ComboBoxMouseButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Care buton al mouse-ului va face clic automat</value>
+    <value>Butonul mouse-ului pentru clic</value>
     <comment>This is the tool tip automation name for the Mouse button combo box.</comment>
   </data>
   <data name="NumberBoxHours.Description" xml:space="preserve">
@@ -161,85 +157,205 @@
     <value>secunde</value>
     <comment>Description text of seconds click interval number box</comment>
   </data>
-  <data name="RadioButtonUntilStopped.Content" xml:space="preserve">
-    <value>Până la oprire</value>
-    <comment>Label for click repeat until stopped option</comment>
+  <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
+    <value>clicuri</value>
+    <comment>Unit text of Click repeat number box</comment>
+  </data>
+  <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
+    <value>milisecunde</value>
+    <comment>Unit text of Random offset number box</comment>
   </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
-    <value>Interval între clicuri</value>
+    <value>Interval de clic</value>
     <comment>Header text of Click interval number boxes</comment>
   </data>
   <data name="TextBlockClickInterval.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Cât timp între clicuri</value>
+    <value>Timpul dintre clicuri</value>
     <comment>This is the tool tip automation name for the Click interval number boxes.</comment>
   </data>
   <data name="TextBlockHotkey.Text" xml:space="preserve">
-    <value>Scurtătură</value>
+    <value>Tastă rapidă</value>
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Care buton va porni auto clicker-ul</value>
+    <value>Tasta care pornește și oprește clicurile</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
     <value>Setări</value>
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
-  <data name="ToggleButtonStartTooltipStart" xml:space="preserve">
-    <value>Start</value>
-    <comment>This is the tool tip automation name for the Start button.</comment>
+  <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Pornește</value>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
-  <data name="ClickRepeatCheckBox.Content" xml:space="preserve">
+  <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
     <value>Repetare clic</value>
-    <comment>Header text of Click repeat check box</comment>
+    <comment>Label for Click repeat check box</comment>
   </data>
-  <data name="ClickRepeatCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Încetează din a mai face clic după un anumit număr sau până la oprire</value>
+  <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Oprește după acest număr de clicuri</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
-  <data name="ClickOffsetCheckBox.Content" xml:space="preserve">
-    <value>Offset aleatoriu</value>
-    <comment>Header text of Click offset check box</comment>
+  <data name="CheckBoxClickOffset.Content" xml:space="preserve">
+    <value>Decalaj aleatoriu</value>
+    <comment>Label for Random offset check box</comment>
   </data>
-  <data name="ClickOffsetCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Offset aleatoriu de interval între clicuri</value>
+  <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Adaugă un decalaj aleatoriu la interval</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
-  <data name="SettingsSubtitleTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockSettings.Text" xml:space="preserve">
     <value>Setări</value>
     <comment>Header text of Settings page</comment>
   </data>
-  <data name="AppearanceSettingsSectionHeaderTextBlock.Text" xml:space="preserve">
+  <data name="TextBlockAppearance.Text" xml:space="preserve">
     <value>Aspect</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
-    <value>Temă aplicație</value>
-    <comment>Title of Theme expander</comment>
+    <value>Temă</value>
+    <comment>Title of Theme settings card</comment>
   </data>
   <data name="SettingsCardTheme.Description" xml:space="preserve">
-    <value>Selectează tema aplicației care să fie afișată</value>
-    <comment>Description of Theme expander</comment>
+    <value>Selectează tema aplicației de afișat</value>
+    <comment>Description of Theme settings card</comment>
   </data>
   <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
-    <value>Folosește setarea sistemului</value>
+    <value>Utilizează setarea sistemului</value>
     <comment>Label for the app theme option to use system setting</comment>
   </data>
   <data name="ComboBoxItemThemeLight.Content" xml:space="preserve">
-    <value>Luminoasă</value>
+    <value>Luminos</value>
     <comment>Label for light theme option</comment>
   </data>
   <data name="ComboBoxItemThemeDark.Content" xml:space="preserve">
-    <value>Întunecată</value>
+    <value>Întunecat</value>
     <comment>Label for dark theme option</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Header" xml:space="preserve">
-    <value>Materialul pentru fundal</value>
-    <comment>Title of Backdrop material expander</comment>
+    <value>Material fundal</value>
+    <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
-    <value>Materialul pentru fundal al sistemului pentru fundalul ferestrei</value>
-    <comment>Description of Theme expander</comment>
+    <value>Selectează materialul pentru fundalul ferestrei aplicației</value>
+    <comment>Description of Backdrop material settings card</comment>
+  </data>
+  <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
+    <value>Mereu deasupra</value>
+    <comment>Title of Always on top settings card</comment>
+  </data>
+  <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
+    <value>Menține fereastra aplicației deasupra celorlalte ferestre</value>
+    <comment>Description of Always on top settings card</comment>
+  </data>
+  <data name="TextBlockBehavior.Text" xml:space="preserve">
+    <value>Comportament</value>
+    <comment>Subtitle of behavior setting on Settings page</comment>
+  </data>
+  <data name="TitleBarApp.Subtitle" xml:space="preserve">
+    <value>Preview</value>
+    <comment>Subtitle text of app title bar</comment>
+  </data>
+  <data name="HyperlinkButtonPrivacyPolicy.Content" xml:space="preserve">
+    <value>Politica de confidențialitate</value>
+    <comment>Displayed on a link to the app privacy policy on the About panel</comment>
+  </data>
+  <data name="HyperlinkButtonLicense.Content" xml:space="preserve">
+    <value>Licență</value>
+    <comment>Displayed on a link to the app open source license on the About panel</comment>
+  </data>
+  <data name="SettingsExpanderNotificationBadge.Header" xml:space="preserve">
+    <value>Insignă de notificare</value>
+    <comment>Title of Notification badge expander</comment>
+  </data>
+  <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
+    <value>Afișează o insignă de stare pe butonul aplicației din bara de activități</value>
+    <comment>Description of Notification badge expander</comment>
+  </data>
+  <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
+    <value>Afișează insigna în timpul clicurilor</value>
+    <comment>Label for Show badge while clicking check box on the Behavior panel</comment>
+  </data>
+  <data name="CheckBoxNotificationBadgePaused.Content" xml:space="preserve">
+    <value>Afișează insigna în timpul pauzei</value>
+    <comment>Label for Show badge while paused check box on the Behavior panel</comment>
+  </data>
+  <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Pauză</value>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
+  </data>
+  <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
+    <value>Link-uri conexe</value>
+    <comment>Header text of Related links on the About panel</comment>
+  </data>
+  <data name="TextBlockAbout.Text" xml:space="preserve">
+    <value>Despre</value>
+    <comment>Subtitle of about setting on Settings page</comment>
+  </data>
+  <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
+    <value>Schimbă tasta rapidă de comutare</value>
+    <comment>Title of Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.Title" xml:space="preserve">
+    <value>Tasta rapidă care pornește și oprește clicurile</value>
+    <comment>Text block of Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
+    <value>Resetare</value>
+    <comment>Displayed on the button to reset the shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.CloseButtonText" xml:space="preserve">
+    <value>Anulare</value>
+    <comment>Displayed on the button to close the shortcut content dialog</comment>
+  </data>
+  <data name="ShortcutToggle.PrimaryButtonText" xml:space="preserve">
+    <value>Salvează</value>
+    <comment>Displayed on the button to save the shortcut content dialog</comment>
+  </data>
+  <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
+    <value>Minimizează fereastra aplicației în timpul clicurilor</value>
+    <comment>Description of Automatic minimize expander</comment>
+  </data>
+  <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
+    <value>Minimizare automată</value>
+    <comment>Title of Automatic minimize expander</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
+    <value>Minimizează la pornirea clicurilor</value>
+    <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
+    <value>Restabilește la pauză</value>
+    <comment>Label for Restore when paused check box on the Behavior panel</comment>
+  </data>
+  <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
+    <value>Indicator de progres</value>
+    <comment>Title of Progress indicator settings card</comment>
+  </data>
+  <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
+    <value>Afișează starea în indicatorul de progres de pe butonul aplicației din bara de activități</value>
+    <comment>Description of Progress indicator settings card</comment>
+  </data>
+  <data name="SettingsCardLanguage.Header" xml:space="preserve">
+    <value>Limbă</value>
+    <comment>Title of Language settings card</comment>
+  </data>
+  <data name="SettingsCardLanguage.Description" xml:space="preserve">
+    <value>Selectează limba aplicației de afișat</value>
+    <comment>Description of Language settings card</comment>
+  </data>
+  <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
+    <value>Utilizează setarea sistemului</value>
+    <comment>Label for the language option to use the Windows display language</comment>
+  </data>
+  <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
+    <value>Repornește pentru a aplica modificările de limbă</value>
+    <comment>Title of restart info bar shown after changing the app language</comment>
+  </data>
+  <data name="ButtonLanguageRestart.Content" xml:space="preserve">
+    <value>Repornește</value>
+    <comment>Displayed on the button that restarts the app to apply a language change</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
     <value>Mica</value>
@@ -253,80 +369,24 @@
     <value>Acrilic</value>
     <comment>Label for acrylic material option</comment>
   </data>
-  <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
-    <value>Întotdeauna deasupra</value>
-    <comment>Title of Always on top settings card</comment>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Aura Click (Preview)</value>
+    <comment>This is the title of the application.</comment>
   </data>
-  <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
-    <value>Arată mereu fereastra aplicației deasupra celorlalte</value>
-    <comment>Description of Always on top settings card</comment>
-  </data>
-  <data name="TextBlockBehavior.Text" xml:space="preserve">
-    <value>Comportament</value>
-    <comment>Subtitle of behavior setting on Settings page</comment>
-  </data>
-  <data name="AppTitleBar.Subtitle" xml:space="preserve">
-    <value>Preview</value>
-    <comment>Subtitle text of app title bar</comment>
-  </data>
-  <data name="AppTitleBar.Title" xml:space="preserve">
+  <data name="TitleBarApp.Title" xml:space="preserve">
     <value>Aura Click</value>
     <comment>Title text of app title bar</comment>
   </data>
-  <data name="HyperlinkButtonPrivacyPolicy.Content" xml:space="preserve">
-    <value>Politica de confidențialitate</value>
-    <comment>Displayed on a link to the app privacy policy on the About panel</comment>
+  <data name="ContentDialogHotkeyFailed.Title" xml:space="preserve">
+    <value>Tasta rapidă indisponibilă</value>
+    <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
   </data>
-  <data name="HyperlinkButtonLicense.Content" xml:space="preserve">
-    <value>Licență</value>
-    <comment>Displayed on a link to the app open source license on the About panel</comment>
+  <data name="ContentDialogHotkeyFailed.Content" xml:space="preserve">
+    <value>Este posibil ca altă aplicație să utilizeze această tastă rapidă. Alege o altă tastă.</value>
+    <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
   </data>
-  <data name="SettingsExpanderNotificationBadge.Header" xml:space="preserve">
-    <value>Insignă notificare</value>
-    <comment>Title of Notification badge expander</comment>
-  </data>
-  <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
-    <value>Afișează insigna de notificare a statusului pe pictograma aplicației din bara de activități</value>
-    <comment>Description of Notification badge expander</comment>
-  </data>
-  <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
-    <value>Afișează insigna în timp ce se dă clic</value>
-    <comment>Label for Show badge while clicking check box on the Behavior panel</comment>
-  </data>
-  <data name="CheckBoxNotificationBadgePaused.Content" xml:space="preserve">
-    <value>Afișează insigna când este pus pe pauză</value>
-    <comment>Label for Show badge while paused check box on the Behavior panel</comment>
-  </data>
-  <data name="ToggleButtonStartTooltipStop" xml:space="preserve">
-    <value>Pauză</value>
-    <comment>This is the tool tip automation name for the Stop button.</comment>
-  </data>
-  <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
-    <value>Linkuri relevante</value>
-    <comment>Header text of Related links on the About panel</comment>
-  </data>
-  <data name="TextBlockAbout.Text" xml:space="preserve">
-    <value>Despre</value>
-    <comment>Subtitle of about message on Settings page</comment>
-  </data>
-  <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
-    <value>Toggle hotkey</value>
-    <comment>Title of Hotkey shortcut content dialog</comment>
-  </data>
-  <data name="ShortcutToggle.Title" xml:space="preserve">
-    <value>Hotkey for starting and stopping the auto clicker</value>
-    <comment>Text block of Hotkey shortcut content dialog</comment>
-  </data>
-  <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
-    <value>Reset</value>
-    <comment>Displayed on the button to reset the shortcut content dialog</comment>
-  </data>
-  <data name="ShortcutToggle.CloseButtonText" xml:space="preserve">
-    <value>Cancel</value>
-    <comment>Displayed on the button to close the shortcut content dialog</comment>
-  </data>
-  <data name="ShortcutToggle.PrimaryButtonText" xml:space="preserve">
-    <value>Save</value>
-    <comment>Displayed on the button to save the shortcut content dialog</comment>
+  <data name="ContentDialogHotkeyFailed.CloseButtonText" xml:space="preserve">
+    <value>Închide</value>
+    <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>
 </root>

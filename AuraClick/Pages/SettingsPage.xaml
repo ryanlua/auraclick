@@ -14,7 +14,6 @@
 
     <Page.Resources>
         <x:Double x:Key="SettingsCardSpacing">4</x:Double>
-        <Thickness x:Key="HyperlinkButtonNegativeMargin">-12,0,0,0</Thickness>
         <Style
             x:Key="SettingsSectionHeaderTextBlockStyle"
             BasedOn="{StaticResource BodyTextBlockStyle}"
@@ -35,14 +34,17 @@
                     <win:RepositionThemeTransition IsStaggeringEnabled="False" />
                 </win:StackPanel.ChildrenTransitions>
 
-                <TextBlock x:Uid="SettingsSubtitleTextBlock" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <TextBlock x:Uid="TextBlockSettings" Style="{StaticResource SubtitleTextBlockStyle}" />
 
-                <TextBlock x:Uid="AppearanceSettingsSectionHeaderTextBlock" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
+                <TextBlock x:Uid="TextBlockAppearance" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
                 <!--  Language  -->
-                <controls:SettingsCard x:Uid="SettingsCardLanguage" HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
+                <controls:SettingsCard
+                    x:Name="LanguageSettingsCard"
+                    x:Uid="SettingsCardLanguage"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                     <ComboBox x:Name="LanguageComboBox" SelectedIndex="{x:Bind LanguageSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemLanguageSystem" />
+                        <ComboBoxItem x:Name="SystemLanguageComboBoxItem" x:Uid="ComboBoxItemLanguageSystem" />
                     </ComboBox>
                 </controls:SettingsCard>
                 <InfoBar
@@ -54,60 +56,93 @@
                         <ResourceDictionary Source="ms-appx:///DevWinUI/Themes/InfoBarInformationalColor.xaml" />
                     </InfoBar.Resources>
                     <InfoBar.ActionButton>
-                        <Button x:Uid="ButtonLanguageRestart" Click="LanguageRestartButton_Click" />
+                        <Button
+                            x:Name="LanguageRestartButton"
+                            x:Uid="ButtonLanguageRestart"
+                            Click="LanguageRestartButton_Click" />
                     </InfoBar.ActionButton>
                 </InfoBar>
 
                 <!--  Theme  -->
-                <controls:SettingsCard x:Uid="SettingsCardTheme" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
-                    <ComboBox SelectedIndex="{x:Bind ThemeSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemThemeSystem" />
-                        <ComboBoxItem x:Uid="ComboBoxItemThemeLight" />
-                        <ComboBoxItem x:Uid="ComboBoxItemThemeDark" />
+                <controls:SettingsCard
+                    x:Name="ThemeSettingsCard"
+                    x:Uid="SettingsCardTheme"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                    <ComboBox x:Name="ThemeComboBox" SelectedIndex="{x:Bind ThemeSelectedIndex}">
+                        <ComboBoxItem x:Name="SystemThemeComboBoxItem" x:Uid="ComboBoxItemThemeSystem" />
+                        <ComboBoxItem x:Name="LightThemeComboBoxItem" x:Uid="ComboBoxItemThemeLight" />
+                        <ComboBoxItem x:Name="DarkThemeComboBoxItem" x:Uid="ComboBoxItemThemeDark" />
                     </ComboBox>
                 </controls:SettingsCard>
 
                 <!--  Backdrop material  -->
-                <controls:SettingsCard x:Uid="SettingsCardBackdropMaterial" HeaderIcon="{ui:FontIcon Glyph=&#xEF1F;}">
-                    <ComboBox SelectedIndex="{x:Bind BackdropSelectedIndex}">
-                        <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialMica" />
-                        <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialMicaAlt" />
-                        <ComboBoxItem x:Uid="ComboBoxItemBackdropMaterialAcrylic" />
+                <controls:SettingsCard
+                    x:Name="BackdropMaterialSettingsCard"
+                    x:Uid="SettingsCardBackdropMaterial"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEF1F;}">
+                    <ComboBox x:Name="BackdropMaterialComboBox" SelectedIndex="{x:Bind BackdropSelectedIndex}">
+                        <ComboBoxItem x:Name="MicaBackdropMaterialComboBoxItem" x:Uid="ComboBoxItemBackdropMaterialMica" />
+                        <ComboBoxItem x:Name="MicaAltBackdropMaterialComboBoxItem" x:Uid="ComboBoxItemBackdropMaterialMicaAlt" />
+                        <ComboBoxItem x:Name="AcrylicBackdropMaterialComboBoxItem" x:Uid="ComboBoxItemBackdropMaterialAcrylic" />
                     </ComboBox>
                 </controls:SettingsCard>
 
                 <TextBlock x:Uid="TextBlockBehavior" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" />
 
                 <!--  Always on top  -->
-                <controls:SettingsCard x:Uid="SettingsCardAlwaysOnTop" HeaderIcon="{ui:FontIcon Glyph=&#xE7C4;}">
-                    <ToggleSwitch IsOn="{x:Bind IsAlwaysOnTop}" />
+                <controls:SettingsCard
+                    x:Name="AlwaysOnTopSettingsCard"
+                    x:Uid="SettingsCardAlwaysOnTop"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE7C4;}">
+                    <ToggleSwitch x:Name="AlwaysOnTopToggleSwitch" IsOn="{x:Bind IsAlwaysOnTop}" />
                 </controls:SettingsCard>
 
                 <!--  Progress indicator  -->
-                <controls:SettingsCard x:Uid="SettingsCardProgressIndicator" HeaderIcon="{ui:FontIcon Glyph=&#xE75B;}">
-                    <ToggleSwitch IsOn="{x:Bind ProgressIndicator}" />
+                <controls:SettingsCard
+                    x:Name="ProgressIndicatorSettingsCard"
+                    x:Uid="SettingsCardProgressIndicator"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE75B;}">
+                    <ToggleSwitch x:Name="ProgressIndicatorToggleSwitch" IsOn="{x:Bind ProgressIndicator}" />
                 </controls:SettingsCard>
 
                 <!--  Automatic minimize  -->
-                <controls:SettingsExpander x:Uid="SettingsExpanderAutomaticMinimize" HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
+                <controls:SettingsExpander
+                    x:Name="AutomaticMinimizeSettingsExpander"
+                    x:Uid="SettingsExpanderAutomaticMinimize"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE944;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeMinimize" IsChecked="{x:Bind AutomaticMinimizeMinimize}" />
+                            <CheckBox
+                                x:Name="AutomaticMinimizeMinimizeCheckBox"
+                                x:Uid="CheckBoxAutomaticMinimizeMinimize"
+                                IsChecked="{x:Bind AutomaticMinimizeMinimize}" />
                         </controls:SettingsCard>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxAutomaticMinimizeRestore" IsChecked="{x:Bind AutomaticMinimizeRestore}" />
+                            <CheckBox
+                                x:Name="AutomaticMinimizeRestoreCheckBox"
+                                x:Uid="CheckBoxAutomaticMinimizeRestore"
+                                IsChecked="{x:Bind AutomaticMinimizeRestore}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
                 <!--  Notification badge  -->
-                <controls:SettingsExpander x:Uid="SettingsExpanderNotificationBadge" HeaderIcon="{ui:FontIcon Glyph=&#xEDAD;}">
+                <controls:SettingsExpander
+                    x:Name="NotificationBadgeSettingsExpander"
+                    x:Uid="SettingsExpanderNotificationBadge"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEDAD;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxNotificationBadgePlaying" IsChecked="{x:Bind NotificationBadgePlaying}" />
+                            <CheckBox
+                                x:Name="NotificationBadgePlayingCheckBox"
+                                x:Uid="CheckBoxNotificationBadgePlaying"
+                                IsChecked="{x:Bind NotificationBadgePlaying}" />
                         </controls:SettingsCard>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox x:Uid="CheckBoxNotificationBadgePaused" IsChecked="{x:Bind NotificationBadgePaused}" />
+                            <CheckBox
+                                x:Name="NotificationBadgePausedCheckBox"
+                                x:Uid="CheckBoxNotificationBadgePaused"
+                                IsChecked="{x:Bind NotificationBadgePaused}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
@@ -119,6 +154,9 @@
                     x:Name="AppAboutSettingsExpander"
                     Description="Copyright © 2026 Ryan Luu"
                     HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/StoreLogo.png}">
+                    <controls:SettingsExpander.Resources>
+                        <Thickness x:Key="HyperlinkButtonNegativeMargin">-12,0,0,0</Thickness>
+                    </controls:SettingsExpander.Resources>
                     <TextBlock
                         x:Name="AppVersionTextBlock"
                         win:IsTextSelectionEnabled="True"
@@ -129,10 +167,12 @@
                         <controls:SettingsCard HorizontalContentAlignment="Left" ContentAlignment="Left">
                             <StackPanel>
                                 <HyperlinkButton
+                                    x:Name="PrivacyPolicyHyperlinkButton"
                                     x:Uid="HyperlinkButtonPrivacyPolicy"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
                                     NavigateUri="https://github.com/ryanlua/auraclick/blob/HEAD/PRIVACY_POLICY.md" />
                                 <HyperlinkButton
+                                    x:Name="LicenseHyperlinkButton"
                                     x:Uid="HyperlinkButtonLicense"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
                                     NavigateUri="https://github.com/ryanlua/auraclick/blob/HEAD/COPYING.md" />
@@ -141,19 +181,23 @@
 
                         <!--  Related links  -->
                         <controls:SettingsCard
+                            x:Name="RelatedLinksSettingsCard"
                             x:Uid="SettingsCardRelatedLinks"
                             HorizontalContentAlignment="Left"
                             ContentAlignment="Vertical">
                             <StackPanel>
                                 <HyperlinkButton
+                                    x:Name="DiscordHyperlinkButton"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
                                     Content="Discord"
                                     NavigateUri="https://discord.gg/VVSxKCCQ5D" />
                                 <HyperlinkButton
+                                    x:Name="GitHubHyperlinkButton"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
                                     Content="GitHub"
                                     NavigateUri="https://github.com/ryanlua/auraclick" />
                                 <HyperlinkButton
+                                    x:Name="CrowdinHyperlinkButton"
                                     Margin="{StaticResource HyperlinkButtonNegativeMargin}"
                                     Content="Crowdin"
                                     NavigateUri="https://crowdin.com/project/auraclick" />

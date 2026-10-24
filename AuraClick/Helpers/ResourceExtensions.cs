@@ -8,7 +8,7 @@
 // (at your option) any later version.
 //
 // Aura Click is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY without even the implied warranty of
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
@@ -24,7 +24,7 @@ namespace AuraClick.Helpers;
 /// </summary>
 public static class ResourceExtensions
 {
-    private static readonly ResourceLoader ResourceLoader = new();
+    private static readonly ResourceLoader s_resourceLoader = new();
 
     /// <summary>
     /// Gets the localized string for the resource key.
@@ -33,6 +33,6 @@ public static class ResourceExtensions
     /// <returns>The localized string for the specified resource key.</returns>
     public static string GetLocalized(this string resourceKey)
     {
-        return ResourceLoader.GetString(resourceKey);
+        return s_resourceLoader.GetString(resourceKey);
     }
 }

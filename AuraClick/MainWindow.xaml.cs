@@ -8,7 +8,7 @@
 // (at your option) any later version.
 //
 // Aura Click is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY without even the implied warranty of
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
@@ -38,11 +38,11 @@ public sealed partial class MainWindow : WinUIEx.WindowEx
         AppWindow.SetIcon("Assets/AppIcon.ico");
 
         // Navigate the root frame to the main page on startup.
-        _ = NavFrame.Navigate(typeof(MainPage));
+        _ = RootFrame.Navigate(typeof(MainPage));
     }
 
     private void TitleBar_BackRequested(TitleBar sender, object args)
     {
-        NavFrame.GoBack();
+        RootFrame.GoBack();
     }
 }

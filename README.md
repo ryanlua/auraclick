@@ -15,7 +15,7 @@
 > [!IMPORTANT]
 > This app is currently in developer preview and not publicly available.
 
-A high-performance modern auto clicker for Windows. Automate mouse clicks with a hotkey and customize click intervals, click types, and more.
+A modern, high-performance auto clicker for Windows. Automate mouse clicks with a hotkey and customize click intervals, click types, and more.
 
 <p align="center">
   <picture>
@@ -50,14 +50,12 @@ When you're ready, [make your first contribution](https://github.com/ryanlua/aur
 
 ## 💖 Sponsors
 
-Help support this app by [sponsoring us](https://github.com/sponsors/ryanlua) to support it's development and future updates.
+Help support this app by [sponsoring us](https://github.com/sponsors/ryanlua) to support its development and future updates.
 
 ## 🪪 License
 
 Aura Click is released under the [GNU General Public License v3.0](COPYING.md).
 
-> A high-performance modern auto clicker for Windows.
->
 > Copyright © 2026 Ryan Luu
 >
 > Aura Click is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
