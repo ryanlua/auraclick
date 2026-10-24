@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>Vysoce výkonný moderní automatický klikací program pro Windows.</value>
+    <value>A modern, high-performance auto clicker for Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
   <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
-    <value>Levé</value>
+    <value>Left</value>
     <comment>Label for left mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonMiddle.Content" xml:space="preserve">
-    <value>Prostřední</value>
+    <value>Middle</value>
     <comment>Label for middle mouse button option</comment>
   </data>
   <data name="ComboBoxItemMouseButtonRight.Content" xml:space="preserve">
-    <value>Pravé</value>
+    <value>Right</value>
     <comment>Label for right mouse button option</comment>
   </data>
   <data name="ComboBoxMouseButton.Header" xml:space="preserve">
@@ -138,7 +138,7 @@
     <comment>Header text of Mouse button combo box</comment>
   </data>
   <data name="ComboBoxMouseButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Které tlačítko myši má být automaticky kliknuto</value>
+    <value>Mouse button to click</value>
     <comment>This is the tool tip automation name for the Mouse button combo box.</comment>
   </data>
   <data name="NumberBoxHours.Description" xml:space="preserve">
@@ -157,12 +157,20 @@
     <value>sekundy</value>
     <comment>Description text of seconds click interval number box</comment>
   </data>
+  <data name="TextBlockClickRepeatUnit.Text" xml:space="preserve">
+    <value>clicks</value>
+    <comment>Unit text of Click repeat number box</comment>
+  </data>
+  <data name="TextBlockClickOffsetUnit.Text" xml:space="preserve">
+    <value>milliseconds</value>
+    <comment>Unit text of Random offset number box</comment>
+  </data>
   <data name="TextBlockClickInterval.Text" xml:space="preserve">
-    <value>Interval kliknutí</value>
+    <value>Interval klikání</value>
     <comment>Header text of Click interval number boxes</comment>
   </data>
   <data name="TextBlockClickInterval.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Jak dlouho mezi kliknutími</value>
+    <value>Time between clicks</value>
     <comment>This is the tool tip automation name for the Click interval number boxes.</comment>
   </data>
   <data name="TextBlockHotkey.Text" xml:space="preserve">
@@ -170,7 +178,7 @@
     <comment>Header text of Hotkey button</comment>
   </data>
   <data name="TextBlockHotkey.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Které tlačítko spustí automatický klikátor</value>
+    <value>Key that starts and stops clicking</value>
     <comment>This is the tool tip automation name for the Hotkey button.</comment>
   </data>
   <data name="ButtonSettings.ToolTipService.ToolTip" xml:space="preserve">
@@ -178,43 +186,43 @@
     <comment>This is the tool tip automation name for the Settings button.</comment>
   </data>
   <data name="ToggleButtonStart.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Spustit</value>
-    <comment>This is the tool tip automation name for the Start button.</comment>
+    <value>Start</value>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is paused.</comment>
   </data>
   <data name="CheckBoxClickRepeat.Content" xml:space="preserve">
-    <value>Opakování kliknutí</value>
-    <comment>Header text of Click repeat check box</comment>
+    <value>Click repeat</value>
+    <comment>Label for Click repeat check box</comment>
   </data>
   <data name="CheckBoxClickRepeat.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Zastavit klikání po určitém počtu nebo dokud nebude zastaveno</value>
+    <value>Stop after this many clicks</value>
     <comment>This is the tool tip automation name for the Click repeat check box.</comment>
   </data>
   <data name="CheckBoxClickOffset.Content" xml:space="preserve">
-    <value>Náhodný offset</value>
-    <comment>Header text of Click offset check box</comment>
+    <value>Random offset</value>
+    <comment>Label for Random offset check box</comment>
   </data>
   <data name="CheckBoxClickOffset.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Náhodný interval odchylky mezi kliknutími</value>
+    <value>Add a random offset to the interval</value>
     <comment>This is the tool tip automation name for the Random offset check box.</comment>
   </data>
   <data name="TextBlockSettings.Text" xml:space="preserve">
-    <value>Nastavení</value>
+    <value>Settings</value>
     <comment>Header text of Settings page</comment>
   </data>
   <data name="TextBlockAppearance.Text" xml:space="preserve">
-    <value>Vzhled</value>
+    <value>Appearance</value>
     <comment>Subtitle of appearance setting on Settings page</comment>
   </data>
   <data name="SettingsCardTheme.Header" xml:space="preserve">
-    <value>Motiv aplikace</value>
-    <comment>Title of Theme expander</comment>
+    <value>Motiv</value>
+    <comment>Title of Theme settings card</comment>
   </data>
   <data name="SettingsCardTheme.Description" xml:space="preserve">
-    <value>Vyberte, jaký motiv aplikace se má zobrazit</value>
-    <comment>Description of Theme expander</comment>
+    <value>Vyberte motiv aplikace</value>
+    <comment>Description of Theme settings card</comment>
   </data>
   <data name="ComboBoxItemThemeSystem.Content" xml:space="preserve">
-    <value>Použít systémové nastavení</value>
+    <value>Použít nastavení systému</value>
     <comment>Label for the app theme option to use system setting</comment>
   </data>
   <data name="ComboBoxItemThemeLight.Content" xml:space="preserve">
@@ -227,18 +235,18 @@
   </data>
   <data name="SettingsCardBackdropMaterial.Header" xml:space="preserve">
     <value>Materiál pozadí</value>
-    <comment>Title of Backdrop material expander</comment>
+    <comment>Title of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardBackdropMaterial.Description" xml:space="preserve">
-    <value>Systémový materiál pozadí pro okno aplikace</value>
-    <comment>Description of Theme expander</comment>
+    <value>Select which material to use for the app window background</value>
+    <comment>Description of Backdrop material settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Header" xml:space="preserve">
     <value>Vždy navrchu</value>
     <comment>Title of Always on top settings card</comment>
   </data>
   <data name="SettingsCardAlwaysOnTop.Description" xml:space="preserve">
-    <value>Vždy zobrazovat okno aplikace nad ostatními</value>
+    <value>Keep the app window on top of other windows</value>
     <comment>Description of Always on top settings card</comment>
   </data>
   <data name="TextBlockBehavior.Text" xml:space="preserve">
@@ -258,24 +266,24 @@
     <comment>Displayed on a link to the app open source license on the About panel</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Header" xml:space="preserve">
-    <value>Oznámení odznaku</value>
+    <value>Oznamovací odznak</value>
     <comment>Title of Notification badge expander</comment>
   </data>
   <data name="SettingsExpanderNotificationBadge.Description" xml:space="preserve">
-    <value>Zobrazit stavový odznak oznámení na ikoně aplikace na hlavním panelu</value>
+    <value>Show a status badge on the app's taskbar button</value>
     <comment>Description of Notification badge expander</comment>
   </data>
   <data name="CheckBoxNotificationBadgePlaying.Content" xml:space="preserve">
-    <value>Zobrazit odznak při klikání</value>
+    <value>Zobrazovat odznak při klikání</value>
     <comment>Label for Show badge while clicking check box on the Behavior panel</comment>
   </data>
   <data name="CheckBoxNotificationBadgePaused.Content" xml:space="preserve">
-    <value>Zobrazit odznak při pozastavení</value>
+    <value>Zobrazovat odznak při pozastavení</value>
     <comment>Label for Show badge while paused check box on the Behavior panel</comment>
   </data>
   <data name="ToggleButtonPause.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Pozastavit</value>
-    <comment>This is the tool tip automation name for the Stop button.</comment>
+    <value>Pause</value>
+    <comment>This is the tool tip automation name for the Start button while the auto clicker is running.</comment>
   </data>
   <data name="SettingsCardRelatedLinks.Header" xml:space="preserve">
     <value>Související odkazy</value>
@@ -283,34 +291,78 @@
   </data>
   <data name="TextBlockAbout.Text" xml:space="preserve">
     <value>O aplikaci</value>
-    <comment>Subtitle of about message on Settings page</comment>
+    <comment>Subtitle of about setting on Settings page</comment>
   </data>
   <data name="ShortcutToggle.ContentDialogTitle" xml:space="preserve">
-    <value>Toggle hotkey</value>
+    <value>Change toggle hotkey</value>
     <comment>Title of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.Title" xml:space="preserve">
-    <value>Hotkey for starting and stopping the auto clicker</value>
+    <value>Hotkey that starts and stops clicking</value>
     <comment>Text block of Hotkey shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.SecondaryButtonText" xml:space="preserve">
-    <value>Reset</value>
+    <value>Obnovit výchozí</value>
     <comment>Displayed on the button to reset the shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.CloseButtonText" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Zrušit</value>
     <comment>Displayed on the button to close the shortcut content dialog</comment>
   </data>
   <data name="ShortcutToggle.PrimaryButtonText" xml:space="preserve">
-    <value>Save</value>
+    <value>Uložit</value>
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
+  <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
+    <value>Minimize the app window while clicking</value>
+    <comment>Description of Automatic minimize expander</comment>
+  </data>
+  <data name="SettingsExpanderAutomaticMinimize.Header" xml:space="preserve">
+    <value>Automatická minimalizace</value>
+    <comment>Title of Automatic minimize expander</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeMinimize.Content" xml:space="preserve">
+    <value>Minimize when clicking starts</value>
+    <comment>Label for Minimize when clicking starts check box on the Behavior panel</comment>
+  </data>
+  <data name="CheckBoxAutomaticMinimizeRestore.Content" xml:space="preserve">
+    <value>Restore when paused</value>
+    <comment>Label for Restore when paused check box on the Behavior panel</comment>
+  </data>
+  <data name="SettingsCardProgressIndicator.Header" xml:space="preserve">
+    <value>Indikátor průběhu</value>
+    <comment>Title of Progress indicator settings card</comment>
+  </data>
+  <data name="SettingsCardProgressIndicator.Description" xml:space="preserve">
+    <value>Zobrazovat stav v indikátoru průběhu na tlačítku aplikace na hlavním panelu</value>
+    <comment>Description of Progress indicator settings card</comment>
+  </data>
+  <data name="SettingsCardLanguage.Header" xml:space="preserve">
+    <value>Jazyk</value>
+    <comment>Title of Language settings card</comment>
+  </data>
+  <data name="SettingsCardLanguage.Description" xml:space="preserve">
+    <value>Select which app language to display</value>
+    <comment>Description of Language settings card</comment>
+  </data>
+  <data name="ComboBoxItemLanguageSystem.Content" xml:space="preserve">
+    <value>Použít nastavení systému</value>
+    <comment>Label for the language option to use the Windows display language</comment>
+  </data>
+  <data name="InfoBarLanguageRestart.Title" xml:space="preserve">
+    <value>Pro použití změny jazyka restartujte aplikaci</value>
+    <comment>Title of restart info bar shown after changing the app language</comment>
+  </data>
+  <data name="ButtonLanguageRestart.Content" xml:space="preserve">
+    <value>Restartovat</value>
+    <comment>Displayed on the button that restarts the app to apply a language change</comment>
+  </data>
   <data name="ComboBoxItemBackdropMaterialMica.Content" xml:space="preserve">
-    <value>Mica</value>
+    <value>Slída</value>
     <comment>Label for mica material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialMicaAlt.Content" xml:space="preserve">
-    <value>Mica Alt</value>
+    <value>Slída (alternativní)</value>
     <comment>Label for mica alt material option</comment>
   </data>
   <data name="ComboBoxItemBackdropMaterialAcrylic.Content" xml:space="preserve">
@@ -324,5 +376,17 @@
   <data name="TitleBarApp.Title" xml:space="preserve">
     <value>Aura Click</value>
     <comment>Title text of app title bar</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailed.Title" xml:space="preserve">
+    <value>Hotkey unavailable</value>
+    <comment>Title of the dialog shown when the chosen hotkey cannot be registered</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailed.Content" xml:space="preserve">
+    <value>Another app might be using this hotkey. Choose a different key.</value>
+    <comment>Message of the dialog shown when the chosen hotkey cannot be registered. Also shown as the tool tip of the Hotkey button while the hotkey is not registered.</comment>
+  </data>
+  <data name="ContentDialogHotkeyFailed.CloseButtonText" xml:space="preserve">
+    <value>Close</value>
+    <comment>Displayed on the button that closes the invalid hotkey dialog</comment>
   </data>
 </root>
