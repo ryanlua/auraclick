@@ -107,8 +107,8 @@ public sealed partial class SettingsPage : Page
     /// </summary>
     public bool IsStartButtonTeachingTipDismissed
     {
-        get => (bool)(localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] ?? false);
-        set => localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] = value;
+        get => (bool)(_localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] ?? false);
+        set => _localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] = value;
     }
 
     /// <summary>
