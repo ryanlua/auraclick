@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDescription" xml:space="preserve">
-    <value>A high-performance modern auto clicker for Windows.</value>
+    <value>A modern, high-performance auto clicker for Windows.</value>
     <comment>This is the description of the application.</comment>
   </data>
   <data name="ComboBoxItemMouseButtonLeft.Content" xml:space="preserve">
