@@ -15,7 +15,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Aura Click. If not, see <https://www.gnu.org/licenses/>.
 
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -44,5 +46,28 @@ public sealed partial class MainWindow : WinUIEx.WindowEx
     private void TitleBar_BackRequested(TitleBar sender, object args)
     {
         RootFrame.GoBack();
+    }
+
+    private void BackAccelerator_Invoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        if (RootFrame.CanGoBack)
+        {
+            RootFrame.GoBack();
+            args.Handled = true;
+        }
+    }
+
+    private void RootGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
+    {
+        PointerPointProperties props = e.GetCurrentPoint(null).Properties;
+
+        if (props.IsXButton1Pressed)
+        {
+            if (RootFrame.CanGoBack)
+            {
+                RootFrame.GoBack();
+                e.Handled = true;
+            }
+        }
     }
 }
