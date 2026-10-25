@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   build:
-    name: Build
     runs-on: windows-latest
 
     strategy:
@@ -22,8 +21,6 @@ jobs:
 
     env:
       Solution_Name: AuraClick.slnx
-      Appx_Package_Dir: Packages\
-      Dir_Name: AuraClick
 
     steps:
     - name: Checkout repository
@@ -43,11 +40,11 @@ jobs:
         Configuration: ${{ matrix.configuration }}
 
     - name: Create the app package
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true
+      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true
       env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64|ARM64
+        Appx_Bundle: Never
         Appx_Package_Build_Mode: SideloadOnly
+        Appx_Package_Dir: Packages\
         Configuration: ${{ matrix.configuration }}
         Platform: ${{ matrix.platform }}
 
@@ -55,5 +52,5 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: ${{ env.Dir_Name }}\${{ env.Appx_Package_Dir }}
+        path: ${{ env.Solution_Name }}\\Packages
         if-no-files-found: error
