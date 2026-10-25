@@ -50,7 +50,6 @@ jobs:
         Appx_Package_Build_Mode: SideloadOnly
         Configuration: ${{ matrix.configuration }}
         Platform: ${{ matrix.platform }}
-        AppInstallerUri: https://cdn.auraclick.app
 
     - name: Upload MSIX package
       uses: actions/upload-artifact@v7
