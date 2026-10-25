@@ -16,8 +16,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
-    <Copyright>Copyright © 2026 Ryan Luu</Copyright>
-    <AssemblyTitle>Aura Click</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>
