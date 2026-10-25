@@ -49,12 +49,18 @@ jobs:
     - name: Setup Microsoft Store Developer CLI
       uses: microsoft/microsoft-store-apppublisher@v1.4
 
-    - name: Reconfigure store credentials 
-      run: msstore reconfigure ` 
-            --tenantId ${{ secrets.AZURE_AD_TENANT_ID }} ` 
-            --sellerId ${{ secrets.SELLER_ID }} ` 
-            --clientId ${{ secrets.AZURE_AD_APPLICATION_CLIENT_ID }} ` 
-            --clientSecret ${{ secrets.AZURE_AD_APPLICATION_SECRET }} 
- 
-    - name: Publish to Store 
-      run: msstore publish '${{ github.workspace }}/release/package.msix' -id 9NTVRZD0MF7F
+    - name: Reconfigure store credentials
+      run: >
+        msstore reconfigure
+        --tenantId "$env:Tenant_Id"
+        --sellerId "$env:Seller_Id"
+        --clientId "$env:Client_Id"
+        --clientSecret "$env:Client_Secret"
+      env:
+        Tenant_Id: ${{ secrets.AZURE_AD_TENANT_ID }}
+        Seller_Id: ${{ secrets.SELLER_ID }}
+        Client_Id: ${{ secrets.AZURE_AD_APPLICATION_CLIENT_ID }}
+        Client_Secret: ${{ secrets.AZURE_AD_APPLICATION_SECRET }}
+
+    - name: Publish to Store
+      run: msstore publish (Resolve-Path "AuraClick\$env:Appx_Package_Dir*.msixupload").Path -id 9NTVRZD0MF7F
