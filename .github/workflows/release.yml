@@ -29,6 +29,7 @@ jobs:
         name: Store Package
         path: AuraClick.msixbundle
         if-no-files-found: error
+        archive: false
 
     - name: Configure Store credentials
       run: >

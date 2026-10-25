@@ -29,3 +29,4 @@ jobs:
         name: MSIX Package
         path: AuraClick.msixbundle
         if-no-files-found: error
+        archive: false
