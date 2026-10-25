@@ -8,53 +8,25 @@ on:
 
 permissions:
   contents: read
-  actions: write
 
 jobs:
   build:
     name: Build
     runs-on: windows-latest
 
-    strategy:
-      matrix:
-        configuration: [Debug]
-        platform: [x86, x64, ARM64]
-
-    env:
-      Solution_Name: AuraClick.slnx
-      Appx_Package_Dir: Packages\
-      Dir_Name: AuraClick
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v7
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v6
-      with:
-        dotnet-version: 10.0.x
-
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v3
-
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+    - name: Setup WinApp CLI
+      uses: microsoft/setup-WinAppCli@v0.2
 
     - name: Create the app package
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true
-      env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64|ARM64
-        Appx_Package_Build_Mode: SideloadOnly
-        Configuration: ${{ matrix.configuration }}
-        Platform: ${{ matrix.platform }}
-        AppInstallerUri: https://cdn.auraclick.app
+      run: winapp pack AuraClick\AuraClick.csproj -c Debug --arch x86 --arch x64 --arch arm64 --output AuraClick.msixbundle
 
     - name: Upload MSIX package
       uses: actions/upload-artifact@v7
       with:
-        name: MSIX Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: ${{ env.Dir_Name }}\${{ env.Appx_Package_Dir }}
+        name: MSIX Package
+        path: AuraClick.msixbundle
         if-no-files-found: error

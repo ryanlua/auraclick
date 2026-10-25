@@ -8,72 +8,28 @@ on:
 
 permissions:
   contents: read
-  actions: write
 
 jobs:
-  build:
-    name: Build
+  store:
     runs-on: windows-latest
-
-    strategy:
-      matrix:
-        configuration: [Release]
-        platform: [x64, x86, ARM64]
-
-    env:
-      Solution_Name: AuraClick.slnx
-      Dir_Name: AuraClick
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v7
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v6
-      with:
-        dotnet-version: 10.0.x
+    - name: Setup WinApp CLI
+      uses: microsoft/setup-WinAppCli@v0.2
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v3
+    - name: Create Store package
+      run: winapp pack AuraClick\AuraClick.csproj --arch x86 --arch x64 --arch arm64 --output AuraClick.msixbundle
 
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+    - name: Configure Store credentials
+      run: >
+        winapp store reconfigure
+        --tenantId '${{ secrets.AZURE_AD_TENANT_ID }}'
+        --sellerId '${{ secrets.SELLER_ID }}'
+        --clientId '${{ secrets.AZURE_AD_APPLICATION_CLIENT_ID }}'
+        --clientSecret '${{ secrets.AZURE_AD_APPLICATION_SECRET }}'
 
-    - name: Create the app package and appinstaller
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true /p:GenerateAppInstallerFile=true /p:AppxPackageSigningEnabled=false /p:AppxPackageSigningTimestampDigestAlgorithm=SHA256 /p:AppxAutoIncrementPackageRevision=false /p:GenerateTestArtifacts=false /p:AppInstallerUri=$env:AppInstaller_Uri /p:HoursBetweenUpdateChecks=$env:Hours_Between_Update_Checks
-      env:
-        Appx_Bundle: Never
-        Appx_Package_Build_Mode: SideloadOnly
-        Appx_Package_Dir: Packages\
-        AppInstaller_Uri: https://cdn.auraclick.app/
-        Hours_Between_Update_Checks: 24
-        Configuration: ${{ matrix.configuration }}
-        Platform: ${{ matrix.platform }}
-
-    - name: Upload unsigned package artifacts
-      id: upload-unsigned-artifact
-      uses: actions/upload-artifact@v7
-      with:
-        name: Unsigned Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: ${{ env.Dir_Name }}\Packages\
-        if-no-files-found: error
-
-    - name: sign
-      uses: signpath/github-action-submit-signing-request@v3
-      with:
-        api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
-        organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
-        project-slug: auraclick
-        signing-policy-slug: release-signing
-        github-artifact-id: ${{steps.upload-unsigned-artifact.outputs.artifact-id}}
-        wait-for-completion: true
-        output-artifact-directory: msix-package-signed
-
-    - name: Upload signed package artifacts
-      uses: actions/upload-artifact@v7
-      with:
-        name: Signed Package (${{ matrix.configuration }}, ${{ matrix.platform }})
-        path: msix-package-signed
-        if-no-files-found: error
+    - name: Publish to Store
+      run: winapp store publish AuraClick.msixbundle --appId 9NTVRZD0MF7F
