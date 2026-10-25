@@ -23,6 +23,13 @@ jobs:
     - name: Create Store package
       run: winapp pack AuraClick\AuraClick.csproj --arch x86 --arch x64 --arch arm64 --output AuraClick.msixbundle
 
+    - name: Upload Store package
+      uses: actions/upload-artifact@v7
+      with:
+        name: Store Package
+        path: AuraClick.msixbundle
+        if-no-files-found: error
+
     - name: Configure Store credentials
       run: >
         winapp store reconfigure
