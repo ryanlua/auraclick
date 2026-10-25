@@ -30,22 +30,22 @@ body:
     id: actual-behavior
     attributes:
       label: Actual behavior
-      description: What actually happened instead? If you have a screenshot or video, attach them.
+      description: What actually happened instead?
       placeholder: When I do this, it instead does that
   - type: upload
     id: screenshots
     attributes:
       label: Upload relevant files
-      description: "Drag and drop any relevant screenshots or recordings."
+      description: Drag and drop any relevant screenshots or recordings.
     validations:
       required: false
-      accept: ".png,.jpg,.jpeg,.gif,.webp,.mp4,.mov,.webm"
+      accept: .png,.jpg,.jpeg,.gif,.webp,.mp4,.mov,.webm
   - type: input
     id: version
     attributes:
       label: App version
-      description: Version in app settings. [Windows Settings > Apps > Installed apps](ms-settings:apps) > Aura Click > Advanced options > Specifications > Version
-      placeholder: "1.0.0.0"
+      description: Version in app settings. Settings > About
+      placeholder: 1.0.0.0
     validations:
       required: false
       min_length: 7

@@ -3,14 +3,9 @@ description: Suggest an idea for this project
 labels: ["enhancement"]
 body:
   - type: textarea
-    attributes: 
+    attributes:
       label: Description
       description: A clear and concise description of your proposed feature.
       placeholder: Write a brief sentence about your idea
     validations:
       required: true
-  - type: textarea
-    attributes:
-      label: Supporting information
-      description: Having additional evidence, data, tweets, blog posts, research, ... anything is extremely helpful.
-      placeholder: Add any supporting information that you think would be helpful
