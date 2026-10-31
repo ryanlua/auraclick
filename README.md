@@ -48,7 +48,11 @@ winget install --id RyanLuu.AuraClick --source winget
 
 ### GitHub Releases
 
-To install Aura Click from GitHub Releases by downloading and opening the [latest `AuraClick.appinstaller` file](https://github.com/ryanlua/auraclick/releases/latest/download/AuraClick.appinstaller) and following the installation prompts.
+To install Aura Click from [GitHub Releases](https://github.com/ryanlua/auraclick/releases), download and open the latest `AuraClick.appinstaller` file and follow the installation prompts.
+
+### SourceForge
+
+Visit the [Aura Click SourceForge page](https://sourceforge.net/projects/auraclick/), select **Download**. Once downloaded, open the executable file and follow the installation prompts.
 
 ## 💬 Discord Server
 
