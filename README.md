@@ -13,7 +13,7 @@
 </div>
 
 > [!IMPORTANT]
-> This app is currently in developer preview and not publicly available.
+> This app is currently in public preview. Share your feedback by creating a new [issue](https://github.com/ryanlua/auraclick/issues).
 
 A modern, high-performance auto clicker for Windows. Automate mouse clicks with a hotkey and customize click intervals, click types, and more.
 
@@ -24,12 +24,12 @@ A modern, high-performance auto clicker for Windows. Automate mouse clicks with 
   </picture>
   <br>
   <br>
-  <!-- <a href="https://apps.microsoft.com/detail/9NTVRZD0MF7F?referrer=appbadge&mode=full">
+  <a href="https://apps.microsoft.com/detail/9NTVRZD0MF7F?referrer=appbadge&mode=full">
     <picture>
       <source media="(prefers-color-scheme: dark)" width="200" srcset="https://get.microsoft.com/images/en-us%20light.svg">
       <img width="200" src="https://get.microsoft.com/images/en-us%20dark.svg">
     </picture>
-  </a> -->
+  </a>
 </p>
 
 ## 💬 Discord Server
