@@ -26,21 +26,44 @@ A modern, high-performance auto clicker for Windows. Automate mouse clicks with 
   <br>
   <a href="https://apps.microsoft.com/detail/9NTVRZD0MF7F?referrer=appbadge&mode=full">
     <picture>
-      <source media="(prefers-color-scheme: dark)" width="200" srcset="https://get.microsoft.com/images/en-us%20light.svg">
-      <img width="200" src="https://get.microsoft.com/images/en-us%20dark.svg">
+      <source media="(prefers-color-scheme: dark)" width="250" srcset="https://get.microsoft.com/images/en-us%20light.svg">
+      <img width="250" src="https://get.microsoft.com/images/en-us%20dark.svg">
     </picture>
   </a>
 </p>
 
+## 📦 Installation
+
+### Microsoft Store (recommended)
+
+You can install Aura Click from the [Microsoft Store's Aura Click page](https://apps.microsoft.com/detail/9NTVRZD0MF7F).
+
+### WinGet
+
+To install Aura Click using the [Windows Package Manager](https://learn.microsoft.com/en-us/windows/package-manager/winget/), it's as simple as running the following command from the command line / PowerShell:
+
+```ps1
+winget install --id RyanLuu.AuraClick --source winget
+```
+
+### GitHub Releases
+
+> [!WARNING]
+>
+> Selecting the `AuraClick_#.#.#.#.msixbundle` file will prevent automatic updates.
+
+1. Go to the [Aura Click GitHub releases page](https://github.com/ryanlua/auraclick/releases).
+1. Select the **Assets** drop-down menu to display the files for the release.
+1. Select the `AuraClick.appinstaller` file to download the Aura Click App Installer file.
+1. Once downloaded, open the App Installer file and follow the installation prompts.
+
 ## 💬 Discord Server
 
-Join the [Aura Click Discord server](https://discord.gg/VVSxKCCQ5D) for support and the latest news including development updates and more.
-
-[![Discord Server](https://discord.com/api/guilds/1439913117067907094/widget.png?style=banner4)](https://discord.gg/VVSxKCCQ5D)
+Join the [Discord server](https://discord.gg/VVSxKCCQ5D) for support and the latest news including development updates and more.
 
 ## 🌐 Translating
 
-Help us translate Aura Click into more languages! Join our [Crowdin project](https://crowdin.com/project/auraclick) and start contributing translations.
+Help us translate into more languages! Join our [Crowdin project](https://crowdin.com/project/auraclick) and start contributing translations.
 
 ## 👏 Contributing
 
