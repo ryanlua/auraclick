@@ -48,14 +48,7 @@ winget install --id RyanLuu.AuraClick --source winget
 
 ### GitHub Releases
 
-> [!WARNING]
->
-> Selecting the `AuraClick_#.#.#.#.msixbundle` file will prevent automatic updates.
-
-1. Go to the [Aura Click GitHub releases page](https://github.com/ryanlua/auraclick/releases).
-1. Select the **Assets** drop-down menu to display the files for the release.
-1. Select the `AuraClick.appinstaller` file to download the Aura Click App Installer file.
-1. Once downloaded, open the App Installer file and follow the installation prompts.
+To install Aura Click from GitHub Releases by downloading and opening the [latest `AuraClick.appinstaller` file](https://github.com/ryanlua/auraclick/releases/latest/download/AuraClick.appinstaller) and following the installation prompts.
 
 ## 💬 Discord Server
 
