@@ -34,7 +34,7 @@ A modern, high-performance auto clicker for Windows. Automate mouse clicks with 
 
 ## 📦 Installation
 
-### Microsoft Store (recommended)
+### Microsoft Store
 
 You can install Aura Click from the [Microsoft Store's Aura Click page](https://apps.microsoft.com/detail/9NTVRZD0MF7F).
 
