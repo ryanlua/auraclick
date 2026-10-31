@@ -1,0 +1,122 @@
+name: Create Sideloading Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag (e.g. v1.0.0.0)
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  WINGET_IDENTIFIER: RyanLuu.AuraClick
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+
+    outputs:
+      version: ${{ steps.package.outputs.version }}
+      tag: ${{ steps.package.outputs.tag }}
+      asset: ${{ steps.package.outputs.asset }}
+
+    steps:
+    - name: Rename Store package
+      id: package
+      shell: pwsh
+      run: |
+        $version = $env:TAG.TrimStart('v')
+        $asset = "AuraClick_$version.msixbundle"
+
+        $bundles = @((gh release view $env:TAG --json assets | ConvertFrom-Json).assets |
+          Where-Object name -like '*.msixbundle')
+
+        if (-not ($bundles | Where-Object name -eq $asset)) {
+          if ($bundles.Count -ne 1) {
+            Write-Output "::error::Expected exactly one .msixbundle on release $env:TAG, found $($bundles.Count)"
+            exit 1
+          }
+          gh api -X PATCH $bundles[0].apiUrl -f name=$asset | Out-Null
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+        }
+
+        "version=$version" >> $env:GITHUB_OUTPUT
+        "tag=$env:TAG" >> $env:GITHUB_OUTPUT
+        "asset=$asset" >> $env:GITHUB_OUTPUT
+
+    - name: Create App Installer file
+      shell: pwsh
+      env:
+        VERSION: ${{ steps.package.outputs.version }}
+        ASSET: ${{ steps.package.outputs.asset }}
+      run: |
+        gh release download $env:TAG --pattern $env:ASSET
+        if ($LASTEXITCODE) { exit $LASTEXITCODE }
+
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        $zip = [IO.Compression.ZipFile]::OpenRead((Resolve-Path $env:ASSET))
+        try {
+          $reader = [IO.StreamReader]::new($zip.GetEntry('AppxMetadata/AppxBundleManifest.xml').Open())
+          [xml]$manifest = $reader.ReadToEnd()
+          $reader.Dispose()
+        } finally {
+          $zip.Dispose()
+        }
+
+        $identity = $manifest.Bundle.Identity
+        if ($identity.Version -ne $env:VERSION) {
+          Write-Output "::error::Bundle version $($identity.Version) does not match tag $env:TAG"
+          exit 1
+        }
+
+        $repoUrl = "https://github.com/$env:GH_REPO/releases"
+        @"
+        <?xml version="1.0" encoding="utf-8"?>
+        <AppInstaller xmlns="http://schemas.microsoft.com/appx/appinstaller/2021"
+            Version="1.0.0.0"
+            Uri="$repoUrl/latest/download/AuraClick.appinstaller">
+          <MainBundle
+              Name="$($identity.Name)"
+              Publisher="$($identity.Publisher)"
+              Version="$env:VERSION"
+              Uri="$repoUrl/download/$env:TAG/$env:ASSET" />
+          <UpdateSettings>
+            <OnLaunch HoursBetweenUpdateChecks="12" ShowPrompt="false" UpdateBlocksActivation="false" />
+            <AutomaticBackgroundTask />
+          </UpdateSettings>
+        </AppInstaller>
+        "@ | Set-Content AuraClick.appinstaller
+
+        gh release upload $env:TAG AuraClick.appinstaller --clobber
+
+  winget:
+    needs: release
+    runs-on: windows-latest
+
+    steps:
+    - name: Setup WinGet Create
+      run: Invoke-WebRequest https://aka.ms/wingetcreate/latest -OutFile wingetcreate.exe
+
+    - name: Submit to WinGet
+      env:
+        VERSION: ${{ needs.release.outputs.version }}
+        URL: https://github.com/${{ github.repository }}/releases/download/${{ needs.release.outputs.tag }}/${{ needs.release.outputs.asset }}
+        WINGET_TOKEN: ${{ secrets.WINGET_TOKEN }}
+      run: >
+        .\wingetcreate.exe update $env:WINGET_IDENTIFIER
+        --version $env:VERSION
+        --urls $env:URL
+        --release-notes-url "https://github.com/${{ github.repository }}/releases/tag/${{ needs.release.outputs.tag }}"
+        --submit
+        --token $env:WINGET_TOKEN
