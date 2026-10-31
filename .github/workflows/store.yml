@@ -1,0 +1,55 @@
+name: Create Store Release
+
+on:
+  push:
+    tags:
+      - v*.*.*.*
+
+permissions:
+  contents: write
+
+jobs:
+  store:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v7
+
+    - name: Setup WinApp CLI
+      uses: microsoft/setup-WinAppCli@v0.2
+
+    - name: Create Store package
+      run: winapp pack AuraClick\AuraClick.csproj --arch x86 --arch x64 --arch arm64 --output AuraClick.msixbundle
+
+    - name: Upload Store package
+      uses: actions/upload-artifact@v7
+      with:
+        name: Store Package
+        path: AuraClick.msixbundle
+        if-no-files-found: error
+        archive: false
+
+    - name: Configure Store credentials
+      run: >
+        winapp store reconfigure
+        --tenantId '${{ secrets.AZURE_AD_TENANT_ID }}'
+        --sellerId '${{ secrets.SELLER_ID }}'
+        --clientId '${{ secrets.AZURE_AD_APPLICATION_CLIENT_ID }}'
+        --clientSecret '${{ secrets.AZURE_AD_APPLICATION_SECRET }}'
+
+    - name: Publish to Store
+      run: winapp store publish AuraClick.msixbundle --appId 9NTVRZD0MF7F
+
+  draft:
+    runs-on: ubuntu-latest
+    needs: store
+
+    steps:
+    - name: Create draft GitHub Release
+      uses: softprops/action-gh-release@v3
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        draft: true
+        generate_release_notes: true

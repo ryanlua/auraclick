@@ -4,20 +4,24 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap rescap">
+  IgnorableNamespaces="uap uap10 rescap">
 
   <Identity
-    Name="RyanLuu.AuraClick"
+    Name="RyanLuu.35188CB935F49"
     Publisher="CN=F928CF5C-7038-45EB-A55F-2CDFC6B12328"
-    Version="0.1.0.0" />
+    Version="0.0.1.0" />
 
-  <mp:PhoneIdentity PhoneProductId="2532d4fd-42fb-4b02-a922-9be41e17cb00" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="1af52403-3fb1-46e8-90f8-fd84f5dd65b6" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ms-resource:AppDisplayName</DisplayName>
     <PublisherDisplayName>Ryan Luu</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
+    <uap10:PackageIntegrity>
+      <uap10:Content Enforcement="on"/>
+    </uap10:PackageIntegrity>
   </Properties>
 
   <Dependencies>

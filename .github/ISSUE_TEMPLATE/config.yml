@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discord
+    url: https://discord.gg/N2KEnHzrsW
+    about: Get support and chat with the community
+  - name: Crowdin
+    url: https://crowdin.com/project/auraclick
+    about: Help translate Aura Click into your language
