@@ -19,15 +19,15 @@ A modern, high-performance auto clicker for Windows. Automate mouse clicks with 
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" width="500" srcset="assets/screenshot-dark.png">
-    <img width="500" src="assets/screenshot-light.png">
+    <source media="(prefers-color-scheme: dark)" width="512" srcset="assets/screenshot-dark.png">
+    <img width="512" src="assets/screenshot-light.png">
   </picture>
   <br>
   <br>
   <a href="https://apps.microsoft.com/detail/9NTVRZD0MF7F?referrer=appbadge&mode=full">
     <picture>
-      <source media="(prefers-color-scheme: dark)" width="250" srcset="https://get.microsoft.com/images/en-us%20light.svg">
-      <img width="250" src="https://get.microsoft.com/images/en-us%20dark.svg">
+      <source media="(prefers-color-scheme: dark)" width="256" srcset="https://get.microsoft.com/images/en-us%20light.svg">
+      <img width="256" src="https://get.microsoft.com/images/en-us%20dark.svg">
     </picture>
   </a>
 </p>
