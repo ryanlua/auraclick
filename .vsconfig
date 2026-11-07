@@ -2,6 +2,8 @@
   "version": "1.0",
   "components": [
     "Microsoft.VisualStudio.Component.CoreEditor",
+    "Microsoft.VisualStudio.Component.VC.Tools.ARM64",
+    "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
     "Microsoft.VisualStudio.Workload.CoreEditor",
     "Microsoft.VisualStudio.Workload.Universal"
   ],
