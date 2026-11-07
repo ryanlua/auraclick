@@ -14,7 +14,13 @@
     IsMaximizable="False"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid PointerPressed="RootGrid_PointerPressed">
+        <Grid.KeyboardAccelerators>
+            <KeyboardAccelerator
+                Key="Left"
+                Invoked="BackAccelerator_Invoked"
+                Modifiers="Menu" />
+        </Grid.KeyboardAccelerators>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
