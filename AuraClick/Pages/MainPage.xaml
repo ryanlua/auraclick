@@ -123,14 +123,15 @@
                         SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick"
                         WarningTitle="">
                         <dev:Shortcut.Footer>
-                            <StackPanel
-                                Margin="0,12,0,0"
-                                Orientation="Horizontal"
-                                Spacing="4">
-                                <TextBlock x:Uid="TextBlockStopKeyPress" VerticalAlignment="Center" />
-                                <dev:KeyVisual2 AutomationProperties.AccessibilityView="Content" Content="End" />
-                                <TextBlock x:Uid="TextBlockStopKeyDialog" VerticalAlignment="Center" />
-                            </StackPanel>
+                            <RichTextBlock IsTextSelectionEnabled="False">
+                                <Paragraph>
+                                    <Run x:Uid="TextBlockStopKeyPress" />
+                                    <InlineUIContainer>
+                                        <dev:KeyVisual2 Margin="0,0,0,-8" Content="End" />
+                                    </InlineUIContainer>
+                                    <Run x:Uid="TextBlockStopKeyDialog" />
+                                </Paragraph>
+                            </RichTextBlock>
                         </dev:Shortcut.Footer>
                     </dev:Shortcut>
                 </StackPanel>
@@ -220,14 +221,15 @@
                         Closed="StartButtonTeachingTip_Closed"
                         Target="{x:Bind StartToggleButton}">
                         <TeachingTip.Content>
-                            <StackPanel
-                                VerticalAlignment="Bottom"
-                                Orientation="Horizontal"
-                                Spacing="4">
-                                <TextBlock x:Uid="TextBlockStopKeyPress" />
-                                <dev:KeyVisual2 AutomationProperties.AccessibilityView="Content" Content="End" />
-                                <TextBlock x:Uid="TextBlockStopKeyTeachingTip" />
-                            </StackPanel>
+                            <RichTextBlock IsTextSelectionEnabled="False">
+                                <Paragraph>
+                                    <Run x:Uid="TextBlockStopKeyPress" />
+                                    <InlineUIContainer>
+                                        <dev:KeyVisual2 Margin="0,0,0,-8" Content="End" />
+                                    </InlineUIContainer>
+                                    <Run x:Uid="TextBlockStopKeyTeachingTip" />
+                                </Paragraph>
+                            </RichTextBlock>
                         </TeachingTip.Content>
                     </TeachingTip>
                 </ToggleButton.Resources>
