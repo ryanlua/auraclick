@@ -103,6 +103,15 @@ public sealed partial class SettingsPage : Page
     }
 
     /// <summary>
+    /// Gets or sets a value indicating whether the start button teaching tip has been dismissed.
+    /// </summary>
+    public bool IsStartButtonTeachingTipDismissed
+    {
+        get => (bool)(_localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] ?? false);
+        set => _localSettings.Values[nameof(IsStartButtonTeachingTipDismissed)] = value;
+    }
+
+    /// <summary>
     /// Gets or sets a value indicating whether the taskbar button shows a progress indicator while clicking.
     /// </summary>
     public bool ProgressIndicator
@@ -239,5 +248,14 @@ public sealed partial class SettingsPage : Page
             _localSettings.Values[nameof(IsAlwaysOnTop)] = value;
             MainWindow.IsAlwaysOnTop = value;
         }
+    }
+
+    /// <summary>
+    /// Handles the Click event of the ResetTipsButton control.
+    /// </summary>
+    private void ResetTipsButton_Click(object sender, RoutedEventArgs e)
+    {
+        IsStartButtonTeachingTipDismissed = false;
+        ResetTipsButton.IsEnabled = false;
     }
 }

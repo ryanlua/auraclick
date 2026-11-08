@@ -121,7 +121,19 @@
                         OpenedContentDialog="ToggleShortcut_OpenedContentDialog"
                         PrimaryButtonClick="ToggleShortcut_PrimaryButtonClick"
                         SecondaryButtonClick="ToggleShortcut_SecondaryButtonClick"
-                        WarningTitle="" />
+                        WarningTitle="">
+                        <dev:Shortcut.Footer>
+                            <RichTextBlock IsTextSelectionEnabled="False">
+                                <Paragraph>
+                                    <Run x:Uid="TextBlockStopKeyPress" />
+                                    <InlineUIContainer>
+                                        <dev:KeyVisual2 Margin="0,0,0,-8" Content="End" />
+                                    </InlineUIContainer>
+                                    <Run x:Uid="TextBlockStopKeyDialog" />
+                                </Paragraph>
+                            </RichTextBlock>
+                        </dev:Shortcut.Footer>
+                    </dev:Shortcut>
                 </StackPanel>
 
                 <!--  Click repeat  -->
@@ -202,6 +214,25 @@
                 Checked="StartToggleButton_Checked"
                 Unchecked="StartToggleButton_Unchecked">
                 <FontIcon x:Name="StartFontIcon" Glyph="&#xEE4A;" />
+                <ToggleButton.Resources>
+                    <TeachingTip
+                        x:Name="StartButtonTeachingTip"
+                        x:Uid="StartButtonTeachingTip"
+                        Closed="StartButtonTeachingTip_Closed"
+                        Target="{x:Bind StartToggleButton}">
+                        <TeachingTip.Content>
+                            <RichTextBlock IsTextSelectionEnabled="False">
+                                <Paragraph>
+                                    <Run x:Uid="TextBlockStopKeyPress" />
+                                    <InlineUIContainer>
+                                        <dev:KeyVisual2 Margin="0,0,0,-8" Content="End" />
+                                    </InlineUIContainer>
+                                    <Run x:Uid="TextBlockStopKeyTeachingTip" />
+                                </Paragraph>
+                            </RichTextBlock>
+                        </TeachingTip.Content>
+                    </TeachingTip>
+                </ToggleButton.Resources>
             </ToggleButton>
 
             <!--  Open settings  -->

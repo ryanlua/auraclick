@@ -44,6 +44,11 @@ public sealed partial class MainPage : Page
     private static readonly SettingsPage s_settingsPage = new();
 
     /// <summary>
+    /// Keys for the stop shortcut, which always stops the auto clicker.
+    /// </summary>
+    private static readonly List<object> s_stopShortcut = [new KeyVisualInfo { Key = VirtualKey.End, KeyName = "End" }];
+
+    /// <summary>
     /// Window message monitor for hotkey handling.
     /// </summary>
     private WindowMessageMonitor? _monitor;
@@ -52,6 +57,11 @@ public sealed partial class MainPage : Page
     /// Hotkey ID for the toggle shortcut.
     /// </summary>
     private const int ToggleHotkeyId = 1;
+
+    /// <summary>
+    /// Hotkey ID for the stop shortcut.
+    /// </summary>
+    private const int StopHotkeyId = 2;
 
     /// <summary>
     /// Flag to track if the ToggleShortcut dialog is open.
@@ -144,6 +154,26 @@ public sealed partial class MainPage : Page
 
         // Register hotkey
         await ApplyHotkeySelectionAsync();
+
+        if (s_settingsPage.IsStartButtonTeachingTipDismissed)
+        {
+            return;
+        }
+
+        // Delay toggle button teaching tooltip until page transition is complete
+        await Task.Delay(500);
+        StartButtonTeachingTip.IsOpen = true;
+    }
+
+    /// <summary>
+    /// Handles the Closed event of the StartButtonTeachingTip control.
+    /// </summary>
+    private void StartButtonTeachingTip_Closed(TeachingTip sender, TeachingTipClosedEventArgs args)
+    {
+        if (args.Reason != TeachingTipCloseReason.Programmatic)
+        {
+            s_settingsPage.IsStartButtonTeachingTipDismissed = true;
+        }
     }
 
     /// <summary>
@@ -151,6 +181,14 @@ public sealed partial class MainPage : Page
     /// </summary>
     private void OnWindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
+        // Stop hotkey works regardless of the current page or dialog
+        if (e.Message.MessageId == PInvoke.WM_HOTKEY && e.Message.WParam == StopHotkeyId)
+        {
+            StartToggleButton.IsChecked = false;
+            AutoClicker.Stop();
+            return;
+        }
+
         // Allow hotkey only on main page
         if (Frame.Content is not MainPage)
         {
@@ -214,6 +252,7 @@ public sealed partial class MainPage : Page
 
         StartFontIcon.Glyph = "\uEDB4";
         ToolTipService.SetToolTip(StartToggleButton, "ToggleButtonPause/ToolTipService/ToolTip".GetLocalized());
+        _ = HotkeyManager.RegisterHotkey(StopHotkeyId, s_stopShortcut);
         AutoClicker.Start();
         RefreshNotificationBadge();
         RefreshProgressIndicator();
@@ -236,6 +275,7 @@ public sealed partial class MainPage : Page
         StartFontIcon.Glyph = "\uEE4A";
         ToolTipService.SetToolTip(StartToggleButton, "ToggleButtonStart/ToolTipService/ToolTip".GetLocalized());
         AutoClicker.Stop();
+        _ = HotkeyManager.UnregisterHotkey(StopHotkeyId);
         RefreshNotificationBadge();
         RefreshProgressIndicator();
 
