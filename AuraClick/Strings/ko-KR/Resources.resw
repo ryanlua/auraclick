@@ -313,6 +313,34 @@
     <value>저장</value>
     <comment>Displayed on the button to save the shortcut content dialog</comment>
   </data>
+  <data name="SettingsCardResetTips.Header" xml:space="preserve">
+    <value>Reset tips</value>
+    <comment>Title of Reset tips settings card</comment>
+  </data>
+  <data name="SettingsCardResetTips.Description" xml:space="preserve">
+    <value>Show dismissed tips again</value>
+    <comment>Description of Reset tips settings card</comment>
+  </data>
+  <data name="ButtonResetTips.Content" xml:space="preserve">
+    <value>Reset</value>
+    <comment>Displayed on the button to reset dismissed tips on the Behavior panel</comment>
+  </data>
+  <data name="StartButtonTeachingTip.Title" xml:space="preserve">
+    <value>Start and stop the auto clicker</value>
+    <comment>Title of the teaching tip pointing at the Start button</comment>
+  </data>
+  <data name="TextBlockStopKeyPress.Text" xml:space="preserve">
+    <value>Press</value>
+    <comment>Text shown before the End key visual in the Start button teaching tip and the Hotkey shortcut content dialog</comment>
+  </data>
+  <data name="TextBlockStopKeyTeachingTip.Text" xml:space="preserve">
+    <value>or the set hotkey to stop</value>
+    <comment>Text shown after the End key visual in the Start button teaching tip</comment>
+  </data>
+  <data name="TextBlockStopKeyDialog.Text" xml:space="preserve">
+    <value>to stop the auto clicker at any time</value>
+    <comment>Text shown after the End key visual in the Hotkey shortcut content dialog</comment>
+  </data>
   <data name="SettingsExpanderAutomaticMinimize.Description" xml:space="preserve">
     <value>클릭하는 동안 앱 창 최소화</value>
     <comment>Description of Automatic minimize expander</comment>
