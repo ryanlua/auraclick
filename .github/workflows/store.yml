@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v7
 
     - name: Setup WinApp CLI
-      uses: microsoft/setup-WinAppCli@v0.2
+      uses: microsoft/setup-WinAppCli@v0.3
 
     - name: Create Store package
       run: winapp pack AuraClick\AuraClick.csproj --arch x86 --arch x64 --arch arm64 --output AuraClick.msixbundle
