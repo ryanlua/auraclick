@@ -1,0 +1,59 @@
+name: Build signed installer (self-signed)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "claude/target-window" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Setup WinApp CLI
+      uses: microsoft/setup-WinAppCli@v0.3
+
+    - name: Create the app package
+      run: winapp pack AuraClick\AuraClick.csproj -c Debug --arch x86 --arch x64 --arch arm64 --output AuraClick.msixbundle
+
+    - name: Create certificate and sign
+      shell: pwsh
+      run: |
+        # Subject must match the Publisher in Package.appxmanifest
+        $subject = ([xml](Get-Content AuraClick\Package.appxmanifest)).Package.Identity.Publisher
+        $pwd = ConvertTo-SecureString -String "auraclick" -Force -AsPlainText
+        $cert = New-SelfSignedCertificate -Type Custom -Subject $subject -KeyUsage DigitalSignature `
+          -FriendlyName "AuraClick mod" -CertStoreLocation "Cert:\CurrentUser\My" `
+          -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3", "2.5.29.19={text}")
+        Export-PfxCertificate -Cert $cert -FilePath cert.pfx -Password $pwd | Out-Null
+        Export-Certificate -Cert $cert -FilePath AuraClick-mod.cer | Out-Null
+        $signtool = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin\*\x64\signtool.exe" |
+          Sort-Object FullName | Select-Object -Last 1
+        & $signtool.FullName sign /fd SHA256 /f cert.pfx /p auraclick AuraClick.msixbundle
+        if ($LASTEXITCODE) { exit $LASTEXITCODE }
+        Remove-Item cert.pfx
+
+    - name: Write install script
+      shell: pwsh
+      run: |
+        @'
+        # Right-click > Run with PowerShell. Needs Administrator (it trusts the certificate once).
+        $dir = Split-Path -Parent $MyInvocation.MyCommand.Path
+        Import-Certificate -FilePath "$dir\AuraClick-mod.cer" -CertStoreLocation Cert:\LocalMachine\TrustedPeople | Out-Null
+        Add-AppxPackage -Path "$dir\AuraClick.msixbundle"
+        Write-Host "Installed. Find 'Aura Click' in the Start menu."
+        '@ | Set-Content Install.ps1
+
+    - name: Upload installer
+      uses: actions/upload-artifact@v7
+      with:
+        name: AuraClick-mod-installer
+        path: |
+          AuraClick.msixbundle
+          AuraClick-mod.cer
+          Install.ps1
+        if-no-files-found: error

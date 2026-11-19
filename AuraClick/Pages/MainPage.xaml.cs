@@ -1,4 +1,4 @@
-// Copyright (C) 2026 Ryan Luu
+﻿// Copyright (C) 2026 Ryan Luu
 //
 // This file is part of Aura Click.
 //
@@ -155,6 +155,8 @@ public sealed partial class MainPage : Page
         // Register hotkey
         await ApplyHotkeySelectionAsync();
 
+        RefreshWindowList();
+
         if (s_settingsPage.IsStartButtonTeachingTipDismissed)
         {
             return;
@@ -284,6 +286,45 @@ public sealed partial class MainPage : Page
         {
             App.MainWindow.Restore();
         }
+    }
+
+    /// <summary>
+    /// Placeholder item meaning "click wherever the cursor is".
+    /// </summary>
+    private const string NoTargetLabel = "None (click wherever the cursor is)";
+
+    /// <summary>
+    /// Reloads the list of open windows, keeping the current selection or preferring Minecraft.
+    /// </summary>
+    private void RefreshWindowList()
+    {
+        nint previous = AutoClicker.TargetWindow;
+        nint self = WindowNative.GetWindowHandle(App.MainWindow);
+        List<WindowEntry> windows = WindowHelper.GetOpenWindows(self);
+
+        List<object> items = [NoTargetLabel, .. windows];
+        TargetWindowComboBox.ItemsSource = items;
+
+        object? selected = windows.FirstOrDefault(w => w.Handle == previous);
+        selected ??= windows.FirstOrDefault(w => w.Title.Equals("Minecraft", StringComparison.Ordinal))
+            ?? windows.FirstOrDefault(w => w.Title.Contains("Minecraft", StringComparison.OrdinalIgnoreCase));
+        TargetWindowComboBox.SelectedItem = selected ?? items[0];
+    }
+
+    /// <summary>
+    /// Handles the SelectionChanged event of the TargetWindowComboBox control.
+    /// </summary>
+    private void TargetWindowComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        AutoClicker.TargetWindow = TargetWindowComboBox.SelectedItem is WindowEntry entry ? entry.Handle : 0;
+    }
+
+    /// <summary>
+    /// Handles the Click event of the RefreshWindowsButton control.
+    /// </summary>
+    private void RefreshWindowsButton_Click(object sender, RoutedEventArgs e)
+    {
+        RefreshWindowList();
     }
 
     /// <summary>

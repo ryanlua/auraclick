@@ -79,6 +79,12 @@ public static class AutoClicker
     public static int ClickDelayOffset { get; set; } = 10;
 
     /// <summary>
+    /// Gets or sets the handle of the window to click in, or 0 to click wherever the cursor is.
+    /// When set, the window is brought to the front for each click and the previous window is restored afterwards.
+    /// </summary>
+    public static nint TargetWindow { get; set; }
+
+    /// <summary>
     /// Gets a value indicating whether the auto clicker is currently running.
     /// </summary>
     public static bool IsRunning => s_cts is { IsCancellationRequested: false };
@@ -95,12 +101,35 @@ public static class AutoClicker
         long clickLimit = ClickAmountEnabled ? ClickAmount : long.MaxValue;
         TimeSpan delay = TimeSpan.FromHours(HoursDelay, MinutesDelay, SecondsDelay, MillisecondsDelay);
         int maxOffset = ClickDelayOffsetEnabled ? Math.Max(0, ClickDelayOffset) : 0;
+        nint target = TargetWindow;
 
         _ = Task.Run(async () =>
         {
             for (long clicks = 1; !cts.IsCancellationRequested; clicks++)
             {
-                _ = PInvoke.SendInput(click, Marshal.SizeOf<INPUT>());
+                if (target != 0)
+                {
+                    if (!WindowHelper.Exists(target))
+                    {
+                        // Target window was closed
+                        cts.Cancel();
+                        ClickLimitReached?.Invoke(null, EventArgs.Empty);
+                        return;
+                    }
+
+                    // Games ignore background input, so focus the window, press, hold briefly, release, then go back
+                    nint previous = WindowHelper.BringToFront(target);
+                    await Task.Delay(80).ConfigureAwait(false);
+                    _ = PInvoke.SendInput(click.AsSpan(0, 1), Marshal.SizeOf<INPUT>());
+                    await Task.Delay(60).ConfigureAwait(false);
+                    _ = PInvoke.SendInput(click.AsSpan(1, 1), Marshal.SizeOf<INPUT>());
+                    WindowHelper.Restore(previous, target);
+                }
+                else
+                {
+                    _ = PInvoke.SendInput(click, Marshal.SizeOf<INPUT>());
+                }
+
                 if (clicks >= clickLimit)
                 {
                     cts.Cancel();

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <Page
     x:Class="AuraClick.MainPage"
@@ -41,6 +41,7 @@
         <ContentControl HorizontalContentAlignment="Stretch" IsEnabled="{x:Bind StartToggleButton.IsChecked, Converter={StaticResource BoolNegationConverter}}">
             <Grid RowSpacing="{StaticResource GridSpacing}">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -191,6 +192,29 @@
                             Grid.Column="1"
                             VerticalAlignment="Center"
                             IsEnabled="{x:Bind (x:Boolean)ClickOffsetCheckBox.IsChecked}" />
+                    </Grid>
+                </StackPanel>
+
+                <!--  Target window  -->
+                <StackPanel
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Spacing="{StaticResource HeaderSpacing}">
+                    <dev:IsEnabledTextBlock Text="Target window (focused for each click, then your previous app returns)" />
+                    <Grid ColumnSpacing="{StaticResource ControlSpacing}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ComboBox
+                            x:Name="TargetWindowComboBox"
+                            HorizontalAlignment="Stretch"
+                            SelectionChanged="TargetWindowComboBox_SelectionChanged" />
+                        <Button
+                            x:Name="RefreshWindowsButton"
+                            Grid.Column="1"
+                            Click="RefreshWindowsButton_Click"
+                            Content="Refresh" />
                     </Grid>
                 </StackPanel>
             </Grid>
